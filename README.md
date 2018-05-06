@@ -34,4 +34,6 @@ mongoimport --db test1 --collection items [--drop] --file ./views/images/import/
 
 /routes: store the route files
 
-/views: store the client-side html, css, javascript and images
+/views: store the html template files, ejs files
+
+/public: store static resources, like css, javascript and images
