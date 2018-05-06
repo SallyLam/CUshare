@@ -39,8 +39,8 @@
 	<!-- Custom Theme files end here-->
 
 	<!-- smoth scrolling start here-->
-	<script type="text/javascript" src="../js/move-top.js"></script>
-	<script type="text/javascript" src="../js/easing.js"></script>
+	<script type="text/javascript" src="/js/move-top.js"></script>
+	<script type="text/javascript" src="/js/easing.js"></script>
 	<script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){
@@ -66,37 +66,37 @@
 	<!--banner start here-->
 		<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#383838;height:50px;">
 			<div class="navbar-left">
-				<a href="../"><img src="../assets/logo.png" alt="logo" style="width:180px;height:50px;"/></a>
+				<a href="/"><img src="/assets/logo.png" alt="logo" style="width:180px;height:50px;"/></a>
 			</div>
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
-					<li><a href="../store">Store</a></li>
+					<li><a href="/store">Store</a></li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Category <span class="caret" style="color:white; margin-right:15px"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="../painting">Painting</a></li>
-							<li><a href="../sculpture">Sculpture</a></li>
-							<li><a href="../photography">Photography</a></li>
+							<li><a href="/painting">Painting</a></li>
+							<li><a href="/sculpture">Sculpture</a></li>
+							<li><a href="/photography">Photography</a></li>
 						</ul>
 				</ul>
 				<% if (isLogin) { %>
 					<ul class="nav navbar-nav" style = "position:fixed; right:15px">
 						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user" style="color: #c2c2c2;margin-right:3px"></span><%= firstname %> <span class="caret" style="color: #c2c2c2"></span></a>
 							<ul class="dropdown-menu dropdown-menu-right">
-								<li><a href="../profile"><span class="glyphicon glyphicon-user	"></span> Your Profile</a></li>
-								<li><a href="../cart"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a></li>
-								<li><a href="../postitem"><span class="glyphicon glyphicon-collapse-up"></span> Post Item</a></li>
-								<li><a href="../edititem"><span class="glyphicon glyphicon-collapse-down"></span> Edit Item</a></li>
-								<li><a href="../personalchat"><span class="glyphicon glyphicon-briefcase"></span> Chat</a></li>
-								<li><a href="../logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+								<li><a href="/profile"><span class="glyphicon glyphicon-user	"></span> Your Profile</a></li>
+								<li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a></li>
+								<li><a href="/postitem"><span class="glyphicon glyphicon-collapse-up"></span> Post Item</a></li>
+								<li><a href="/edititem"><span class="glyphicon glyphicon-collapse-down"></span> Edit Item</a></li>
+								<li><a href="/personalchat"><span class="glyphicon glyphicon-briefcase"></span> Chat</a></li>
+								<li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 							</ul>
 						</li>
 					<% } else { %>
 						<ul class="nav navbar-nav navbar-nav navbar-right">
-							<li><a href="../signup"><span class="glyphicon glyphicon-user" style="color:white"></span> SignUp</a></li>
-							<li><a href="../login"><span class="glyphicon glyphicon-log-in" style="color:white"></span> Login <span style="margin-right:15px"></span></a></li>
+							<li><a href="/signup"><span class="glyphicon glyphicon-user" style="color:white"></span> SignUp</a></li>
+							<li><a href="/login"><span class="glyphicon glyphicon-log-in" style="color:white"></span> Login <span style="margin-right:15px"></span></a></li>
 					<% } %>
 				</ul>
-				<form action="../search" method="get" class="navbar-form navbar-right" style = "position:fixed; right:230px">
+				<form action="/search" method="get" class="navbar-form navbar-right" style = "position:fixed; right:230px">
 					<div class="input-group" style="width: 400px;">
 						<input type="text" class="form-control" name = "searchableString" placeholder="Search">
 						<div class="input-group-btn">
@@ -117,15 +117,15 @@
 				<div class="content-bar">
 					<div class="single-page">
 						<ul class="product-head">
-							<li><a href="../">Home</a> <span>::</span></li>
-							<li><a href="../store">Products</a> <span>::</span></li>
-							<li><a href="../<%=itemtype%>"><%=itemtype%></a> <span>::</span></li>
+							<li><a href="/">Home</a> <span>::</span></li>
+							<li><a href="/store">Products</a> <span>::</span></li>
+							<li><a href="/<%=itemtype%>"><%=itemtype%></a> <span>::</span></li>
 							<li class="active-page"><%=itemname%></li>
 							<div class="clear"> </div>
 						</ul>
 						<!-- Include the Etalage files -->
-						<link rel="stylesheet" href="../css/etalage.css">
-						<script src="../js/jquery.etalage.min.js"></script>
+						<link rel="stylesheet" href="/css/etalage.css">
+						<script src="/js/jquery.etalage.min.js"></script>
 						<!-- Include the Etalage files -->
 						<script>
 						jQuery(document).ready(function($){
@@ -152,21 +152,21 @@
 							<ul id="etalage">
 								<li>
 									<a href="optionallink.html">
-										<img class="etalage_thumb_image" src="../images/<%=imgSrc%>" />
-										<img class="etalage_source_image" src="../images/<%=imgSrc%>" />
+										<img class="etalage_thumb_image" src="/images/<%=imgSrc%>" />
+										<img class="etalage_source_image" src="/images/<%=imgSrc%>" />
 									</a>
 								</li>
 								<li>
-									<img class="etalage_thumb_image" src="../images/<%=imgSrc%>" />
-									<img class="etalage_source_image" src="../images/<%=imgSrc%>" />
+									<img class="etalage_thumb_image" src="/images/<%=imgSrc%>" />
+									<img class="etalage_source_image" src="/images/<%=imgSrc%>" />
 								</li>
 								<li>
-									<img class="etalage_thumb_image" src="../images/<%=imgSrc%>" />
-									<img class="etalage_source_image" src="../images/<%=imgSrc%>" />
+									<img class="etalage_thumb_image" src="/images/<%=imgSrc%>" />
+									<img class="etalage_source_image" src="/images/<%=imgSrc%>" />
 								</li>
 								<li>
-									<img class="etalage_thumb_image" src="../images/<%=imgSrc%>" />
-									<img class="etalage_source_image" src="../images/<%=imgSrc%>" />
+									<img class="etalage_thumb_image" src="/images/<%=imgSrc%>" />
+									<img class="etalage_source_image" src="/images/<%=imgSrc%>" />
 								</li>
 								<div class="clearfix"> </div>
 							</ul>
@@ -176,7 +176,7 @@
 							<p class="availability">Availability: <span class="color">In stock</span></p>
 							<div class="price_single">
 								<span class="reducedfrom">$<%=Math.ceil(itemprice*1.1)%></span>
-								<span class="actual">$<%=itemprice%></span><a href="../personalchat">Clict to contact the seller!</a>
+								<span class="actual">$<%=itemprice%></span><a href="/personalchat">Clict to contact the seller!</a>
 							</div>
 							<h2 class="quick">Quick Overview:</h2>
 							<p class="quick_desc"> ARTs is a platform for small businesses and individual entrepreneurs to run online stores of creative stylish artwork.</p>
@@ -233,16 +233,16 @@
 			</div>
 			<div class="col-md-3 sidebar_men">
 				<h3>Categories</h3>
-				<ul class="product-categories color"><li class="cat-item cat-item-42"><a href="../painting">Painting</a> <span class="count">(553)</span></li>
-					<li class="cat-item cat-item-60"><a href="../sculpture">Sculpture</a> <span class="count">(447)</span></li>
-					<li class="cat-item cat-item-63"><a href="../photography">Photography</a> <span class="count">(229)</span></li>
+				<ul class="product-categories color"><li class="cat-item cat-item-42"><a href="/painting">Painting</a> <span class="count">(553)</span></li>
+					<li class="cat-item cat-item-60"><a href="/sculpture">Sculpture</a> <span class="count">(447)</span></li>
+					<li class="cat-item cat-item-63"><a href="/photography">Photography</a> <span class="count">(229)</span></li>
 				</ul>
 
 				<h3>Price</h3>
 				<ul class="product-categories">
-					<li class="cat-item cat-item-60"><a href="../1500">&le; $1500</a> <span class="count">(163)</span></li>
-					<li class="cat-item cat-item-63"><a href="../1500-3000">$1500 - $3000</a> <span class="count">(828)</span></li>
-					<li class="cat-item cat-item-54"><a href="../3000">&ge; $3000</a> <span class="count">(238)</span></li>
+					<li class="cat-item cat-item-60"><a href="/1500">&le; $1500</a> <span class="count">(163)</span></li>
+					<li class="cat-item cat-item-63"><a href="/1500-3000">$1500 - $3000</a> <span class="count">(828)</span></li>
+					<li class="cat-item cat-item-54"><a href="/3000">&ge; $3000</a> <span class="count">(238)</span></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -368,7 +368,7 @@
 								<h3>About Us</h3>
 								<p>We are ARTs developer team.</p>
 								<div class="ftr-gls-bwn">
-									<a href="../about">View</a>
+									<a href="/about">View</a>
 								</div>
 							</div>
 						</div>
@@ -379,7 +379,7 @@
 								<h3>Contact Us</h3>
 								<p>We You are welcome to contact us.</p>
 								<div class="ftr-gls-bwn">
-									<a href="../contact">View</a>
+									<a href="/contact">View</a>
 								</div>
 							</div>
 						</div>

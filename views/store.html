@@ -28,7 +28,7 @@
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link href="../css/style.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="/css/style.css" rel="stylesheet" type="text/css" media="all"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }</script>
@@ -36,8 +36,8 @@
 	<!-- Custom Theme files end here-->
 
 	<!-- smoth scrolling start here-->
-	<script type="text/javascript" src="../js/move-top.js"></script>
-	<script type="text/javascript" src="../js/easing.js"></script>
+	<script type="text/javascript" src="/js/move-top.js"></script>
+	<script type="text/javascript" src="/js/easing.js"></script>
 	<script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){
@@ -49,8 +49,8 @@
 	<!-- smoth scrolling end here-->
 
 	<!-- animated-css start here-->
-	<link href="../css/animate.css" rel="stylesheet" type="text/css" media="all">
-	<script src="../js/wow.min.js"></script>
+	<link href="/css/animate.css" rel="stylesheet" type="text/css" media="all">
+	<script src="/js/wow.min.js"></script>
 	<script>
 	new WOW().init();
 	</script>
@@ -71,31 +71,31 @@
 	<!--banner start here-->
 		<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#383838;height:50px;">
 			<div class="navbar-left">
-				<a href="../"><img src="../assets/logo.png" alt="logo" style="width:180px;height:50px;"/></a>
+				<a href="/"><img src="/assets/logo.png" alt="logo" style="width:180px;height:50px;"/></a>
 			</div>
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
-					<li><a href="../store">Store</a></li>
+					<li><a href="/store">Store</a></li>
 				</ul>
 				<% if (isLogin) { %>
 					<ul class="nav navbar-nav" style = "position:fixed; right:15px">
 						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user" style="color: #c2c2c2;margin-right:3px"></span><%= firstname %> <span class="caret" style="color: #c2c2c2"></span></a>
 							<ul class="dropdown-menu dropdown-menu-right">
-								<li><a href="../profile"><span class="glyphicon glyphicon-user	"></span> Your Profile</a></li>
-								<li><a href="../cart"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a></li>
-								<li><a href="../postitem"><span class="glyphicon glyphicon-collapse-up"></span> Post Item</a></li>
-								<li><a href="../edititem"><span class="glyphicon glyphicon-collapse-down"></span> Edit Item</a></li>
-								<li><a href="../personalchat"><span class="glyphicon glyphicon-briefcase"></span> Chat</a></li>
-								<li><a href="../logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+								<li><a href="/profile"><span class="glyphicon glyphicon-user	"></span> Your Profile</a></li>
+								<li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a></li>
+								<li><a href="/postitem"><span class="glyphicon glyphicon-collapse-up"></span> Post Item</a></li>
+								<li><a href="/edititem"><span class="glyphicon glyphicon-collapse-down"></span> Edit Item</a></li>
+								<li><a href="/personalchat"><span class="glyphicon glyphicon-briefcase"></span> Chat</a></li>
+								<li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 							</ul>
 						</li>
 					<% } else { %>
 						<ul class="nav navbar-nav navbar-nav navbar-right">
-							<li><a href="../signup"><span class="glyphicon glyphicon-user" style="color:white"></span> SignUp</a></li>
-							<li><a href="../login"><span class="glyphicon glyphicon-log-in" style="color:white"></span> Login <span style="margin-right:15px"></span></a></li>
+							<li><a href="/signup"><span class="glyphicon glyphicon-user" style="color:white"></span> SignUp</a></li>
+							<li><a href="/login"><span class="glyphicon glyphicon-log-in" style="color:white"></span> Login <span style="margin-right:15px"></span></a></li>
 					<% } %>
 				</ul>
-				<form action="../search" method="get" class="navbar-form navbar-right" style = "position:fixed; right:230px">
+				<form action="/search" method="get" class="navbar-form navbar-right" style = "position:fixed; right:230px">
 					<div class="input-group" style="width: 400px;">
 						<input type="text" class="form-control" name = "searchableString" placeholder="Search">
 						<div class="input-group-btn">
@@ -119,18 +119,18 @@
 						<div class="col-md-8">
 							<p class="lead">Category</p>
 							<div class="list-group">
-								<a href="../store" class="list-group-item">All (1229)</a>
+								<a href="/store" class="list-group-item">All (1229)</a>
 							</div>
 							<div class="list-group">
-								<a href="../painting" class="list-group-item">Painting (553)</a>
-								<a href="../sculpture" class="list-group-item">Sculpture (447)</a>
-								<a href="../photography" class="list-group-item">Photography (229)</a>
+								<a href="/painting" class="list-group-item">Painting (553)</a>
+								<a href="/sculpture" class="list-group-item">Sculpture (447)</a>
+								<a href="/photography" class="list-group-item">Photography (229)</a>
 							</div>
 
 							<div class="list-group">
-								<a href="../1500" class="list-group-item">&le; $1500 (163)</a>
- 								<a href="../1500-3000" class="list-group-item">$1500 - $3000 (828)</a>
- 								<a href="../3000" class="list-group-item">&ge; $3000 (238)</a>
+								<a href="/1500" class="list-group-item">&le; $1500 (163)</a>
+ 								<a href="/1500-3000" class="list-group-item">$1500 - $3000 (828)</a>
+ 								<a href="/3000" class="list-group-item">&ge; $3000 (238)</a>
 							</div>
 						</div>
 						<div class="col-md-3"></div>
@@ -170,14 +170,14 @@
 							</div>
 							<div class="content-bar">
 								<ul class="product-head">
-									<li><a href="../">Home</a> <span>::</span></li>
+									<li><a href="/">Home</a> <span>::</span></li>
 									<li class="active-page">All Items</li>
 									<div class="clear"> </div>
 								</ul>
 								<div class="products-row">
 									<h3>Today's Hotspots</h3>
 									<%for(var i in Items){ if(!Items[i].name)continue;%>
-					                    <a onclick="location.href='../single/<%=Items[i]._id%>'"><div class="product-grid">
+					                    <a onclick="location.href='/single/<%=Items[i]._id%>'"><div class="product-grid">
 											<div class="more-product-info">
 												<span> </span>
 											</div>
@@ -186,17 +186,17 @@
 											</div>
 											<div class="product-info">
 												<div class="product-info-cust">
-													<a onclick="location.href='../single/<%=Items[i]._id%>'"><%=Items[i].name%></a>
+													<a onclick="location.href='/single/<%=Items[i]._id%>'"><%=Items[i].name%></a>
 												</div>
 												<div class="product-info-price">
-													<a onclick="location.href='../single/<%=Items[i]._id%>'">$<%=Items[i].price%></a>
+													<a onclick="location.href='/single/<%=Items[i]._id%>'">$<%=Items[i].price%></a>
 												</div>
 												<div class="clearfix"> </div>
 											</div>
 											<div class="ratings product-info-ratings">
 
 												<!--a class="pull-right" href="#">15 reviews</a-->
-												<button onclick="location.href='../addToCart/<%=Items[i]._id%>'" type="button" class="btn btn-default btn-sm">
+												<button onclick="location.href='/addToCart/<%=Items[i]._id%>'" type="button" class="btn btn-default btn-sm">
 										          <span class="glyphicon glyphicon-shopping-cart"></span> Add to Shopping Cart
 										        </button>
 												<!--p>
@@ -232,7 +232,7 @@
 								<h3>About Us</h3>
 								<p>We are ARTs developer team.</p>
 								<div class="ftr-gls-bwn">
-									<a href="../about">View</a>
+									<a href="/about">View</a>
 								</div>
 							</div>
 						</div>
