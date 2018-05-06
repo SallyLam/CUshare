@@ -44,8 +44,9 @@ app.set( 'view engine', 'html' );
 // i.e. map '.html' files to the EJS template engine.
 app.engine( '.html', require( 'ejs' ).__express );
 
-// Set static files' directory as './views', where resource files (images, js, etc.) reside.
-app.use(express.static(path.join(__dirname, 'views')));
+// Set static files' directory as './public',
+// where resource files (images, js, css, etc.) reside.
+app.use(express.static(path.join(__dirname, 'public')));
 // Add a session middle ware, for recording users' login status.
 app.use(session({
   resave: true,
