@@ -1,0 +1,251 @@
+<!--
+	CUshare Resource Sharing Platform
+
+	CUshare allow CUers conveniently share their personal items (such as used textbooks) with each other.
+	User can issue sell request, buy request, or even exchange request if needed on CUshare.
+	People with corresponding needs can respond to the request and settle down time/location
+	of the sharing with you directly on the website.
+
+	@category   View
+	@author     Xinyu (Cynric) Fu 		<xyfu6@cse.cuhk.edu.hk>
+	@author     Zhanhao (Jasper) Liu 	<zhliu6@cse.cuhk.edu.hk>
+	@author     Shinmin (Sally) lin 	<smlin6@cse.cuhk.edu.hk>
+	@author     Jiamin (Vito) Chen 		<jmchen6@cse.cuhk.edu.hk>
+
+	@copyright  2018 CSCI4140 Group 1
+	@license    https://opensource.org/licenses/MIT
+	@version    1.2.0	5-5-2018
+	@link       https://github.com/SallyLam/CUshare
+-->
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>ARTs Store</title>
+
+	<!-- Custom Theme files start here-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+	</script>
+	<meta name="keywords" content="Kick flips Responsive web template, Bootstrap Web Templates, Flat Web Templates, AndriodCompatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+	<!-- Custom Theme files end here-->
+
+	<!-- smoth scrolling start here-->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+	</script>
+	<!-- smoth scrolling end here-->
+
+	<!-- signup function start here-->
+	<script type="text/javascript">
+	function signup(){
+		var username = $('#username').val(),
+		password = $('#password').val(),
+		confirmpwd = $('#confirmpwd').val(),
+		firstname = $('#firstname').val(),
+		lastname = $('#lastname').val(),
+		email = $('#email').val(),
+		phone = $('#phone').val(),
+		address = $('#address').val();
+		var data = { "username": username, "password":password,
+								 "confirmpwd": confirmpwd, "firstname": firstname,
+								 "lastname": lastname, "email": email,
+								 "phone": phone, "address": address };
+		$.ajax({
+			url: '/signup',
+			type: 'POST',
+			data: data,
+			success: function(data,status){
+				if(status == 'success'){
+					location.href='/login';
+				}
+			},
+			error: function(data,status){
+				if (status == 'error') {
+					location.href='/signup';
+				}
+			}
+		});
+	}
+	</script>
+	<!-- signup function start here-->
+</head>
+<body>
+	<!--facebook share button setting start here-->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<!--facebook share button setting end here-->
+
+	<!--banner start here-->
+		<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#383838;height:50px;">
+			<div class="navbar-left">
+				<a href="/"><img src="assets/logo.png" alt="logo" style="width:180px;height:50px;"/></a>
+			</div>
+			<div class="container-fluid">
+				<ul class="nav navbar-nav">
+					<li><a href="store">Store</a></li>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Category <span class="caret" style="color:white; margin-right:15px"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="painting">Painting</a></li>
+							<li><a href="sculpture">Sculpture</a></li>
+							<li><a href="photography">Photography</a></li>
+						</ul>
+				</ul>
+				<% if (isLogin) { %>
+					<ul class="nav navbar-nav" style = "position:fixed; right:15px">
+						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user" style="color: #c2c2c2;margin-right:3px"></span><%= firstname %> <span class="caret" style="color: #c2c2c2"></span></a>
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li><a href="profile"><span class="glyphicon glyphicon-user	"></span> Your Profile</a></li>
+								<li><a href="cart"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a></li>
+								<li><a href="postitem"><span class="glyphicon glyphicon-collapse-up"></span> Post Item</a></li>
+								<li><a href="edititem"><span class="glyphicon glyphicon-collapse-down"></span> Edit Item</a></li>
+								<li><a href="personalchat"><span class="glyphicon glyphicon-briefcase"></span> Chat</a></li>
+								<li><a href="chat"><span class="glyphicon glyphicon-briefcase"></span> Chat</a></li>
+								<li><a href="logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+							</ul>
+						</li>
+					<% } else { %>
+						<ul class="nav navbar-nav navbar-nav navbar-right">
+							<li><a href="signup"><span class="glyphicon glyphicon-user" style="color:white"></span> SignUp</a></li>
+							<li><a href="login"><span class="glyphicon glyphicon-log-in" style="color:white"></span> Login <span style="margin-right:15px"></span></a></li>
+					<% } %>
+				</ul>
+				<form action="/search" method="get" class="navbar-form navbar-right" style = "position:fixed; right:230px">
+					<div class="input-group" style="width: 400px;">
+						<input type="text" class="form-control" name = "searchableString" placeholder="Search">
+						<div class="input-group-btn">
+							<button class="btn btn-default" type="submit">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		<div class="clearfix"> </div>
+	</nav>
+	<!--banner end here-->
+
+	<!--signup start here-->
+	<div class="signup">
+		<div class="container">
+			<%- errMessage %>
+			<%- notiMessage %>
+			<div class="signup-main">
+				<div class="sign-top">
+					<h3>SIGN UP</h3>
+					<p>Please enter your personal information to create an account.</p>
+				</div>
+				<div class="register-top">
+					<h3>LOGIN INFORMATION</h3>
+					<div class="sign-left">
+						<p>USERNAME</p>
+						<input id="username" type="text" value="" placeholder="User name"/>
+						<span style="color:red">*</span>
+					</div>
+					<div class="sign-right">
+						<p>PASSWORD</p>
+						<input id="password" type="password" value="" placeholder="Password"/>
+						<span style="color:red">*</span>
+					</div>
+					<div class="sign-right">
+						<p>CONFIRM PASSWORD</p>
+						<input id="confirmpwd" type="password" value="" placeholder="Enter password again"/>
+						<span style="color:red">*</span>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+				<div class="register-bottom">
+					<h3>PERSONAL INFORMATION</h3>
+					<div class="sign-left">
+						<p>FIRST NAME</p>
+						<input id="firstname" type="text" value="" placeholder="First name" />
+					</div>
+					<div class="sign-left">
+						<p>LAST NAME</p>
+						<input id="lastname" type="text" value="" placeholder="Last name"/>
+					</div>
+					<div class="sign-left">
+						<p>EMAIL ADDRESS</p>
+						<input id="email" type="text" value="" placeholder="Email address"/>
+						<span style="color:red">*</span>
+					</div>
+					<div class="sign-left">
+						<p>PHONE</p>
+						<input id="phone" type="text" value="" placeholder="Phone number"/>
+					</div>
+					<div class="sign-left  txt-ar">
+						<p>ADDRESS</p>
+						<textarea id="address"/> </textarea>
+					</div>
+					<div class="clearfix"> </div>
+					<input type="submit" class="btn btn-success" onclick="signup();" value="SUBMIT" />
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!--signup end here-->
+
+	<!--footer start here-->
+	<div class="footer wow bounce" data-wow-delay="0.1s">
+			<div class="container">
+				<div class="footer-main">
+					<div class="col-md-4 ftr-grid wow bounceIn" data-wow-delay="0.3s">
+						<div class="ftr-glss">
+							<div class="glss-text">
+								<h3>About Us</h3>
+								<p>We are ARTs developer team.</p>
+								<div class="ftr-gls-bwn">
+									<a href="contact">View</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-5 ftr-grid wow bounceIn" data-wow-delay="0.3s">
+						<div class="ft-killbg">
+							<div class="glss-text">
+								<h3>Contact Us</h3>
+								<p>We You are welcome to contact us.</p>
+								<div class="ftr-gls-bwn">
+									<a href="about">View</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 ftr-small-grid wow bounceIn" data-wow-delay="0.3s">
+						<ul>
+							<div class="fb-share-button" data-href="http://127.0.0.1:3000/" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A3000%2F&amp;src=sdkpreparse">Share</a></div><br><br>
+							<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://127.0.0.1:3000/" data-text="Check out ARTs!" data-hashtags="ARTs">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+						</ul>
+								</div>
+								<div class="clearfix"> </div>
+								<div class="copyright">
+									<p>CSCI4140 Group 1</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				<!--footer end here-->
+			</body>
+			</html>

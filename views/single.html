@@ -1,0 +1,402 @@
+<!--
+	CUshare Resource Sharing Platform
+
+	CUshare allow CUers conveniently share their personal items (such as used textbooks) with each other.
+	User can issue sell request, buy request, or even exchange request if needed on CUshare.
+	People with corresponding needs can respond to the request and settle down time/location
+	of the sharing with you directly on the website.
+
+	@category   View
+	@author     Xinyu (Cynric) Fu 		<xyfu6@cse.cuhk.edu.hk>
+	@author     Zhanhao (Jasper) Liu 	<zhliu6@cse.cuhk.edu.hk>
+	@author     Shinmin (Sally) lin 	<smlin6@cse.cuhk.edu.hk>
+	@author     Jiamin (Vito) Chen 		<jmchen6@cse.cuhk.edu.hk>
+
+	@copyright  2018 CSCI4140 Group 1
+	@license    https://opensource.org/licenses/MIT
+	@version    1.2.0	5-5-2018
+	@link       https://github.com/SallyLam/CUshare
+-->
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Item Page</title>
+
+	<!-- Custom Theme files start here-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link href="/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="/css/comment.css" rel="stylesheet" type="text/css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+	</script>
+	<meta name="keywords" content="Kick flips Responsive web template, Bootstrap Web Templates, Flat Web Templates, AndriodCompatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+	<!-- Custom Theme files end here-->
+
+	<!-- smoth scrolling start here-->
+	<script type="text/javascript" src="../js/move-top.js"></script>
+	<script type="text/javascript" src="../js/easing.js"></script>
+	<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+	</script>
+	<!-- smoth scrolling end here-->
+</head>
+<body>
+
+	<!--facebook share button setting start here-->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<!--facebook share button setting end here-->
+	<!--banner start here-->
+		<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#383838;height:50px;">
+			<div class="navbar-left">
+				<a href="../"><img src="../assets/logo.png" alt="logo" style="width:180px;height:50px;"/></a>
+			</div>
+			<div class="container-fluid">
+				<ul class="nav navbar-nav">
+					<li><a href="../store">Store</a></li>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Category <span class="caret" style="color:white; margin-right:15px"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="../painting">Painting</a></li>
+							<li><a href="../sculpture">Sculpture</a></li>
+							<li><a href="../photography">Photography</a></li>
+						</ul>
+				</ul>
+				<% if (isLogin) { %>
+					<ul class="nav navbar-nav" style = "position:fixed; right:15px">
+						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user" style="color: #c2c2c2;margin-right:3px"></span><%= firstname %> <span class="caret" style="color: #c2c2c2"></span></a>
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li><a href="../profile"><span class="glyphicon glyphicon-user	"></span> Your Profile</a></li>
+								<li><a href="../cart"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a></li>
+								<li><a href="../postitem"><span class="glyphicon glyphicon-collapse-up"></span> Post Item</a></li>
+								<li><a href="../edititem"><span class="glyphicon glyphicon-collapse-down"></span> Edit Item</a></li>
+								<li><a href="../personalchat"><span class="glyphicon glyphicon-briefcase"></span> Chat</a></li>
+								<li><a href="../logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+							</ul>
+						</li>
+					<% } else { %>
+						<ul class="nav navbar-nav navbar-nav navbar-right">
+							<li><a href="../signup"><span class="glyphicon glyphicon-user" style="color:white"></span> SignUp</a></li>
+							<li><a href="../login"><span class="glyphicon glyphicon-log-in" style="color:white"></span> Login <span style="margin-right:15px"></span></a></li>
+					<% } %>
+				</ul>
+				<form action="../search" method="get" class="navbar-form navbar-right" style = "position:fixed; right:230px">
+					<div class="input-group" style="width: 400px;">
+						<input type="text" class="form-control" name = "searchableString" placeholder="Search">
+						<div class="input-group-btn">
+							<button class="btn btn-default" type="submit">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		<div class="clearfix"> </div>
+	</nav>
+	<!--banner end here-->
+	<!--single start here-->
+	<div class="product">
+		<div class="container">
+			<div class="col-md-9">
+				<div class="content-bar">
+					<div class="single-page">
+						<ul class="product-head">
+							<li><a href="../">Home</a> <span>::</span></li>
+							<li><a href="../store">Products</a> <span>::</span></li>
+							<li><a href="../<%=itemtype%>"><%=itemtype%></a> <span>::</span></li>
+							<li class="active-page"><%=itemname%></li>
+							<div class="clear"> </div>
+						</ul>
+						<!-- Include the Etalage files -->
+						<link rel="stylesheet" href="../css/etalage.css">
+						<script src="../js/jquery.etalage.min.js"></script>
+						<!-- Include the Etalage files -->
+						<script>
+						jQuery(document).ready(function($){
+
+							$('#etalage').etalage({
+								thumb_image_width: 300,
+								thumb_image_height: 400,
+								source_image_width: 600,
+								source_image_height: 1000,
+								show_hint: true,
+								click_callback: function(image_anchor, instance_id){
+									alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
+								}
+							});
+							// This is for the dropdown list example:
+							$('.dropdownlist').change(function(){
+								etalage_show( $(this).find('option:selected').attr('class') );
+							});
+
+						});
+						</script>
+						<!----//details-product-slider--->
+						<div class="details-left-slider">
+							<ul id="etalage">
+								<li>
+									<a href="optionallink.html">
+										<img class="etalage_thumb_image" src="../images/<%=imgSrc%>" />
+										<img class="etalage_source_image" src="../images/<%=imgSrc%>" />
+									</a>
+								</li>
+								<li>
+									<img class="etalage_thumb_image" src="../images/<%=imgSrc%>" />
+									<img class="etalage_source_image" src="../images/<%=imgSrc%>" />
+								</li>
+								<li>
+									<img class="etalage_thumb_image" src="../images/<%=imgSrc%>" />
+									<img class="etalage_source_image" src="../images/<%=imgSrc%>" />
+								</li>
+								<li>
+									<img class="etalage_thumb_image" src="../images/<%=imgSrc%>" />
+									<img class="etalage_source_image" src="../images/<%=imgSrc%>" />
+								</li>
+								<div class="clearfix"> </div>
+							</ul>
+						</div>
+						<div class="details-left-info">
+							<h3><%=itemname%></h3>
+							<p class="availability">Availability: <span class="color">In stock</span></p>
+							<div class="price_single">
+								<span class="reducedfrom">$<%=Math.ceil(itemprice*1.1)%></span>
+								<span class="actual">$<%=itemprice%></span><a href="../personalchat">Clict to contact the seller!</a>
+							</div>
+							<h2 class="quick">Quick Overview:</h2>
+							<p class="quick_desc"> ARTs is a platform for small businesses and individual entrepreneurs to run online stores of creative stylish artwork.</p>
+							<div class="quantity_box">
+								<ul class="product-qty">
+									<span>Quantity:</span>
+									<select>
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+										<option>6</option>
+									</select>
+								</ul>
+							</div>
+							<div class="clearfix"> </div>
+							<button onclick="location.href='/addToCart/<%=itemid%>'" type="button" class="btn btn-primary btn-sm">
+										          <span class="glyphicon glyphicon-shopping-cart"></span> Add to Shopping Cart
+										        </button>
+
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="products-row contact-prod">
+						<h3>Recommendations</h3>
+						<%for(var i = 0; i < 8; i++){ if(!Items[i].name)continue;%>
+					                    <a onclick="location.href='/single/<%=Items[i]._id%>'"><div class="product-grid">
+											<div class="more-product-info">
+												<span> </span>
+											</div>
+											<div class="product-img">
+												<img src="/images/<%=Items[i].imgSrc%>" alt="">
+											</div>
+											<div class="product-info">
+												<div class="product-info-cust">
+													<a onclick="location.href='/single/<%=Items[i]._id%>'"><%=Items[i].name%></a>
+												</div>
+												<div class="product-info-price">
+													<a onclick="location.href='/single/<%=Items[i]._id%>'">$<%=Items[i].price%></a>
+												</div>
+												<div class="clearfix"> </div>
+											</div>
+											<div class="ratings product-info-ratings">
+
+										        </button>
+											</div>
+										</div></a>
+					                <%}%>
+
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 sidebar_men">
+				<h3>Categories</h3>
+				<ul class="product-categories color"><li class="cat-item cat-item-42"><a href="../painting">Painting</a> <span class="count">(553)</span></li>
+					<li class="cat-item cat-item-60"><a href="../sculpture">Sculpture</a> <span class="count">(447)</span></li>
+					<li class="cat-item cat-item-63"><a href="../photography">Photography</a> <span class="count">(229)</span></li>
+				</ul>
+
+				<h3>Price</h3>
+				<ul class="product-categories">
+					<li class="cat-item cat-item-60"><a href="../1500">&le; $1500</a> <span class="count">(163)</span></li>
+					<li class="cat-item cat-item-63"><a href="../1500-3000">$1500 - $3000</a> <span class="count">(828)</span></li>
+					<li class="cat-item cat-item-54"><a href="../3000">&ge; $3000</a> <span class="count">(238)</span></li>
+				</ul>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!--single end here-->
+
+	<!--chat start here-->
+	<div class="container comment">
+		<div class="col-lg-9 col-sm-8 text-center">
+			<div class="well chat">
+				<h4>What is on your mind?</h4>
+				<input type="text" id="userComment" class="form-control input-sm chat-input" placeholder="Write your comment here..." />
+				<hr data-brackets-id="12673">
+				<ul data-brackets-id="12674" id="sortable" style="overflow-y:scroll;height:160px;" class="list-unstyled ui-sortable chat-messages">
+				</ul>
+			</div>
+		</div>
+	</div>
+    <script src="http://127.0.0.1:8000/socket.io/socket.io.js"></script>
+
+    <script>
+        var getNode = function(s){
+            return document.querySelector(s);
+
+        },
+
+        //Get required nodes
+        status = getNode('.chat-status span'),
+        messages = getNode('.chat-messages'),
+        textarea = getNode('.chat input'),
+
+        StatusDefault = status.textContent,
+
+        setStatus= function(s){
+            status.textContent = s;
+
+            if(s!== StatusDefault)
+            {
+                var delay = setTimeout(function(){
+                    setStatus(StatusDefault);
+                },3000);
+            }
+        };
+
+        try{
+            var socket = io.connect('http://127.0.0.1:8000');
+        }catch(e)
+        {
+            //set status to warn user
+        }
+
+        if(socket !== undefined)
+        {
+            //Lisen for output
+            socket.on('output', function(data){
+               if(data.length)
+               {
+								for(var x=0;x<data.length; x=x+1) {
+									var sender = document.createElement('strong');
+									var message = document.createElement('li');
+									var br1 = document.createElement('br');
+									var br2 = document.createElement('br');
+
+									messages.appendChild(br2);
+									messages.insertBefore(br2, messages.firstChild);
+
+									message.setAttribute('class','chat-message ui-state-default');
+									message.setAttribute('style','white-space:pre');
+									message.textContent = data[x].message;
+									messages.appendChild(message);
+									messages.insertBefore(message, messages.firstChild);
+
+									messages.appendChild(br1);
+									messages.insertBefore(br1, messages.firstChild);
+
+									sender.setAttribute('class',"chat-message pull-left primary-font");
+									sender.textContent = data[x].name + ':';
+									messages.appendChild(sender);
+									messages.insertBefore(sender, messages.firstChild);
+
+								}
+               }
+            });
+
+            //listen for s status
+            socket.on('status',function(data){
+                setStatus((typeof data === 'object')? data.message: data);
+
+                if(data.clear === true )
+                {
+                    textarea.value = '';
+                }
+            });
+
+            //Listen for keydown
+            textarea.addEventListener('keydown', function(event){
+                var self = this,
+					name = "<%- firstname %>",
+					ID = "<%- itemid%>";
+                   if(event.which === 13 && event.shiftKey == false)
+                   {
+                        socket.emit('input',{
+						   "ID": ID,
+                           "name": name,
+                           "message":self.value
+                        });
+
+                        event.preventDefault();
+                   }
+            });
+        }
+
+    </script>
+    <!--chat end here-->
+	<!--footer start here-->
+	<div class="footer wow bounce" data-wow-delay="0.1s">
+			<div class="container">
+				<div class="footer-main">
+					<div class="col-md-4 ftr-grid wow bounceIn" data-wow-delay="0.3s">
+						<div class="ftr-glss">
+							<div class="glss-text">
+								<h3>About Us</h3>
+								<p>We are ARTs developer team.</p>
+								<div class="ftr-gls-bwn">
+									<a href="../about">View</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-5 ftr-grid wow bounceIn" data-wow-delay="0.3s">
+						<div class="ft-killbg">
+							<div class="glss-text">
+								<h3>Contact Us</h3>
+								<p>We You are welcome to contact us.</p>
+								<div class="ftr-gls-bwn">
+									<a href="../contact">View</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 ftr-small-grid wow bounceIn" data-wow-delay="0.3s">
+						<ul>
+							<div class="fb-share-button" data-href="http://127.0.0.1:3000/" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A3000%2F&amp;src=sdkpreparse">Share</a></div><br><br>
+							<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://127.0.0.1:3000/" data-text="Check out ARTs!" data-hashtags="ARTs">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+						</ul>
+								</div>
+								<div class="clearfix"> </div>
+								<div class="copyright">
+									<p>CSCI4140 Group 1</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--footer end here-->
+			</body>
+			</html>
