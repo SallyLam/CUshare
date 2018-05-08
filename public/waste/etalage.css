@@ -18,19 +18,15 @@
 
 /* Large thumbnail: */
 #etalage .etalage_thumb{
-	background: white url(../images/loading.gif) center no-repeat;
-	border: 1px solid #ddd;
+	background:url(../assets/loading.gif) center no-repeat;
+	border: 1px solid #eee;
 	padding: 6px;
-	-webkit-box-shadow: 0 0 10px #ddd;
-	-moz-box-shadow: 0 0 10px #ddd;
-	box-shadow: 0 0 10px #ddd;
 }
 /* Large thumbnail - image (in case you want to add a border around the image within the frame) */
 #etalage .etalage_thumb_image{ }
 
 /* Small thumbnails: */
 #etalage .etalage_small_thumbs li{
-	background: white;
 	border: 1px solid #ddd;
 	margin: 10px;
 	padding: 3px;
@@ -41,38 +37,32 @@
 #etalage ul li.etalage_smallthumb_last{ }
 /* The currently active one */
 #etalage ul li.etalage_smallthumb_active{
-	-webkit-box-shadow: 0 0 10px #ddd;
-	-moz-box-shadow: 0 0 10px #ddd;
-	box-shadow: 0 0 10px #ddd;
 }
 
 /* Zoomed image area: */
 #etalage .etalage_zoom_area,
 .etalage_zoom_area{
-	background: white url(../images/loading.gif) center no-repeat;
-	border: 1px solid #ddd;
+	background: white url(../assets/loading.gif) center no-repeat;
+	border: 1px solid #EEE;
 	padding: 6px;
-	-webkit-box-shadow: 0 0 10px #ddd;
-	-moz-box-shadow: 0 0 10px #ddd;
-	box-shadow: 0 0 10px #ddd;
 }
 
 /* Magnifier area (thumbnail hovering rectangle): */
 #etalage .etalage_magnifier{
 	background: white;
-	border: 1px solid #bbb;
+	border: 1px solid #eee;
 }
 
 /* Icon that will apear at the left bottom of the large thumbnail (optional): */
 #etalage .etalage_icon{
-	background: url(../images/zoom.png) no-repeat;
+	background: url(../assets/zoom.png) no-repeat;
 	width: 14px;
 	height: 14px;
 }
 
 /* Hint that will apear at the top right of the large thumbnail (optional): */
 #etalage .etalage_hint{
-	background: url(../images/hint.gif) no-repeat;
+	background: url(../assets/hint.gif) no-repeat;
 	width: 130px;
 	height: 57px;
 }
@@ -84,7 +74,32 @@
 	margin: 10px;
 	padding: 6px 10px;
 }
-
+/*-----start-responsive-design----*/
+@media(max-width:320px){
+	#etalage .etalage_thumb {
+		width: 228px !important;
+	}
+	#etalage .etalage_zoom_area, .etalage_zoom_area {
+		display: none !important;
+	}
+	#etalage .etalage_thumb_image {
+		width: 82% !important;
+	}
+	.img.etalage_small_thumb{
+		width: 50px;
+		height: 90px;
+	}
+	#etalage .etalage_small_thumbs li img {
+		width: 50px !important;
+		height: 90px !important;
+	}
+	#etalage .etalage_magnifier {
+	display: none!important;
+	}
+	li.etalage_small_thumbs{
+		width: 230px!important;
+	}
+}
 /*
  * ------------------------------------ FUNCTIONALITY --------------------------------------
  * The following CSS serves to make Etalage function properly. Don't edit or edit carefully.
@@ -111,3 +126,30 @@
 .etalage{ direction:ltr }
 div.etalage_description{ position:absolute; bottom:0; left:0; z-index:999 }
 div.etalage_description.rtl{ direction:rtl; text-align:right }
+
+@media(max-width:768px){
+.etalage_zoom_area div {
+	width: 250px !important;
+}
+}
+@media(max-width:640px){
+.etalage_zoom_area div {
+	width: 225px !important;
+}
+}
+@media(max-width:480px){
+.etalage_zoom_area div {
+	display: none !important;
+}
+}
+@media(max-width:320px){
+.etalage_zoom_area div {
+	display: none !important;
+}
+ul#etalage {
+width: 220px !important;
+}
+li.etalage_small_thumbs{
+	width:260px!important;
+}
+}
