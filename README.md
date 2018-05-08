@@ -11,9 +11,9 @@
 
 ## Usage
 
-1. npm install
-2. Open MongoDB server (mongod)
-3. node app.js
+1. ```npm install``` or ```npm i```
+2. Open MongoDB server (```mongod```)
+3. ```npm test``` when in development, ```npm start``` when in deployment
 4. Check the website in your browser: localhost:3000
 
 ### Import data

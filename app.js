@@ -27,9 +27,11 @@ var mongoose = require("mongoose");
 var bodyParser = require('body-parser');
 var multer = require('multer');
 var session = require('express-session');
+var morgan = require('morgan');
+var errorhandler = require('errorhandler');
 
 // Initialize mongoose and connect to MongoDB.
-global.dbHelper = require( './common/dbHelper' );
+global.dbHelper = require('./common/dbHelper');
 global.db = mongoose.connect("mongodb://127.0.0.1:27017/test1");
 
 // Set the port that this nodejs server will listen to
@@ -39,14 +41,20 @@ app.set('port', process.env.PORT || 3000)
 app.set('views', path.join(__dirname, 'views'));
 // Set the web template engine as 'html',
 // to let res.render('xx.html') => res.render('xx').
-app.set( 'view engine', 'html' );
+app.set('view engine', 'html');
 // Register EJS template engine to '.html' files,
 // i.e. map '.html' files to the EJS template engine.
-app.engine( '.html', require( 'ejs' ).__express );
+app.engine('.html', require('ejs').__express );
 
+// Add error handler only in a development environment
+if (process.env.NODE_ENV === 'development') {
+  app.use(errorhandler())
+}
 // Set static files' directory as './public',
 // where resource files (images, js, css, etc.) reside.
 app.use(express.static(path.join(__dirname, 'public')));
+// Add HTTP request logger middleware
+app.use(morgan('tiny'));
 // Add a session middle ware, for recording users' login status.
 app.use(session({
   resave: true,
@@ -92,6 +100,7 @@ app.get('/', function(req, res) {
   }
 });
 
+console.log('NODE_ENV:', process.env.NODE_ENV)
 app.listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'))
 })
