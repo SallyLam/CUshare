@@ -103,4 +103,5 @@ app.get('/', function(req, res) {
 console.log('NODE_ENV:', process.env.NODE_ENV)
 app.listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'))
+  console.log('Check the website in your browser: localhost:' + app.get('port'))
 })
