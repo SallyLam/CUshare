@@ -186,12 +186,13 @@
 									<h3> </h3>
 
 									<% resultList.forEach(function(result) { %>
-										<a onclick="location.href='/single/<%=result._id%>'"><div class="product-grid">
+										<a onclick="location.href='/single/<%=result._id%>'">
+										<div class="product-grid">
 											<div class="more-product-info">
 												<span> </span>
 											</div>
 											<div class="product-img">
-												<img src="/images/<%= result.imgSrc %>" alt="">
+												<img src="/images/<%= result.type %>/<%= result.imgSrc %>" alt="">
 											</div>
 											<div class="product-info">
 												<div class="product-info-cust">
@@ -202,7 +203,8 @@
 												</div>
 												<div class="clearfix"> </div>
 											</div>
-										</div></a>
+										</div>
+										</a>
 										<% }); %>
 
 										<div class="clearfix"> </div>

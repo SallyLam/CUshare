@@ -18,6 +18,21 @@
 
 */
 
+var Fuse = require('fuse.js')
+var options = {
+  shouldSort: true,
+  includeScore: true,
+  includeMatches: true,
+  threshold: 0.6,
+  location: 0,
+  distance: 100,
+  maxPatternLength: 100,
+  minMatchCharLength: 1,
+  keys: [
+    "name",
+    "type"
+  ]
+};
 
 module.exports = function ( app ) {
 
@@ -29,6 +44,36 @@ module.exports = function ( app ) {
     if (searchableString == "") {
       res.redirect('/store');
     } else {
+      // fuzzy search using fuse.js library
+      var Item = global.dbHelper.getModel('item');
+      Item.find({}, function (err, docs) {
+        var fuse = new Fuse(docs, options);
+        var fuseResult = fuse.search(searchableString);
+        if (fuseResult.length == 0) {
+          req.session.notification = "No search results.";
+          res.redirect('/store');
+        }
+        else {
+          resultList = fuseResult.map(x => x.item)
+          if (req.session.user) {
+            res.render('search', {
+              "resultList": resultList,
+              "isLogin": true,
+              "searchword": searchableString,
+              "firstname": req.session.user.firstname
+            });
+          } else {
+            res.render('search', {
+              "resultList": resultList,
+              "searchword": searchableString,
+              "isLogin": false
+            });
+          }
+        }
+      });
+
+      // search using regex
+      /*
       var Item = global.dbHelper.getModel('item'),
       keywords = searchableString.split(' '),
       regexString = "";
@@ -61,7 +106,7 @@ module.exports = function ( app ) {
             "isLogin": false });
           }
         }
-      });
+      });*/
     }
   });
 
