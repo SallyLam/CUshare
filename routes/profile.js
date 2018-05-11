@@ -26,7 +26,7 @@ module.exports = function ( app ) {
   app.get('/profile', function (req, res) {
     if (!req.session.user) {
       req.session.error = "You must login first!";
-      res.redirect('login');
+      res.redirect('/login');
     }
     else {
       var User = global.dbHelper.getModel('user');
@@ -34,10 +34,8 @@ module.exports = function ( app ) {
         if (error) {
           res.redirect('/');
         } else if (!doc) {
-          res.redirect('logout');
+          res.redirect('/logout');
         } else {
-          delete req.session.error;
-          delete req.session.notification;
           var data = { "firstname": doc.firstname, "lastname": doc.lastname,
           "email": doc.email, "phone": doc.phone,
           "address": doc.address, "username": doc.username,
@@ -52,7 +50,7 @@ module.exports = function ( app ) {
   app.get('/editprofile', function (req, res) {
     if (!req.session.user) {
       req.session.error = "You must login first!";
-      res.redirect('login');
+      res.redirect('/login');
     }
     else {
       var User = global.dbHelper.getModel('user');
@@ -60,10 +58,8 @@ module.exports = function ( app ) {
         if (error) {
           res.redirect('/');
         } else if (!doc) {
-          res.redirect('logout');
+          res.redirect('/logout');
         } else {
-          delete req.session.error;
-          delete req.session.notification;
           var data = { "firstname": doc.firstname, "lastname": doc.lastname,
           "email": doc.email, "phone": doc.phone,
           "address": doc.address, "username": doc.username,
@@ -79,7 +75,7 @@ module.exports = function ( app ) {
   app.post('/editprofile', function (req, res) {
     if (!req.session.user) {
       req.session.error = 'You must login first!';
-      res.send(409);
+      res.sendStatus(409);
     } else {
       var User = global.dbHelper.getModel('user'),
       // Strip the leading and trailing spaces.
@@ -90,9 +86,9 @@ module.exports = function ( app ) {
       User.findOneAndUpdate({ "username": req.session.user.username }, newData, function (error, doc) {
         if (error) {
           req.session.error = 'Error occurred';
-          res.send(500);
+          res.sendStatus(500);
         } else {
-          res.send(200);
+          res.sendStatus(200);
         }
       });
     }
@@ -102,11 +98,9 @@ module.exports = function ( app ) {
   app.get('/changepassword', function (req, res) {
     if (!req.session.user) {
       req.session.error = "You must login first!";
-      res.redirect('login');
+      res.redirect('/login');
     }
     else {
-      delete req.session.error;
-      delete req.session.notification;
       var data = { "isLogin": true, "firstname": req.session.user.firstname,
       "username": req.session.user.username };
       res.render('changepassword', data);
@@ -118,30 +112,30 @@ module.exports = function ( app ) {
   app.post('/changepassword', function (req, res) {
     if (!req.session.user) {
       req.session.error = 'You must login first!';
-      res.send(409);
+      res.sendStatus(409);
     } else {
       var User = global.dbHelper.getModel('user');
       User.findOne({ "username": req.session.user.username }, function (error, doc) {
         if (error) {
           req.session.error = 'Network Error!';
-          res.send(500);
+          res.sendStatus(500);
         } else if (!doc) {
           req.session.error = 'Internal Error!';
-          res.send(500);
+          res.sendStatus(500);
         } else if (req.body.oldPassword != doc.pwd) {
           req.session.error = 'Original password is wrong!';
-          res.send(409);
+          res.sendStatus(409);
         } else if (req.body.newPassword != req.body.confirmpwd) {
           req.session.error = 'New password and confirm password not matched!';
-          res.send(409);
+          res.sendStatus(409);
         } else {
           var newData = { "pwd": req.body.newPassword };
           User.findOneAndUpdate({ "username": req.session.user.username }, newData, function (error, doc) {
             if (error) {
               req.session.error = 'Error occurred';
-              res.send(500);
+              res.sendStatus(500);
             } else {
-              res.send(200);
+              res.sendStatus(200);
             }
           });
         }

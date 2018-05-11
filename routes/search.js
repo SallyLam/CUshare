@@ -27,7 +27,7 @@ module.exports = function ( app ) {
     // Strip leading and trailing spaces.
     var searchableString = req.query.searchableString.replace(/^\s+/, '').replace(/\s+$/, '');
     if (searchableString == "") {
-      res.redirect('store');
+      res.redirect('/store');
     } else {
       var Item = global.dbHelper.getModel('item'),
       keywords = searchableString.split(' '),
@@ -50,10 +50,8 @@ module.exports = function ( app ) {
           res.redirect('/');
         } else if (doc.length == 0) {
           req.session.notification = "No search results.";
-          res.redirect('store');
+          res.redirect('/store');
         } else {
-          delete req.session.error;
-          delete req.session.notification;
           if (req.session.user) {
             res.render('search', { "resultList": doc,
             "isLogin": true, "searchword": searchableString,

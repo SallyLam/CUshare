@@ -83,34 +83,34 @@
 	<div class="banner">
 		<nav class="navbar navbar-inverse navbar-fixed-top " style="background:rgba(0,0,0,0.8);height:50px;">
 			<div class="navbar-left">
-				<a href="/"><img src="assets/logo.png" alt="logo" style="width:180px;height:50px;"/></a>
+				<a href="/"><img src="/assets/logo.png" alt="logo" style="width:180px;height:50px;"/></a>
 			</div>
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
-					<li><a href="store">Store</a></li>
+					<li><a href="/store">Store</a></li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Category <span class="caret" style="color:white; margin-right:15px"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="painting">Painting</a></li>
-							<li><a href="sculpture">Sculpture</a></li>
-							<li><a href="photography">Photography</a></li>
+							<li><a href="/painting">Painting</a></li>
+							<li><a href="/sculpture">Sculpture</a></li>
+							<li><a href="/photography">Photography</a></li>
 						</ul>
 					</ul>
 					<% if (isLogin) { %>
 						<ul class="nav navbar-nav" style = "position:fixed; right:15px">
 							<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user" style="color: #c2c2c2;margin-right:3px"></span><%= firstname %> <span class="caret" style="color: #c2c2c2"></span></a>
 								<ul class="dropdown-menu dropdown-menu-right">
-									<li><a href="profile"><span class="glyphicon glyphicon-user	"></span> Your Profile</a></li>
-									<li><a href="cart"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a></li>
-									<li><a href="postitem"><span class="glyphicon glyphicon-collapse-up"></span> Post Item</a></li>
-									<li><a href="edititem"><span class="glyphicon glyphicon-collapse-down"></span> Update Item</a></li>
-									<li><a href="personalchat"><span class="glyphicon glyphicon-briefcase"></span> Chat</a></li>
-									<li><a href="logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+									<li><a href="/profile"><span class="glyphicon glyphicon-user	"></span> Your Profile</a></li>
+									<li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a></li>
+									<li><a href="/postitem"><span class="glyphicon glyphicon-collapse-up"></span> Post Item</a></li>
+									<li><a href="/edititem"><span class="glyphicon glyphicon-collapse-down"></span> Update Item</a></li>
+									<li><a href="/personalchat"><span class="glyphicon glyphicon-briefcase"></span> Chat</a></li>
+									<li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 								</ul>
 							</li>
 						<% } else { %>
 							<ul class="nav navbar-nav navbar-nav navbar-right">
-								<li><a href="signup"><span class="glyphicon glyphicon-user" style="color:white"></span> SignUp</a></li>
-								<li><a href="login"><span class="glyphicon glyphicon-log-in" style="color:white"></span> Login <span style="margin-right:15px"></span></a></li>
+								<li><a href="/signup"><span class="glyphicon glyphicon-user" style="color:white"></span> SignUp</a></li>
+								<li><a href="/login"><span class="glyphicon glyphicon-log-in" style="color:white"></span> Login <span style="margin-right:15px"></span></a></li>
 						<% } %>
 					</ul>
 					<form action="/search" method="get" class="navbar-form navbar-right" style = "position:fixed; right:230px">
@@ -130,7 +130,7 @@
 					<h1>THIS  IS  CUshare</h1>
 					<p>CUshare is an online resource sharing platform for students and staff in CUHK to sell or purchase second-hand items.</p>
 					<div class="bann-bwn">
-						<a href="signup">Join Us</a>
+						<a href="/signup">Join Us</a>
 					</div>
 				</nav>
 			</div>
@@ -144,9 +144,9 @@
 			<div class="container">
 				<div class="contact wow bounceInLeft" data-wow-delay="0.3s">
 				<div class="products-main">
-					<h3><img src="assets/trend.png" alt="logo" style="width:220px;height:65px;"/></h3>
+					<h3><img src="/assets/trend.png" alt="logo" style="width:220px;height:65px;"/></h3>
 					<div class="produ">
-						<a href="store">Check More</a>
+						<a href="/store">Check More</a>
 					</div>
 				</div>
 			</div>
@@ -164,7 +164,7 @@
 							<h3>Painting</h3>
 							<p>" Every artist dips his brush in his own soul, and paints his own nature into his pictures. "</p>
 							<div class="store-bwn">
-								<a href="painting">View</a>
+								<a href="/painting">View</a>
 							</div>
 						</div>
 					</div>
@@ -175,7 +175,7 @@
 							<h3>Sculpture</h3>
 							<p>" You have to create your life. You have to carve it, like a sculpture. "</p>
 							<div class="store-bwn">
-								<a href="sculpture">View</a>
+								<a href="/sculpture">View</a>
 							</div>
 						</div>
 					</div>
@@ -186,7 +186,7 @@
 							<h3>Photography</h3>
 							<p>" In photography there is a reality so subtle, more real than reality. "</p>
 							<div class="store-bwn">
-								<a href="photography">View</a>
+								<a href="/photography">View</a>
 							</div>
 						</div>
 					</div>
@@ -221,7 +221,7 @@
 								<h3>About Us</h3>
 								<p>We are CUshare developer team.</p>
 								<div class="ftr-gls-bwn">
-									<a href="about">View</a>
+									<a href="/about">View</a>
 								</div>
 							</div>
 						</div>
@@ -232,7 +232,7 @@
 								<h3>Contact Us</h3>
 								<p>We You are welcome to contact us.</p>
 								<div class="ftr-gls-bwn">
-									<a href="contact">View</a>
+									<a href="/contact">View</a>
 								</div>
 							</div>
 						</div>

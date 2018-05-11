@@ -66,30 +66,30 @@
 			</div>
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
-					<li><a href="store">Store</a></li>
+					<li><a href="/store">Store</a></li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Category <span class="caret" style="color:white; margin-right:15px"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="painting">Painting</a></li>
-							<li><a href="sculpture">Sculpture</a></li>
-							<li><a href="photography">Photography</a></li>
+							<li><a href="/painting">Painting</a></li>
+							<li><a href="/sculpture">Sculpture</a></li>
+							<li><a href="/photography">Photography</a></li>
 						</ul>
 				</ul>
 				<% if (isLogin) { %>
 					<ul class="nav navbar-nav" style = "position:fixed; right:15px">
 						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user" style="color: #c2c2c2;margin-right:3px"></span><%= firstname %> <span class="caret" style="color: #c2c2c2"></span></a>
 							<ul class="dropdown-menu dropdown-menu-right">
-								<li><a href="profile"><span class="glyphicon glyphicon-user	"></span> Your Profile</a></li>
-								<li><a href="cart"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a></li>
-								<li><a href="postitem"><span class="glyphicon glyphicon-collapse-up"></span> Post Item</a></li>
-								<li><a href="edititem"><span class="glyphicon glyphicon-collapse-down"></span> Edit Item</a></li>
-								<li><a href="personalchat"><span class="glyphicon glyphicon-briefcase"></span> Chat</a></li>
-								<li><a href="logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+								<li><a href="/profile"><span class="glyphicon glyphicon-user	"></span> Your Profile</a></li>
+								<li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a></li>
+								<li><a href="/postitem"><span class="glyphicon glyphicon-collapse-up"></span> Post Item</a></li>
+								<li><a href="/edititem"><span class="glyphicon glyphicon-collapse-down"></span> Edit Item</a></li>
+								<li><a href="/personalchat"><span class="glyphicon glyphicon-briefcase"></span> Chat</a></li>
+								<li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 							</ul>
 						</li>
 					<% } else { %>
 						<ul class="nav navbar-nav navbar-nav navbar-right">
-							<li><a href="signup"><span class="glyphicon glyphicon-user" style="color:white"></span> SignUp</a></li>
-							<li><a href="login"><span class="glyphicon glyphicon-log-in" style="color:white"></span> Login <span style="margin-right:15px"></span></a></li>
+							<li><a href="/signup"><span class="glyphicon glyphicon-user" style="color:white"></span> SignUp</a></li>
+							<li><a href="/login"><span class="glyphicon glyphicon-log-in" style="color:white"></span> Login <span style="margin-right:15px"></span></a></li>
 					<% } %>
 				</ul>
 				<form action="/search" method="get" class="navbar-form navbar-right" style = "position:fixed; right:230px">
@@ -114,7 +114,7 @@
 				<div class="about-bottom">
 					<div class="col-md-6 about-bottom-left">
 						<div class="about-img">
-							<a href="https://github.com/DrakeDawn"> <img src="assets/fu.jpg" alt=""/> </a>
+							<a href="https://github.com/cynricfu"> <img src="/assets/fu.jpg" alt=""/> </a>
 						</div>
 						<div class="about-para">
 							<h4>Senior Engineer: Xinyu Fu</h4>
@@ -124,7 +124,7 @@
 					</div>
 					<div class="col-md-6 about-bottom-left">
 						<div class="about-img">
-							<a href="https://github.com/SallyLam"> <img src="assets/sally.jpg" alt=""/> </a>
+							<a href="https://github.com/SallyLam"> <img src="/assets/sally.jpg" alt=""> </a>
 						</div>
 						<div class="about-para">
 							<h4>Senior Engineer: Shimin Lin</h4>
@@ -134,7 +134,7 @@
 					</div>
 					<div class="col-md-6 about-bottom-left">
 						<div class="about-img">
-							<a href="https://github.com/liuzhanhao"> <img src="assets/jasper.jpg" alt=""/> </a>
+							<a href="https://github.com/liuzhanhao"> <img src="/assets/jasper.jpg" alt=""> </a>
 						</div>
 						<div class="about-para">
 							<h4>Senior Engineer: Zhanhao Liu</h4>
@@ -144,7 +144,7 @@
 					</div>
 					<div class="col-md-6 about-bottom-left">
 						<div class="about-img">
-							<img src="assets/vito.jpg" alt="">
+							<a href="https://github.com/VitoChan1"> <img src="/assets/vito.jpg" alt=""> </a>
 						</div>
 						<div class="about-para">
 							<h4>Senior Engineer: Jiamin Chen</h4>
@@ -167,21 +167,21 @@
 				<div class="col-md-4 aboutus-grid">
 					<h3> CUshare is born</h3>
 					<h4>1 Apr 2018</h4>
-					<img src="assets/logo1.png" alt="" height="220" width="90"/>
+					<img src="/assets/logo1.png" alt="" height="220" width="90"/>
 					<p> Our team set up in this wonderful day. This is the start of the great CUshare!</p>
 					<a href="#">Read more</a>
 				</div>
 				<div class="col-md-4 aboutus-grid">
 					<h3>Prototype</h3>
 					<h4>20 Apr 2018</h4>
-					<img src="assets/logo2.png" alt="" height="220" width="90"/>
+					<img src="/assets/logo2.png" alt="" height="220" width="90"/>
 					<p> CUshare website initial released!</p>
 					<a href="#">Read more</a>
 				</div>
 				<div class="col-md-4 aboutus-grid">
 					<h3>Public</h3>
 					<h4>5 May 2018</h4>
-					<img src="assets/logo3.png" alt="" height="220" width="90"/>
+					<img src="/assets/logo3.png" alt="" height="220" width="90"/>
 					<p> CUshare is online today!</p>
 					<a href="#">Read more</a>
 				</div>
@@ -203,7 +203,7 @@
 								<h3>About Us</h3>
 								<p>We are CUshare developer team.</p>
 								<div class="ftr-gls-bwn">
-									<a href="about">View</a>
+									<a href="/about">View</a>
 								</div>
 							</div>
 						</div>
@@ -214,7 +214,7 @@
 								<h3>Contact Us</h3>
 								<p>We You are welcome to contact us.</p>
 								<div class="ftr-gls-bwn">
-									<a href="contact">View</a>
+									<a href="/contact">View</a>
 								</div>
 							</div>
 						</div>

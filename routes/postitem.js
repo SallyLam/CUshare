@@ -25,11 +25,9 @@ module.exports = function ( app ) {
   app.get('/postitem', function(req, res) {
     if (!req.session.user) {
       req.session.error = "You must login first!";
-      res.redirect('login');
+      res.redirect('/login');
     }
     else {
-      delete req.session.error;
-      delete req.session.notification;
       res.render('postitem', { "isLogin": true,
       "firstname": req.session.user.firstname });
     }
@@ -44,13 +42,13 @@ module.exports = function ( app ) {
     Item.findOne({"name": name}, function (error, doc) {
       if (error) {
         req.session.error = 'Network Error！';
-        res.send(500);
+        res.sendStatus(500);
         console.log(error);
       }
       // Print error if it already exists.
       else if (doc) {
         req.session.error = 'Item name existed';
-        res.send(409);
+        res.sendStatus(409);
       }
       // Otherwise insert it into the database.
       else {
@@ -62,11 +60,11 @@ module.exports = function ( app ) {
         }, function (error, doc) {
           if (error) {
             req.session.error = 'Network Error！';
-            res.send(500);
+            res.sendStatus(500);
             console.log(error);
           } else {
             req.session.notification = 'Successfully posted！';
-            res.send(200);
+            res.sendStatus(200);
           }
         });
       }

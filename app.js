@@ -69,21 +69,29 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer().any());
 // Add a middleware for sending error messages to client sides.
-app.use(function(req, res, next){
+app.use(function(req, res, next) {
   res.locals.user = req.session.user;
-  var err = req.session.error;
   res.locals.errMessage = '';
-  if (err) res.locals.errMessage = '<div class="alert alert-danger alert-dismissable" style="margin-bottom: 20px;color:red;">' +
-  '<a class="panel-close close" data-dismiss="alert">x</a><i class="fa fa-coffee"></i>' +  err + '</div>';
+  if (req.session.error) {
+    res.locals.errMessage = '<div class="alert alert-danger alert-dismissable" style="margin-bottom: 20px;color:red;">' +
+    '<a class="panel-close close" data-dismiss="alert">x</a><i class="fa fa-coffee"></i>' +  req.session.error + '</div>';
+  }
   next();
 });
 // Add a middleware for sending notification messages to client sides.
-app.use(function(req, res, next){
+app.use(function(req, res, next) {
   res.locals.user = req.session.user;
-  var noti = req.session.notification;
   res.locals.notiMessage = '';
-  if (noti) res.locals.notiMessage = '<div class="alert alert-info alert-dismissable">' +
-  '<a class="panel-close close" data-dismiss="alert">x</a><i class="fa fa-coffee"></i>' + noti + '</div>';
+  if (req.session.notification) {
+    res.locals.notiMessage = '<div class="alert alert-info alert-dismissable">' +
+    '<a class="panel-close close" data-dismiss="alert">x</a><i class="fa fa-coffee"></i>' + req.session.notification + '</div>';
+  }
+  next();
+});
+// Clear error and notification flags
+app.use(function(req, res, next) {
+  delete req.session.error;
+  delete req.session.notification;
   next();
 });
 

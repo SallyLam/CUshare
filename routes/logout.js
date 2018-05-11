@@ -25,13 +25,11 @@ module.exports = function ( app ) {
   app.get('/logout', function(req, res){
     if (!req.session.user) {
       req.session.error = "You have not logined yet!";
-      res.redirect('login');
+      res.redirect('/login');
     }
     // Clear session.
     else {
       delete req.session.user;
-      delete req.session.error;
-      delete req.session.notification;
       res.redirect('/');
     }
   });

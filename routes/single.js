@@ -34,8 +34,6 @@ module.exports = function ( app ) {
         res.redirect('/');
       } else {
         Items.find({}, function (error, docs) {
-          delete req.session.error;
-          delete req.session.notification;
           if (req.session.user) {
             res.render('single', { "Items": docs, "itemid" : req.params.id, "itemname": doc.name, "itemtype": doc.type,
             "firstname" : req.session.user.firstname, "isLogin": true, "itemprice": doc.price, "imgSrc": doc.imgSrc });

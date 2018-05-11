@@ -23,8 +23,6 @@ module.exports = function ( app ) {
 
   // Respond a GET request for the /about page.
   app.get('/about', function (req, res) {
-    delete req.session.error;
-    delete req.session.notification;
     if (req.session.user) {
       res.render('about', { "isLogin": true,
       "firstname": req.session.user.firstname });
@@ -36,8 +34,6 @@ module.exports = function ( app ) {
 
   // Respond a GET request for the /contact page.
   app.get('/contact', function (req, res) {
-    delete req.session.error;
-    delete req.session.notification;
     if (req.session.user) {
       res.render('contact', { "isLogin": true,
       "firstname": req.session.user.firstname });
@@ -49,8 +45,6 @@ module.exports = function ( app ) {
 
   // Respond a GET request for the /message page.
   app.get('/message', function (req, res) {
-    delete req.session.error;
-    delete req.session.notification;
     if (req.session.user) {
       res.render('message', { "isLogin": true,
       "firstname": req.session.user.firstname });

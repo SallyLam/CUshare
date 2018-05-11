@@ -25,7 +25,7 @@ module.exports = function ( app ) {
   app.get('/itembase', function (req, res) {
     if (!req.session.user) {
       req.session.error = "You must login first!";
-      res.redirect('login');
+      res.redirect('/login');
     }
     else {
       var Item = global.dbHelper.getModel('item');
@@ -34,10 +34,8 @@ module.exports = function ( app ) {
           res.redirect('/');
         } else if (!docs) {
           req.session.error = "No item yet!";
-          res.redirect('login');
+          res.redirect('/login');
         } else {
-          delete req.session.error;
-          delete req.session.notification;
           res.render('itembase', { "Items": docs,
           "isLogin": true,
           "firstname": req.session.user.firstname });

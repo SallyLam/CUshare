@@ -24,12 +24,10 @@ module.exports = function ( app ) {
   // Respond a GET request for the /signup page.
   app.get('/signup', function(req, res) {
     if (!req.session.user) {
-      delete req.session.error;
-      delete req.session.notification;
       res.render('signup', { "isLogin": false });
     }
     else {
-      res.redirect('profile');
+      res.redirect('/profile');
     }
   });
 
@@ -44,30 +42,30 @@ module.exports = function ( app ) {
     confirmpwd = req.body.confirmpwd.replace(/^\s+/, '').replace(/\s+$/, '')
     if (username == "" || email == "" || password == "" || confirmpwd == "") {
       req.session.error = 'Please fill out all * blanks.';
-      res.send(409);
+      res.sendStatus(409);
     } else {
       // Find the user in the database, given the username.
       User.findOne({"username": username}, function (error, doc) {
         if (error) {
           req.session.error = 'Network Error!';
-          res.send(500);
+          res.sendStatus(500);
           console.log(error);
         }
         // Print error if successfully find it.
         else if (doc) {
           req.session.error = 'Username existed!';
-          res.send(409);
+          res.sendStatus(409);
         }
         // Otherwise, insert the information of the new user into the database.
         else {
           User.findOne({"email": email}, function (error, doc) {
             if (error) {
               req.session.error = 'Network Error!';
-              res.send(500);
+              res.sendStatus(500);
               console.log(error);
             } else if (doc) {
               req.session.error = 'Email registered!';
-              res.send(409);
+              res.sendStatus(409);
             } else if (req.body.password != req.body.confirmpwd) {
               req.session.error = 'PASSWORD and CONFIRM PASSWORD should be the same!';
               req.send(409);
@@ -83,11 +81,11 @@ module.exports = function ( app ) {
               }, function (error, doc) {
                 if (error) {
                   req.session.error = 'Network Error!';
-                  res.send(500);
+                  res.sendStatus(500);
                   console.log(error);
                 } else {
                   req.session.notification = 'Successfully created!';
-                  res.send(200);
+                  res.sendStatus(200);
                 }
               });
             }

@@ -25,11 +25,9 @@ module.exports = function ( app ) {
   app.get('/edititem', function(req, res) {
     if (!req.session.user) {
       req.session.error = "You must login first!";
-      res.redirect('login');
+      res.redirect('/login');
     }
     else {
-      delete req.session.error;
-      delete req.session.notification;
       res.render('edititem', { "isLogin": true,
       "firstname": req.session.user.firstname });
     }
@@ -43,7 +41,7 @@ module.exports = function ( app ) {
     Item.findOne({"name": req.body.oriname}, function (error, doc) {
       if (error) {
         req.session.error = 'Network Error！';
-        res.send(500);
+        res.sendStatus(500);
         console.log(error);
       }
       // Edit if successfully find it.
@@ -51,16 +49,16 @@ module.exports = function ( app ) {
         Item.update({"name":req.body.oriname}, {$set : { "type" : req.body.type, "price" : req.body.price , "imgSrc" : req.body.imgSrc, "name" : req.body.name }}, function (error, doc) {
           if (error) {
             req.session.error = 'Error occurred';
-            res.send(500);
+            res.sendStatus(500);
           } else {
-            res.send(200);
+            res.sendStatus(200);
           }
         });
       }
       // Otherwise print error.
       else {
         req.session.error = 'Item name not existed';
-        res.send(409);
+        res.sendStatus(409);
       }
     });
   });

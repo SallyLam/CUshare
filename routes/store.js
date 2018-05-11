@@ -38,8 +38,6 @@ module.exports = function ( app ) {
         req.session.error = "No item yet!";
         res.redirect('/');
       } else {
-        delete req.session.error;
-        delete req.session.notification;
         var page = req.params.page;
         if (req.session.user) {
           res.render('store', { "Items": docs.slice(16*(page-1), 16*page),

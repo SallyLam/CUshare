@@ -38,8 +38,6 @@ module.exports = function ( app ) {
           req.session.error = "Error occurred!";
           res.redirect('/logout');
         } else {
-          delete req.session.error;
-          delete req.session.notification;
           Cart.find({"uId":req.session.user._id}, function (error, docs) {
             res.render('cart', { "carts": docs, "isLogin": true,
             "firstname": req.session.user.firstname });

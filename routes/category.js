@@ -38,8 +38,6 @@ module.exports = function ( app ) {
         req.session.error = "No item yet!";
         res.redirect('/');
       } else {
-        delete req.session.error;
-        delete req.session.notification;
         var page = req.params.page;
         if (req.session.user) {
           res.render('painting', { "Items": docs.slice(16*(page-1), 16*page),
@@ -70,8 +68,6 @@ module.exports = function ( app ) {
         req.session.error = "No item yet!";
         res.redirect('/');
       } else{
-        delete req.session.error;
-        delete req.session.notification;
         var page = req.params.page;
         if (req.session.user) {
           res.render('sculpture', { "Items": docs.slice(16*(page-1), 16*page),
@@ -102,8 +98,6 @@ module.exports = function ( app ) {
         req.session.error = "No item yet!";
         res.redirect('/');
       } else {
-        delete req.session.error;
-        delete req.session.notification;
         var page = req.params.page;
         if (req.session.user) {
           res.render('photography', { "Items": docs.slice(16*(page-1), 16*page),
@@ -134,8 +128,6 @@ module.exports = function ( app ) {
         req.session.error = "No item yet!";
         res.redirect('/');
       } else {
-        delete req.session.error;
-        delete req.session.notification;
         var page = req.params.page;
         if (req.session.user) {
           res.render('1500', { "Items": docs.slice(16*(page-1), 16*page),
@@ -166,8 +158,6 @@ module.exports = function ( app ) {
         req.session.error = "No item yet!";
         res.redirect('/');
       } else {
-        delete req.session.error;
-        delete req.session.notification;
         var page = req.params.page;
         if (req.session.user) {
           res.render('1500-3000', { "Items": docs.slice(16*(page-1), 16*page),
@@ -198,8 +188,6 @@ module.exports = function ( app ) {
         req.session.error = "No item yet!";
         res.redirect('/');
       } else {
-        delete req.session.error;
-        delete req.session.notification;
         var page = req.params.page;
         if (req.session.user) {
           res.render('3000', { "Items": docs.slice(16*(page-1), 16*page),

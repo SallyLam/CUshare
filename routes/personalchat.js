@@ -25,7 +25,7 @@ module.exports = function ( app ) {
 	app.get('/personalchat', function (req, res) {
 		if (!req.session.user) {
 			req.session.error = "You must login first!";
-			res.redirect('login');
+			res.redirect('/login');
 		}
 		else {
 			var User = global.dbHelper.getModel('user');
@@ -33,10 +33,8 @@ module.exports = function ( app ) {
 				if (error) {
 					res.redirect('/');
 				} else if (!doc) {
-					res.redirect('logout');
+					res.redirect('/logout');
 				} else {
-					delete req.session.error;
-					delete req.session.notification;
 					firstname = doc.firstname;
 					res.render('personalchat', { "isLogin": true, "firstname": firstname });
 				}

@@ -24,13 +24,11 @@ module.exports = function ( app ) {
   // Respond a GET request for the /login page.
   app.get('/login',function(req,res){
     if (!req.session.user) {
-      delete req.session.error;
-      delete req.session.notification;
       res.render('login', { "alert": false,
       "isLogin": false });
     }
     else {
-      res.redirect('profile');
+      res.redirect('/profile');
     }
   });
 
@@ -44,25 +42,25 @@ module.exports = function ( app ) {
       User.findOne({"username": username}, function (error, doc) {
         if (error) {
           req.session.error = 'Network Error！';
-          res.send(500);
+          res.sendStatus(500);
           console.log(error);
         } else if (!doc) {
           req.session.error = 'Username does not exists!';
-          res.send(404);
+          res.sendStatus(404);
         } else {
           if(req.body.password != doc.pwd){
             req.session.error = "Wrong password!";
-            res.send(404);
+            res.sendStatus(404);
           }else{
-            req.session.user=doc;
-            res.send(200);
+            req.session.user = doc;
+            res.sendStatus(200);
           }
         }
       });
     }
     else {
       req.session.error = "You have logged in!";
-      res.send(409);
+      res.sendStatus(409);
     }
   });
 
