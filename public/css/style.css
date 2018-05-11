@@ -453,20 +453,20 @@ ul.bann-list li {
 	background: #D8D8D8;
 	padding: 50px 0px;
 }
-.painting {
-	background: url(../assets/painting.png);
+.book {
+	background: url(../assets/book.jpg);
 	width: 332px;
 	height: 332px;
 	display: incline;
 }
-.sculpture {
-	background: url(../assets/sculpture.png);
+.electronics {
+	background: url(../assets/electronics.jpg);
 	width: 332px;
 	height: 332px;
 	display: incline;
 }
-.photography {
-	background: url(../assets/photography.png);
+.groceries {
+	background: url(../assets/groceries.jpg);
 	width: 332px;
 	height: 332px;
 	display: incline;

@@ -21,17 +21,17 @@
 
 module.exports = function ( app ) {
 
-  // Respond a GET request for the /painting page.
-  // Display painting artworks.
-  app.get('/painting', function (req, res) {
-    res.redirect('/painting/1');
+  // Respond a GET request for the /book page.
+  // Display books.
+  app.get('/book', function (req, res) {
+    res.redirect('/book/1');
   });
 
-  // Respond a GET request for the /painting/:page page.
-  // Display painting artworks at the particular page.
-  app.get('/painting/:page', function (req, res) {
+  // Respond a GET request for the /book/:page page.
+  // Display books at the particular page.
+  app.get('/book/:page', function (req, res) {
     var Item = global.dbHelper.getModel('item');
-    Item.find({ "type": "painting" }, function (error, docs) {
+    Item.find({ "type": "book" }, function (error, docs) {
       if (error) {
         res.redirect('/');
       } else if (!docs) {
@@ -40,28 +40,28 @@ module.exports = function ( app ) {
       } else {
         var page = req.params.page;
         if (req.session.user) {
-          res.render('painting', { "Items": docs.slice(16*(page-1), 16*page),
+          res.render('book', { "Items": docs.slice(16*(page-1), 16*page),
                                    "isLogin": true, "page": page,
                                    "firstname": req.session.user.firstname });
         } else {
-          res.render('painting', { "Items": docs.slice(16*(page-1), 16*page),
+          res.render('book', { "Items": docs.slice(16*(page-1), 16*page),
                                    "isLogin": false, "page": page});
         }
       }
     });
   });
 
-  // Respond a GET request for the /sculpture page.
-  // Display sculpture artworks.
-  app.get('/sculpture', function (req, res) {
-    res.redirect('/sculpture/1');
+  // Respond a GET request for the /electronics page.
+  // Display electronics products.
+  app.get('/electronics', function (req, res) {
+    res.redirect('/electronics/1');
   });
 
-  // Respond a GET request for the /sculpture/:page page.
-  // Display sculpture artworks at the particular page.
-  app.get('/sculpture/:page', function (req, res) {
+  // Respond a GET request for the /electronics/:page page.
+  // Display electronics artworks at the particular page.
+  app.get('/electronics/:page', function (req, res) {
     var Item = global.dbHelper.getModel('item');
-    Item.find({ "type": "sculpture" }, function (error, docs) {
+    Item.find({ "type": "electronics" }, function (error, docs) {
       if (error) {
         res.redirect('/');
       } else if (!docs) {
@@ -70,28 +70,28 @@ module.exports = function ( app ) {
       } else{
         var page = req.params.page;
         if (req.session.user) {
-          res.render('sculpture', { "Items": docs.slice(16*(page-1), 16*page),
+          res.render('electronics', { "Items": docs.slice(16*(page-1), 16*page),
                                    "isLogin": true, "page": page,
                                    "firstname": req.session.user.firstname });
         } else {
-          res.render('sculpture', { "Items": docs.slice(16*(page-1), 16*page),
+          res.render('electronics', { "Items": docs.slice(16*(page-1), 16*page),
                                    "isLogin": false, "page": page});
         }
       }
     });
   });
 
-  // Respond a GET request for the /photography page.
-  // Display photography artworks.
-  app.get('/photography', function (req, res) {
-    res.redirect('/photography/1');
+  // Respond a GET request for the /groceries page.
+  // Display groceries.
+  app.get('/groceries', function (req, res) {
+    res.redirect('/groceries/1');
   });
 
-  // Respond a GET request for the /photography page.
-  // Display photography artworks at the particular page.
-  app.get('/photography/:page', function (req, res) {
+  // Respond a GET request for the /groceries page.
+  // Display groceries at the particular page.
+  app.get('/groceries/:page', function (req, res) {
     var Item = global.dbHelper.getModel('item');
-    Item.find({ "type": "photography" }, function (error, docs) {
+    Item.find({ "type": "groceries" }, function (error, docs) {
       if (error) {
         res.redirect('/');
       } else if (!docs) {
@@ -100,11 +100,11 @@ module.exports = function ( app ) {
       } else {
         var page = req.params.page;
         if (req.session.user) {
-          res.render('photography', { "Items": docs.slice(16*(page-1), 16*page),
+          res.render('groceries', { "Items": docs.slice(16*(page-1), 16*page),
                                    "isLogin": true, "page": page,
                                    "firstname": req.session.user.firstname });
         } else {
-          res.render('photography', { "Items": docs.slice(16*(page-1), 16*page),
+          res.render('groceries', { "Items": docs.slice(16*(page-1), 16*page),
                                    "isLogin": false, "page": page});
         }
       }
