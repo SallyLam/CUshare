@@ -29,6 +29,7 @@ var multer = require('multer');
 var session = require('express-session');
 var morgan = require('morgan');
 var errorhandler = require('errorhandler');
+var fs = require('fs');
 
 // Initialize mongoose and connect to MongoDB.
 global.dbHelper = require('./common/dbHelper');
@@ -107,6 +108,17 @@ app.get('/', function(req, res) {
     res.render('home', { "isLogin": false });
   }
 });
+
+// // upload file
+// var upload = multer({ dest: 'upload/' });
+// // single image
+// app.post('/upload', upload.single('logo'), function(req, res, next){
+//     res.send({ret_code: '0'});
+// });
+// app.get('/form', function(req, res, next){
+//     var form = fs.readFileSync('./view/postitem.html', {encoding: 'utf8'});
+//     res.send(form);
+// });
 
 console.log('NODE_ENV:', process.env.NODE_ENV)
 app.listen(app.get('port'), function () {

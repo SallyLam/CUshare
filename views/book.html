@@ -78,7 +78,6 @@
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<!--facebook share button setting end here-->
-
 	<!--banner start here-->
 		<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#383838;height:50px;">
 			<div class="navbar-left">
@@ -120,7 +119,6 @@
 		<div class="clearfix"> </div>
 	</nav>
 	<!--banner end here-->
-
 	<!--press start here-->
 	<div class="storepage">
 		<div class="container-fluid">
@@ -134,9 +132,9 @@
 								<a href="/store" class="list-group-item">All (1229)</a>
 							</div>
 							<div class="list-group">
-								<a href="/painting" class="list-group-item">Painting (553)</a>
-								<a href="/sculpture" class="list-group-item">Sculpture (447)</a>
-								<a href="/photography" class="list-group-item">Photography (229)</a>
+								<a href="/book" class="list-group-item">Book (553)</a>
+								<a href="/electronics" class="list-group-item">Electronics (447)</a>
+								<a href="/groceries" class="list-group-item">Groceries (229)</a>
 							</div>
 
 							<div class="list-group">
@@ -183,12 +181,12 @@
 								<ul class="product-head">
 									<li><a href="/">Home</a> <span>::</span></li>
 									<li><a href="/store">Products</a> <span>::</span></li>
-									<li class="active-page">Photography</li>
+									<li class="active-page">Book</li>
 									<div class="clear"> </div>
 								</ul>
 								<div class="products-row">
 									<h3>Today's Hotspots</h3>
-									<%for(var i in Items){ if(!Items[i].name || Items[i].type!="photography")continue;%>
+									<%for(var i in Items){ if(!Items[i].name || Items[i].type!="book")continue;%>
 					                    <a onclick="location.href='/single/<%=Items[i]._id%>'"><div class="product-grid">
 											<div class="more-product-info">
 												<span> </span>
@@ -234,8 +232,6 @@
 		</div>
 	</div>
 	<!--press end here-->
-
-	<!--footer start here-->
 	<div class="footer wow bounce" data-wow-delay="0.1s">
 			<div class="container">
 				<div class="footer-main">
@@ -245,7 +241,7 @@
 								<h3>About Us</h3>
 								<p>We are CUshare developer team.</p>
 								<div class="ftr-gls-bwn">
-									<a href="/about">View</a>
+									<a href="/contact">View</a>
 								</div>
 							</div>
 						</div>
@@ -256,7 +252,7 @@
 								<h3>Contact Us</h3>
 								<p>We You are welcome to contact us.</p>
 								<div class="ftr-gls-bwn">
-									<a href="/contact">View</a>
+									<a href="/about">View</a>
 								</div>
 							</div>
 						</div>
@@ -274,6 +270,5 @@
 							</div>
 						</div>
 					</div>
-	<!--footer end here-->
 </body>
 </html>
