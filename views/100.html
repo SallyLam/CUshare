@@ -121,7 +121,7 @@
 	</nav>
 	<!--banner end here-->
 
-	<!--press start here-->
+	<!--body start here-->
 	<div class="storepage">
 		<div class="container-fluid">
 			<div class="row">
@@ -131,18 +131,18 @@
 						<div class="col-md-8">
 							<p class="lead">Category</p>
 							<div class="list-group">
-								<a href="/store" class="list-group-item">All (1229)</a>
+								<a href="/store" class="list-group-item">All (10)</a>
 							</div>
 							<div class="list-group">
-								<a href="/book" class="list-group-item">Book (553)</a>
-								<a href="/electronics" class="list-group-item">Electronics (447)</a>
-								<a href="/groceries" class="list-group-item">Groceries (229)</a>
+								<a href="/book" class="list-group-item">Book (4)</a>
+								<a href="/electronics" class="list-group-item">Electronics (3)</a>
+								<a href="/groceries" class="list-group-item">Groceries (3)</a>
 							</div>
 
 							<div class="list-group">
-								<a href="/1500" class="list-group-item">&le; $1500 (163)</a>
- 								<a href="/1500-3000" class="list-group-item">$1500 - $3000 (828)</a>
- 								<a href="/3000" class="list-group-item">&ge; $3000 (238)</a>
+								<a href="/100" class="list-group-item">&le; $100 (3)</a>
+ 								<a href="/100-300" class="list-group-item">$100 - $300 (4)</a>
+ 								<a href="/300" class="list-group-item">&ge; $300 (3)</a>
 							</div>
 						</div>
 						<div class="col-md-3"></div>
@@ -183,12 +183,12 @@
 								<ul class="product-head">
 									<li><a href="/">Home</a> <span>::</span></li>
 									<li><a href="/store">Products</a> <span>::</span></li>
-									<li class="active-page">$1500 - $3000</li>
+									<li class="active-page"> &le; $100</li>
 									<div class="clear"> </div>
 								</ul>
 								<div class="products-row">
 									<h3>Today's Hotspots</h3>
-									<%for(var i in Items){ if(!Items[i].name || Items[i].price < 1500 || Items[i].price > 3000)continue;%>
+									<%for(var i in Items){ if(!Items[i].name || Items[i].price > 100)continue;%>
 					                    <a onclick="location.href='/single/<%=Items[i]._id%>'"><div class="product-grid">
 											<div class="more-product-info">
 												<span> </span>
@@ -233,7 +233,7 @@
 			</div>
 		</div>
 	</div>
-	<!--press end here-->
+	<!--body end here-->
 
 	<!--footer start here-->
 	<div class="footer wow bounce" data-wow-delay="0.1s">
@@ -245,7 +245,7 @@
 								<h3>About Us</h3>
 								<p>We are CUshare developer team.</p>
 								<div class="ftr-gls-bwn">
-									<a href="/about">View</a>
+									<a href="/contact">View</a>
 								</div>
 							</div>
 						</div>
@@ -256,7 +256,7 @@
 								<h3>Contact Us</h3>
 								<p>We You are welcome to contact us.</p>
 								<div class="ftr-gls-bwn">
-									<a href="/contact">View</a>
+									<a href="/about">View</a>
 								</div>
 							</div>
 						</div>
@@ -275,5 +275,6 @@
 						</div>
 					</div>
 	<!--footer end here-->
+
 </body>
 </html>

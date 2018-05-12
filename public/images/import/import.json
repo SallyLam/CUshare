@@ -1,10 +1,10 @@
-{ "name": "1", "type": "book", "price": 212, "imgSrc": "1.jpg" }
-{ "name": "2", "type": "book", "price": 3729, "imgSrc": "2.jpg" }
-{ "name": "3", "type": "groceries", "price": 137, "imgSrc": "3.jpg" }
-{ "name": "4", "type": "groceries", "price": 189, "imgSrc": "4.jpg" }
-{ "name": "5", "type": "electronics", "price": 394, "imgSrc": "5.jpg" }
-{ "name": "6", "type": "electronics", "price": 182, "imgSrc": "6.jpg" }
-{ "name": "7", "type": "groceries", "price": 137, "imgSrc": "7.jpg" }
-{ "name": "8", "type": "groceries", "price": 189, "imgSrc": "8.jpg" }
-{ "name": "9", "type": "electronics", "price": 394, "imgSrc": "9.jpg" }
-{ "name": "10", "type": "electronics", "price": 182, "imgSrc": "10.jpg" }
+{ "name": "About Financial Accounting", "type": "book", "price": 120, "imgSrc": "About Financial Accounting.jpg" }
+{ "name": "Assurance and Auditing", "type": "book", "price": 200, "imgSrc": "Assurance and Auditing.jpg" }
+{ "name": "eye shadow", "type": "groceries", "price": 150, "imgSrc": "eye shadow.jpg" }
+{ "name": "shirt", "type": "groceries", "price": 88, "imgSrc": "shirt.jpg" }
+{ "name": "Corporate Finance", "type": "book", "price": 150, "imgSrc": "Corporate Finance.jpg" }
+{ "name": "Macroeconocmics", "type": "book", "price": 90, "imgSrc": "Macroeconocmics.jpg" }
+{ "name": "ipad", "type": "electronics", "price": 1500, "imgSrc": "ipad.jpg" }
+{ "name": "ipone", "type": "electronics", "price": 3000, "imgSrc": "iphone.jpg" }
+{ "name": "thermos bottle", "type": "groceries", "price": 80, "imgSrc": "thermos bottle.jpg" }
+{ "name": "macbook", "type": "electronics", "price": 4500, "imgSrc": "macbook.jpg" }
