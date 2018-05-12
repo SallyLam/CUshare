@@ -8,3 +8,5 @@
 { "name": "ipone", "type": "electronics", "price": 3000, "imgSrc": "iphone.jpg" }
 { "name": "thermos bottle", "type": "groceries", "price": 80, "imgSrc": "thermos bottle.jpg" }
 { "name": "macbook", "type": "electronics", "price": 4500, "imgSrc": "macbook.jpg" }
+{ "name": "AKG earphone", "type": "electronics", "price": 800, "imgSrc": "AKG earphone.jpg" }
+{ "name": "laser mouse", "type": "electronics", "price": 200, "imgSrc": "laser mouse.jpg" }
