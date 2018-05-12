@@ -111,17 +111,21 @@ module.exports = function ( app ) {
     });
   });
 
-  // Respond a GET request for the /1500 page.
-  // Display artworks under 1500 HKD.
-  app.get('/1500', function (req, res) {
-    res.redirect('/1500/1');
+  // Respond a GET request for the /100 page.
+  // Display artworks under 100 HKD.
+  app.get('/100', function (req, res) {
+    res.redirect('/100/1');
   });
 
-  // Respond a GET request for the /1500/:page page.
-  // Display artworks under 1500 HKD at the particular page.
-  app.get('/1500/:page', function (req, res) {
+  // Respond a GET request for the /100/:page page.
+  // Display artworks under 100 HKD at the particular page.
+  app.get('/100/:page', function (req, res) {
     var Item = global.dbHelper.getModel('item');
-    Item.find({ "price": { "$lt": 1500 } }, function (error, docs) {
+    var item_size = Item.count({}, function( err, count){
+        console.log( "Number of users:", count );
+    });
+
+    Item.find({ "price": { "$lt": 100 } }, function (error, docs) {
       if (error) {
         res.redirect('/');
       } else if (!docs) {
@@ -130,28 +134,30 @@ module.exports = function ( app ) {
       } else {
         var page = req.params.page;
         if (req.session.user) {
-          res.render('1500', { "Items": docs.slice(16*(page-1), 16*page),
+          res.render('100', { "Items": docs.slice(16*(page-1), 16*page),
                                    "isLogin": true, "page": page,
+                                   "item_size": item_size,
                                    "firstname": req.session.user.firstname });
         } else {
-          res.render('1500', { "Items": docs.slice(16*(page-1), 16*page),
+          res.render('100', { "Items": docs.slice(16*(page-1), 16*page),
+                              "item_size": item_size,
                                    "isLogin": false, "page": page});
         }
       }
     });
   });
 
-  // Respond a GET request for the /1500-3000 page.
-  // Display artworks between 1500 HKD and 3000 HKD.
-  app.get('/1500-3000', function (req, res) {
-    res.redirect('/1500-3000/1');
+  // Respond a GET request for the /100-300 page.
+  // Display artworks between 100 HKD and 300 HKD.
+  app.get('/100-300', function (req, res) {
+    res.redirect('/100-300/1');
   });
 
-  // Respond a GET request for the /1500-3000/:page page.
-  // Display artworks between 1500 HKD and 3000 HKD at the particular page.
-  app.get('/1500-3000/:page', function (req, res) {
+  // Respond a GET request for the /100-300/:page page.
+  // Display artworks between 100 HKD and 300 HKD at the particular page.
+  app.get('/100-300/:page', function (req, res) {
     var Item = global.dbHelper.getModel('item');
-    Item.find({ "price": { "$gte": 1500, "$lt": 3000 } }, function (error, docs) {
+    Item.find({ "price": { "$gte": 100, "$lt": 300 } }, function (error, docs) {
       if (error) {
         res.redirect('/');
       } else if (!docs) {
@@ -160,28 +166,28 @@ module.exports = function ( app ) {
       } else {
         var page = req.params.page;
         if (req.session.user) {
-          res.render('1500-3000', { "Items": docs.slice(16*(page-1), 16*page),
+          res.render('100-300', { "Items": docs.slice(16*(page-1), 16*page),
                                    "isLogin": true, "page": page,
                                    "firstname": req.session.user.firstname });
         } else {
-          res.render('1500-3000', { "Items": docs.slice(16*(page-1), 16*page),"page": page,
+          res.render('100-300', { "Items": docs.slice(16*(page-1), 16*page),"page": page,
                                    "isLogin": false});
         }
       }
     });
   });
 
-  // Respond a GET request for the /3000 page.
-  // Display artworks over 3000 HKD.
-  app.get('/3000', function (req, res) {
-    res.redirect('/3000/1');
+  // Respond a GET request for the /300 page.
+  // Display artworks over 300 HKD.
+  app.get('/300', function (req, res) {
+    res.redirect('/300/1');
   });
 
-  // Respond a GET request for the /3000/:page page.
-  // Display artworks over 3000 HKD at the particular page.
-  app.get('/3000/:page', function (req, res) {
+  // Respond a GET request for the /300/:page page.
+  // Display artworks over 300 HKD at the particular page.
+  app.get('/300/:page', function (req, res) {
     var Item = global.dbHelper.getModel('item');
-    Item.find({ "price": { "$gte": 3000 } }, function (error, docs) {
+    Item.find({ "price": { "$gte": 300 } }, function (error, docs) {
       if (error) {
         res.redirect('/');
       } else if (!docs) {
@@ -190,11 +196,11 @@ module.exports = function ( app ) {
       } else {
         var page = req.params.page;
         if (req.session.user) {
-          res.render('3000', { "Items": docs.slice(16*(page-1), 16*page),
+          res.render('300', { "Items": docs.slice(16*(page-1), 16*page),
                                    "isLogin": true, "page": page,
                                    "firstname": req.session.user.firstname });
         } else {
-          res.render('3000', { "Items": docs.slice(16*(page-1), 16*page),"page": page,
+          res.render('300', { "Items": docs.slice(16*(page-1), 16*page),"page": page,
                                    "isLogin": false});
         }
       }
