@@ -18,6 +18,14 @@
 
 */
 
+function waitForElement(ele){
+    if(typeof ele !== "undefined"){
+        //variable exists, do what you want
+    }
+    else{
+        setTimeout(waitForElement, 1);
+    }
+}
 
 module.exports = function ( app ) {
 
@@ -31,7 +39,31 @@ module.exports = function ( app ) {
   // Display books at the particular page.
   app.get('/book/:page', function (req, res) {
     var Item = global.dbHelper.getModel('item');
-    Item.find({ "type": "book" }, function (error, docs) {
+    // Get all types' sizes
+    var all_size, book_size, electronics_size, groceries_size, lt100_size, gt100lt300_size, gt300_size;
+    Item.count({}, function( err, count){
+        all_size = count;
+    });
+    Item.count({ "type": "book" }, function( err, count){
+        book_size = count;
+    });
+    Item.count({ "type": "electronics" }, function( err, count){
+        electronics_size = count;
+    });
+    Item.count({ "type": "groceries" }, function( err, count){
+        groceries_size = count;
+    });
+    Item.count({ "price": { "$lt": 100 }}, function( err, count){
+        lt100_size = count;
+    });
+    Item.count({ "price": { "$gte": 100, "$lt": 300 }}, function( err, count){
+        gt100lt300_size = count;
+    });
+    Item.count({ "price": { "$gte": 300 }}, function( err, count){
+        gt300_size = count;
+    });
+
+    setTimeout(function(){ Item.find({ "type": "book" }, function (error, docs) {
       if (error) {
         res.redirect('/');
       } else if (!docs) {
@@ -42,13 +74,21 @@ module.exports = function ( app ) {
         if (req.session.user) {
           res.render('book', { "Items": docs.slice(16*(page-1), 16*page),
                                    "isLogin": true, "page": page,
+                                   "all_size": all_size, "lt100_size": lt100_size,
+                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+                                   "book_size": book_size, "electronics_size": electronics_size,
+                                   "groceries_size": groceries_size,
                                    "firstname": req.session.user.firstname });
         } else {
           res.render('book', { "Items": docs.slice(16*(page-1), 16*page),
+                                "all_size": all_size, "lt100_size": lt100_size,
+                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+                                   "book_size": book_size, "electronics_size": electronics_size,
+                                   "groceries_size": groceries_size,
                                    "isLogin": false, "page": page});
         }
       }
-    });
+    }) }, 200);
   });
 
   // Respond a GET request for the /electronics page.
@@ -61,7 +101,31 @@ module.exports = function ( app ) {
   // Display electronics artworks at the particular page.
   app.get('/electronics/:page', function (req, res) {
     var Item = global.dbHelper.getModel('item');
-    Item.find({ "type": "electronics" }, function (error, docs) {
+    // Get all types' sizes
+    var all_size, book_size, electronics_size, groceries_size, lt100_size, gt100lt300_size, gt300_size;
+    Item.count({}, function( err, count){
+        all_size = count;
+    });
+    Item.count({ "type": "book" }, function( err, count){
+        book_size = count;
+    });
+    Item.count({ "type": "electronics" }, function( err, count){
+        electronics_size = count;
+    });
+    Item.count({ "type": "groceries" }, function( err, count){
+        groceries_size = count;
+    });
+    Item.count({ "price": { "$lt": 100 }}, function( err, count){
+        lt100_size = count;
+    });
+    Item.count({ "price": { "$gte": 100, "$lt": 300 }}, function( err, count){
+        gt100lt300_size = count;
+    });
+    Item.count({ "price": { "$gte": 300 }}, function( err, count){
+        gt300_size = count;
+    });
+
+    setTimeout(function(){ Item.find({ "type": "electronics" }, function (error, docs) {
       if (error) {
         res.redirect('/');
       } else if (!docs) {
@@ -72,13 +136,21 @@ module.exports = function ( app ) {
         if (req.session.user) {
           res.render('electronics', { "Items": docs.slice(16*(page-1), 16*page),
                                    "isLogin": true, "page": page,
+                                   "all_size": all_size, "lt100_size": lt100_size,
+                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+                                   "book_size": book_size, "electronics_size": electronics_size,
+                                   "groceries_size": groceries_size,
                                    "firstname": req.session.user.firstname });
         } else {
           res.render('electronics', { "Items": docs.slice(16*(page-1), 16*page),
+                                  "all_size": all_size, "lt100_size": lt100_size,
+                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+                                   "book_size": book_size, "electronics_size": electronics_size,
+                                   "groceries_size": groceries_size,
                                    "isLogin": false, "page": page});
         }
       }
-    });
+    }) }, 200);
   });
 
   // Respond a GET request for the /groceries page.
@@ -91,7 +163,31 @@ module.exports = function ( app ) {
   // Display groceries at the particular page.
   app.get('/groceries/:page', function (req, res) {
     var Item = global.dbHelper.getModel('item');
-    Item.find({ "type": "groceries" }, function (error, docs) {
+    // Get all types' sizes
+    var all_size, book_size, electronics_size, groceries_size, lt100_size, gt100lt300_size, gt300_size;
+    Item.count({}, function( err, count){
+        all_size = count;
+    });
+    Item.count({ "type": "book" }, function( err, count){
+        book_size = count;
+    });
+    Item.count({ "type": "electronics" }, function( err, count){
+        electronics_size = count;
+    });
+    Item.count({ "type": "groceries" }, function( err, count){
+        groceries_size = count;
+    });
+    Item.count({ "price": { "$lt": 100 }}, function( err, count){
+        lt100_size = count;
+    });
+    Item.count({ "price": { "$gte": 100, "$lt": 300 }}, function( err, count){
+        gt100lt300_size = count;
+    });
+    Item.count({ "price": { "$gte": 300 }}, function( err, count){
+        gt300_size = count;
+    });
+
+    setTimeout(function(){ Item.find({ "type": "groceries" }, function (error, docs) {
       if (error) {
         res.redirect('/');
       } else if (!docs) {
@@ -102,13 +198,21 @@ module.exports = function ( app ) {
         if (req.session.user) {
           res.render('groceries', { "Items": docs.slice(16*(page-1), 16*page),
                                    "isLogin": true, "page": page,
+                                   "all_size": all_size, "lt100_size": lt100_size,
+                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+                                   "book_size": book_size, "electronics_size": electronics_size,
+                                   "groceries_size": groceries_size,
                                    "firstname": req.session.user.firstname });
         } else {
           res.render('groceries', { "Items": docs.slice(16*(page-1), 16*page),
+                                   "all_size": all_size, "lt100_size": lt100_size,
+                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+                                   "book_size": book_size, "electronics_size": electronics_size,
+                                   "groceries_size": groceries_size,
                                    "isLogin": false, "page": page});
         }
       }
-    });
+    }) }, 200);
   });
 
   // Respond a GET request for the /100 page.
@@ -121,11 +225,31 @@ module.exports = function ( app ) {
   // Display artworks under 100 HKD at the particular page.
   app.get('/100/:page', function (req, res) {
     var Item = global.dbHelper.getModel('item');
-    var item_size = Item.count({}, function( err, count){
-        console.log( "Number of users:", count );
+    // Get all types' sizes
+    var all_size, book_size, electronics_size, groceries_size, lt100_size, gt100lt300_size, gt300_size;
+    Item.count({}, function( err, count){
+        all_size = count;
+    });
+    Item.count({ "type": "book" }, function( err, count){
+        book_size = count;
+    });
+    Item.count({ "type": "electronics" }, function( err, count){
+        electronics_size = count;
+    });
+    Item.count({ "type": "groceries" }, function( err, count){
+        groceries_size = count;
+    });
+    Item.count({ "price": { "$lt": 100 }}, function( err, count){
+        lt100_size = count;
+    });
+    Item.count({ "price": { "$gte": 100, "$lt": 300 }}, function( err, count){
+        gt100lt300_size = count;
+    });
+    Item.count({ "price": { "$gte": 300 }}, function( err, count){
+        gt300_size = count;
     });
 
-    Item.find({ "price": { "$lt": 100 } }, function (error, docs) {
+    setTimeout(function(){ Item.find({ "price": { "$lt": 100 } }, function (error, docs) {
       if (error) {
         res.redirect('/');
       } else if (!docs) {
@@ -136,15 +260,21 @@ module.exports = function ( app ) {
         if (req.session.user) {
           res.render('100', { "Items": docs.slice(16*(page-1), 16*page),
                                    "isLogin": true, "page": page,
-                                   "item_size": item_size,
+                                   "all_size": all_size, "lt100_size": lt100_size,
+                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+                                   "book_size": book_size, "electronics_size": electronics_size,
+                                   "groceries_size": groceries_size,
                                    "firstname": req.session.user.firstname });
         } else {
           res.render('100', { "Items": docs.slice(16*(page-1), 16*page),
-                              "item_size": item_size,
+                              "all_size": all_size, "lt100_size": lt100_size,
+                              "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+                              "book_size": book_size, "electronics_size": electronics_size,
+                                   "groceries_size": groceries_size,
                                    "isLogin": false, "page": page});
         }
       }
-    });
+    }) }, 200);
   });
 
   // Respond a GET request for the /100-300 page.
@@ -157,7 +287,31 @@ module.exports = function ( app ) {
   // Display artworks between 100 HKD and 300 HKD at the particular page.
   app.get('/100-300/:page', function (req, res) {
     var Item = global.dbHelper.getModel('item');
-    Item.find({ "price": { "$gte": 100, "$lt": 300 } }, function (error, docs) {
+    // Get all types' sizes
+    var all_size, book_size, electronics_size, groceries_size, lt100_size, gt100lt300_size, gt300_size;
+    Item.count({}, function( err, count){
+        all_size = count;
+    });
+    Item.count({ "type": "book" }, function( err, count){
+        book_size = count;
+    });
+    Item.count({ "type": "electronics" }, function( err, count){
+        electronics_size = count;
+    });
+    Item.count({ "type": "groceries" }, function( err, count){
+        groceries_size = count;
+    });
+    Item.count({ "price": { "$lt": 100 }}, function( err, count){
+        lt100_size = count;
+    });
+    Item.count({ "price": { "$gte": 100, "$lt": 300 }}, function( err, count){
+        gt100lt300_size = count;
+    });
+    Item.count({ "price": { "$gte": 300 }}, function( err, count){
+        gt300_size = count;
+    });
+
+    setTimeout(function(){ Item.find({ "price": { "$gte": 100, "$lt": 300 } }, function (error, docs) {
       if (error) {
         res.redirect('/');
       } else if (!docs) {
@@ -168,13 +322,21 @@ module.exports = function ( app ) {
         if (req.session.user) {
           res.render('100-300', { "Items": docs.slice(16*(page-1), 16*page),
                                    "isLogin": true, "page": page,
+                                   "all_size": all_size, "lt100_size": lt100_size,
+                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+                                   "book_size": book_size, "electronics_size": electronics_size,
+                                   "groceries_size": groceries_size,
                                    "firstname": req.session.user.firstname });
         } else {
           res.render('100-300', { "Items": docs.slice(16*(page-1), 16*page),"page": page,
+                                   "all_size": all_size, "lt100_size": lt100_size,
+                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+                                   "book_size": book_size, "electronics_size": electronics_size,
+                                   "groceries_size": groceries_size,
                                    "isLogin": false});
         }
       }
-    });
+    }) }, 200);
   });
 
   // Respond a GET request for the /300 page.
@@ -187,7 +349,31 @@ module.exports = function ( app ) {
   // Display artworks over 300 HKD at the particular page.
   app.get('/300/:page', function (req, res) {
     var Item = global.dbHelper.getModel('item');
-    Item.find({ "price": { "$gte": 300 } }, function (error, docs) {
+    // Get all types' sizes
+    var all_size, book_size, electronics_size, groceries_size, lt100_size, gt100lt300_size, gt300_size;
+    Item.count({}, function( err, count){
+        all_size = count;
+    });
+    Item.count({ "type": "book" }, function( err, count){
+        book_size = count;
+    });
+    Item.count({ "type": "electronics" }, function( err, count){
+        electronics_size = count;
+    });
+    Item.count({ "type": "groceries" }, function( err, count){
+        groceries_size = count;
+    });
+    Item.count({ "price": { "$lt": 100 }}, function( err, count){
+        lt100_size = count;
+    });
+    Item.count({ "price": { "$gte": 100, "$lt": 300 }}, function( err, count){
+        gt100lt300_size = count;
+    });
+    Item.count({ "price": { "$gte": 300 }}, function( err, count){
+        gt300_size = count;
+    });
+
+    setTimeout(function(){ Item.find({ "price": { "$gte": 300 } }, function (error, docs) {
       if (error) {
         res.redirect('/');
       } else if (!docs) {
@@ -198,13 +384,21 @@ module.exports = function ( app ) {
         if (req.session.user) {
           res.render('300', { "Items": docs.slice(16*(page-1), 16*page),
                                    "isLogin": true, "page": page,
+                                   "all_size": all_size, "lt100_size": lt100_size,
+                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+                                   "book_size": book_size, "electronics_size": electronics_size,
+                                   "groceries_size": groceries_size,
                                    "firstname": req.session.user.firstname });
         } else {
           res.render('300', { "Items": docs.slice(16*(page-1), 16*page),"page": page,
+                                   "all_size": all_size, "lt100_size": lt100_size,
+                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+                                   "book_size": book_size, "electronics_size": electronics_size,
+                                   "groceries_size": groceries_size,
                                    "isLogin": false});
         }
       }
-    });
+    }) }, 200);
   });
 
 };

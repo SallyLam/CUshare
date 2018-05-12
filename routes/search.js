@@ -46,7 +46,31 @@ module.exports = function ( app ) {
     } else {
       // fuzzy search using fuse.js library
       var Item = global.dbHelper.getModel('item');
-      Item.find({}, function (err, docs) {
+      // Get all types' sizes
+      var all_size, book_size, electronics_size, groceries_size, lt100_size, gt100lt300_size, gt300_size;
+      Item.count({}, function( err, count){
+          all_size = count;
+      });
+      Item.count({ "type": "book" }, function( err, count){
+          book_size = count;
+      });
+      Item.count({ "type": "electronics" }, function( err, count){
+          electronics_size = count;
+      });
+      Item.count({ "type": "groceries" }, function( err, count){
+          groceries_size = count;
+      });
+      Item.count({ "price": { "$lt": 100 }}, function( err, count){
+          lt100_size = count;
+      });
+      Item.count({ "price": { "$gte": 100, "$lt": 300 }}, function( err, count){
+          gt100lt300_size = count;
+      });
+      Item.count({ "price": { "$gte": 300 }}, function( err, count){
+          gt300_size = count;
+      });
+
+      setTimeout(function(){ Item.find({}, function (err, docs) {
         var fuse = new Fuse(docs, options);
         var fuseResult = fuse.search(searchableString);
         if (fuseResult.length == 0) {
@@ -60,17 +84,25 @@ module.exports = function ( app ) {
               "resultList": resultList,
               "isLogin": true,
               "searchword": searchableString,
+              "all_size": all_size, "lt100_size": lt100_size,
+              "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+              "book_size": book_size, "electronics_size": electronics_size,
+              "groceries_size": groceries_size,
               "firstname": req.session.user.firstname
             });
           } else {
             res.render('search', {
               "resultList": resultList,
               "searchword": searchableString,
+              "all_size": all_size, "lt100_size": lt100_size,
+              "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+              "book_size": book_size, "electronics_size": electronics_size,
+              "groceries_size": groceries_size,
               "isLogin": false
             });
           }
         }
-      });
+      }) }, 200);
 
       // search using regex
       /*

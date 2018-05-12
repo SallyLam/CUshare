@@ -31,7 +31,31 @@ module.exports = function ( app ) {
   // Display artwork commodities at the particular page.
   app.get('/store/:page', function (req, res) {
     var Item = global.dbHelper.getModel('item');
-    Item.find({}, function (error, docs) {
+    // Get all types' sizes
+    var all_size, book_size, electronics_size, groceries_size, lt100_size, gt100lt300_size, gt300_size;
+    Item.count({}, function( err, count){
+        all_size = count;
+    });
+    Item.count({ "type": "book" }, function( err, count){
+        book_size = count;
+    });
+    Item.count({ "type": "electronics" }, function( err, count){
+        electronics_size = count;
+    });
+    Item.count({ "type": "groceries" }, function( err, count){
+        groceries_size = count;
+    });
+    Item.count({ "price": { "$lt": 100 }}, function( err, count){
+        lt100_size = count;
+    });
+    Item.count({ "price": { "$gte": 100, "$lt": 300 }}, function( err, count){
+        gt100lt300_size = count;
+    });
+    Item.count({ "price": { "$gte": 300 }}, function( err, count){
+        gt300_size = count;
+    });
+
+    setTimeout(function(){ Item.find({}, function (error, docs) {
       if (error) {
         res.redirect('/');
       } else if (!docs) {
@@ -43,14 +67,22 @@ module.exports = function ( app ) {
           res.render('store', { "Items": docs.slice(16*(page-1), 16*page),
           "page": page,
           "isLogin": true,
+          "all_size": all_size, "lt100_size": lt100_size,
+          "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+          "book_size": book_size, "electronics_size": electronics_size,
+          "groceries_size": groceries_size,
           "firstname": req.session.user.firstname });
         } else {
           res.render('store', { "Items": docs.slice(16*(page-1), 16*page),
           "page": page,
+          "all_size": all_size, "lt100_size": lt100_size,
+          "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+          "book_size": book_size, "electronics_size": electronics_size,
+          "groceries_size": groceries_size,
           "isLogin": false});
         }
       }
-    });
+    }) }, 200);
   });
 
 };
