@@ -1,16 +1,16 @@
-{ "name": "About Financial Accounting", "type": "book", "price": 120, "imgSrc": "About Financial Accounting.jpg" }
-{ "name": "Assurance and Auditing", "type": "book", "price": 200, "imgSrc": "Assurance and Auditing.jpg" }
-{ "name": "Corporate Finance", "type": "book", "price": 150, "imgSrc": "Corporate Finance.jpg" }
-{ "name": "Macroeconocmics", "type": "book", "price": 90, "imgSrc": "Macroeconocmics.jpg" }
-{ "name": "The key to weaving", "type": "book", "price": 40, "imgSrc": "The key to weaving.jpg" }
-{ "name": "Extended Mathematics", "type": "book", "price": 50, "imgSrc": "Extended Mathematics.jpg" }
-{ "name": "ipad", "type": "electronics", "price": 1500, "imgSrc": "ipad.jpg" }
-{ "name": "ipone", "type": "electronics", "price": 3000, "imgSrc": "iphone.jpg" }
-{ "name": "macbook", "type": "electronics", "price": 4500, "imgSrc": "macbook.jpg" }
-{ "name": "AKG earphone", "type": "electronics", "price": 800, "imgSrc": "AKG earphone.jpg" }
-{ "name": "laser mouse", "type": "electronics", "price": 200, "imgSrc": "laser mouse.jpg" }
-{ "name": "Samsung Galaxy Note4 32GB", "type": "electronics", "price": 2300, "imgSrc": "Samsung Galaxy Note4 32GB.jpg" }
-{ "name": "Samsung Note 3", "type": "electronics", "price": 1400, "imgSrc": "Samsung Note 3.jpg" }
-{ "name": "eye shadow", "type": "groceries", "price": 150, "imgSrc": "eye shadow.jpg" }
-{ "name": "shirt", "type": "groceries", "price": 88, "imgSrc": "shirt.jpg" }
-{ "name": "thermos bottle", "type": "groceries", "price": 80, "imgSrc": "thermos bottle.jpg" }
+{ "name": "About Financial Accounting", "type": "book", "price": 120, "description": "Tel: 8888 8888", "imgSrc": "About Financial Accounting.jpg" }
+{ "name": "Assurance and Auditing", "type": "book", "price": 200, "description": "Tel: 8888 8888", "imgSrc": "Assurance and Auditing.jpg" }
+{ "name": "Corporate Finance", "type": "book", "price": 150, "description": "Tel: 8888 8888", "imgSrc": "Corporate Finance.jpg" }
+{ "name": "Macroeconocmics", "type": "book", "price": 90, "description": "Tel: 8888 8888", "imgSrc": "Macroeconocmics.jpg" }
+{ "name": "The key to weaving", "type": "book", "price": 40, "description": "Tel: 8888 8888", "imgSrc": "The key to weaving.jpg" }
+{ "name": "Extended Mathematics", "type": "book", "price": 50, "description": "Tel: 8888 8888", "imgSrc": "Extended Mathematics.jpg" }
+{ "name": "ipad", "type": "electronics", "price": 1500, "description": "Tel: 8888 8888", "imgSrc": "ipad.jpg" }
+{ "name": "ipone", "type": "electronics", "price": 3000, "description": "Tel: 8888 8888", "imgSrc": "iphone.jpg" }
+{ "name": "macbook", "type": "electronics", "price": 4500, "description": "Tel: 8888 8888", "imgSrc": "macbook.jpg" }
+{ "name": "AKG earphone", "type": "electronics", "price": 800, "description": "Tel: 8888 8888", "imgSrc": "AKG earphone.jpg" }
+{ "name": "laser mouse", "type": "electronics", "price": 200, "description": "Tel: 8888 8888", "imgSrc": "laser mouse.jpg" }
+{ "name": "Samsung Galaxy Note4 32GB", "type": "electronics", "price": 2300, "description": "Tel: 8888 8888", "imgSrc": "Samsung Galaxy Note4 32GB.jpg" }
+{ "name": "Samsung Note 3", "type": "electronics", "price": 1400, "description": "Tel: 8888 8888", "imgSrc": "Samsung Note 3.jpg" }
+{ "name": "eye shadow", "type": "groceries", "price": 150, "description": "Tel: 8888 8888", "imgSrc": "eye shadow.jpg" }
+{ "name": "shirt", "type": "groceries", "price": 88, "description": "Tel: 8888 8888", "imgSrc": "shirt.jpg" }
+{ "name": "thermos bottle", "type": "groceries", "price": 80, "description": "Tel: 8888 8888", "imgSrc": "thermos bottle.jpg" }

@@ -54,13 +54,14 @@
 		name = $('#name').val(),
 		type = $('#type').val(),
 		price = $('#price').val(),
+		description = $('#description').val(),
 		imgSrc = $('#imgSrc').val();
 		var filePath = $('input[type=file]').val();
 		if (filePath != undefined){
 		var fileName = filePath.substr(filePath.lastIndexOf("\\")+1);
 		imgSrc = fileName;
 		}
-		var data = { "oriname": oriname, "name": name, "type": type, "price":price,
+		var data = { "oriname": oriname, "name": name, "type": type, "price":price, "description": description,
 								 "imgSrc": imgSrc };
 		$.ajax({
 			url: '/edititem',
@@ -68,7 +69,7 @@
 			data: data,
 			success: function(data,status){
 				if(status == 'success'){
-					location.href = '/edititem';
+					location.href='/store';
 				}
 			},
 			error: function(data,status){
@@ -163,11 +164,15 @@
 					</div>
 					<div class="edit-left">
 						<p>TYPE</p>
-						<input id="type" type="text" value="" placeholder="Book/electronics/groceries" />
+						<input id="type" type="text" value="" placeholder="book/electronics/groceries" />
 					</div>
 					<div class="edit-left">
 						<p>PRICE</p>
 						<input id="price" type="text" value="" placeholder="New item price" />
+					</div>
+					<div class="edit-left">
+						<p>Description</p>
+						<textarea id="description" cols="40" rows="5" value="" placeholder="Descript your item and put your contact info here!"></textarea>
 					</div>
 					<div class="edit-left">
 						<p>UPDATE IMAGE</p>

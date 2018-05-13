@@ -53,13 +53,14 @@
 		var name = $('#name').val(),
 		type = $('#type').val(),
 		price = $('#price').val(),
+		description = $('#description').val(),
 		imgSrc = $('#imgSrc').val();
 		var filePath = $('input[type=file]').val();
 		if (filePath != undefined){
 		var fileName = filePath.substr(filePath.lastIndexOf("\\")+1);
 		imgSrc = fileName;
 		}
-		var data = { "name": name, "type": type, "price":price,
+		var data = { "name": name, "type": type, "price":price, "description": description,
 								 "imgSrc": imgSrc };
 
 		$.ajax({
@@ -158,7 +159,7 @@
 					</div>
 					<div class="post-left">
 						<p>TYPE</p>
-						<input id="type" type="text" value="" placeholder="Book/electronics/groceries" />
+						<input id="type" type="text" value="" placeholder="book/electronics/groceries" />
 					</div>
 					<div class="post-left">
 						<p>PRICE</p>
@@ -179,6 +180,11 @@
 						    <input type="file" name="logo">
 						    <input type="submit" value="Upload">
 						</form-->
+					</div>
+					<div class="post-left">
+						<p>Description</p>
+						<textarea id="description" cols="40" rows="5" value="" placeholder="Descript your item and put your contact info here!"></textarea>
+						<!--input id="description" type="text" value="" placeholder="Descript your item and put your contact info here!" /-->
 					</div>
 					<div class="post-right">
 					<input type="submit" class="btn btn-success" onclick="postitem();" value="SUBMIT" />
