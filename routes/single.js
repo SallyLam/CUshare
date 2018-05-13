@@ -59,13 +59,15 @@ module.exports = function ( app ) {
       } else {
         setTimeout(function(){ Items.find({}, function (error, docs) {
           if (req.session.user) {
-            res.render('single', { "Items": docs, "itemid" : req.params.id, "itemname": doc.name, "itemtype": doc.type,
-            "firstname" : req.session.user.firstname, "isLogin": true, "itemprice": doc.price, "imgSrc": doc.imgSrc,
-            "all_size": all_size, "lt100_size": lt100_size, "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+            res.render('single', { "Items": docs, "itemid" : req.params.id, "itemname": doc.name, 
+              "itemtype": doc.type, "firstname" : req.session.user.firstname, "isLogin": true,
+              "itemprice": doc.price, "item_description": doc.description, "imgSrc": doc.imgSrc, 
+              "all_size": all_size, "lt100_size": lt100_size, "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
             "book_size": book_size, "electronics_size": electronics_size, "groceries_size": groceries_size});
           } else {
-            res.render('single', {  "Items": docs, "itemid" : req.params.id, "itemname": doc.name, "itemtype": doc.type,
-            "firstname" : "Anonymous", "isLogin": false, "itemprice": doc.price, "imgSrc": doc.imgSrc,
+            res.render('single', {  "Items": docs, "itemid" : req.params.id, "itemname": doc.name, 
+              "itemtype": doc.type, "firstname" : "Anonymous", "isLogin": false, "itemprice": doc.price,
+              "item_description": doc.description, "imgSrc": doc.imgSrc,
             "all_size": all_size, "lt100_size": lt100_size, "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
             "book_size": book_size, "electronics_size": electronics_size, "groceries_size": groceries_size });
           }
