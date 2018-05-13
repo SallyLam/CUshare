@@ -25,6 +25,30 @@ module.exports = function ( app ) {
   // Display the information of a single commodity.
   app.get('/single/:id', function (req, res) {
     var Items = global.dbHelper.getModel('item');
+    // Get all types' sizes
+    var all_size, book_size, electronics_size, groceries_size, lt100_size, gt100lt300_size, gt300_size;
+    Items.count({}, function( err, count){
+        all_size = count;
+    });
+    Items.count({ "type": "book" }, function( err, count){
+        book_size = count;
+    });
+    Items.count({ "type": "electronics" }, function( err, count){
+        electronics_size = count;
+    });
+    Items.count({ "type": "groceries" }, function( err, count){
+        groceries_size = count;
+    });
+    Items.count({ "price": { "$lt": 100 }}, function( err, count){
+        lt100_size = count;
+    });
+    Items.count({ "price": { "$gte": 100, "$lt": 300 }}, function( err, count){
+        gt100lt300_size = count;
+    });
+    Items.count({ "price": { "$gte": 300 }}, function( err, count){
+        gt300_size = count;
+    });
+
     // Get the ID of the commodity through req.params.id
     Items.findOne({"_id": req.params.id}, function (error, doc) {
       if (error) {
@@ -33,15 +57,19 @@ module.exports = function ( app ) {
         req.session.error = "No information yet!";
         res.redirect('/');
       } else {
-        Items.find({}, function (error, docs) {
+        setTimeout(function(){ Items.find({}, function (error, docs) {
           if (req.session.user) {
             res.render('single', { "Items": docs, "itemid" : req.params.id, "itemname": doc.name, "itemtype": doc.type,
-            "firstname" : req.session.user.firstname, "isLogin": true, "itemprice": doc.price, "imgSrc": doc.imgSrc });
+            "firstname" : req.session.user.firstname, "isLogin": true, "itemprice": doc.price, "imgSrc": doc.imgSrc,
+            "all_size": all_size, "lt100_size": lt100_size, "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+            "book_size": book_size, "electronics_size": electronics_size, "groceries_size": groceries_size});
           } else {
             res.render('single', {  "Items": docs, "itemid" : req.params.id, "itemname": doc.name, "itemtype": doc.type,
-            "firstname" : "Anonymous", "isLogin": false, "itemprice": doc.price, "imgSrc": doc.imgSrc });
+            "firstname" : "Anonymous", "isLogin": false, "itemprice": doc.price, "imgSrc": doc.imgSrc,
+            "all_size": all_size, "lt100_size": lt100_size, "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+            "book_size": book_size, "electronics_size": electronics_size, "groceries_size": groceries_size });
           }
-        });
+        }) }, 200);
       }
     });
   });
