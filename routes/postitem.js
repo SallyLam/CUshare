@@ -55,6 +55,7 @@ module.exports = function ( app ) {
         Item.create({
           "name": name,
           "price": req.body.price,
+          "description": req.body.description,
           "imgSrc": req.body.imgSrc,
           "type": req.body.type
         }, function (error, doc) {
