@@ -17,7 +17,13 @@
   	@link       to-be-deployed
 
 */
+var nodemailer = require('nodemailer');
+var Base64 = require('js-base64').Base64;
 
+// create reusable transporter object using the default SMTP transport
+var transporter = nodemailer.createTransport('smtps://yawt.cushare%40gmail.com:csci41402018@smtp.gmail.com');
+
+var rand,mailOptions,host,link;
 
 module.exports = function ( app ) {
 
@@ -40,7 +46,11 @@ module.exports = function ( app ) {
     email = req.body.email.replace(/^\s+/, '').replace(/\s+$/, ''),
     password = req.body.password,
     confirmpwd = req.body.confirmpwd,
-    firstname = req.body.firstname.replace(/^\s+/, '').replace(/\s+$/, '');
+    firstname = req.body.firstname.replace(/^\s+/, '').replace(/\s+$/, ''),
+    lastname = req.body.lastname.replace(/^\s+/, '').replace(/\s+$/, ''),
+    phone = req.body.phone.replace(/^\s+/, '').replace(/\s+$/, ''),
+    address = req.body.address.replace(/^\s+/, '').replace(/\s+$/, '');
+
     if (username == "" || email == "" || password == "" || confirmpwd == "" || firstname == "") {
       req.session.error = 'Please fill out all * blanks.';
       res.sendStatus(409);
@@ -85,25 +95,32 @@ module.exports = function ( app ) {
             } else if (doc) {
               req.session.error = 'Email registered!';
               res.sendStatus(409);
-            } else if (req.body.password != req.body.confirmpwd) {
-              req.session.error = 'PASSWORD and CONFIRM PASSWORD should be the same!';
-              req.send(409);
             } else {
-              User.create({
-                "username": username,
-                "pwd": password,
-                "email": email,
-                "firstname": firstname,
-                "lastname": req.body.lastname.replace(/^\s+/, '').replace(/\s+$/, ''),
-                "phone": req.body.phone.replace(/^\s+/, '').replace(/\s+$/, ''),
-                "address": req.body.address.replace(/^\s+/, '').replace(/\s+$/, '')
-              }, function (error, doc) {
-                if (error) {
+              //send verification mail
+              rand=Math.floor((Math.random() * 10000) + 46);
+              host=req.get('host');
+              //encode information with base64
+              var user = Base64.encode(username),
+                pwd = Base64.encode(password),
+                eml = Base64.encode(email),
+                fir = Base64.encode(firstname),
+                las = Base64.encode(lastname),
+                pho = Base64.encode(phone),
+                add = Base64.encode(address);
+              link="http://"+req.get('host')+"/verify?id="+rand+"&user="+user+"&pwd="+pwd+"&eml="+eml+"&fir="+fir+"&las="+las+"&pho="+pho+"&add="+add;
+              mailOptions={
+                from: '"CUshare" <yawt.cuhk@gmail.com>', // sender address
+                to: email, // list of receivers
+                subject: 'CUshare email verification', // Subject line
+                html : "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"
+              }
+              transporter.sendMail(mailOptions, function(error, response){
+                if(error){
                   req.session.error = 'Network Error!';
                   res.sendStatus(500);
                   console.log(error);
-                } else {
-                  req.session.notification = 'Successfully created!';
+                }else{
+                  req.session.notification = 'A verification mail has been sent to your email address, please confirm';
                   res.sendStatus(200);
                 }
               });
@@ -111,6 +128,38 @@ module.exports = function ( app ) {
           });
         }
       });
+    }
+  });
+  app.get('/verify',function(req,res){
+    //console.log(req.protocol+":/"+req.get('host'));
+    if((req.protocol+"://"+req.get('host'))==("http://"+host)){
+      //console.log("Domain is matched. Information is from Authentic email");
+      if(req.query.id==rand){
+        //console.log("email is verified");
+        var User = global.dbHelper.getModel('user');
+        User.create({
+          "username": Base64.decode(req.query.user),
+          "pwd": Base64.decode(req.query.pwd),
+          "email": Base64.decode(req.query.eml),
+          "firstname": Base64.decode(req.query.fir),
+          "lastname": Base64.decode(req.query.las),
+          "phone": Base64.decode(req.query.pho),
+          "address": Base64.decode(req.query.add)
+        }, function (error, doc) {
+          if (error) {
+            req.session.error = 'Network Error!';
+            res.sendStatus(500);
+            console.log(error);
+          } else {
+            res.render('verification', { "Success": true, "isLogin": false });
+          }
+        });
+      } else{
+        res.render('verification', { "Success": false, "isLogin": false });
+      }
+    } else{
+      console.log('Request is from unknown source');
+      res.sendStatus(409);
     }
   });
 
