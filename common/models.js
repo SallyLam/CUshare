@@ -39,6 +39,7 @@ module.exports = {
     uUName: { type: String },  // user's username
     uFName: { type: String }  // user's firstname
   },
+  /*
   cart: {
     uId: { type: String },
     cId: { type: String },
@@ -46,7 +47,7 @@ module.exports = {
     cPrice: { type: String },
     cImgSrc: { type: String },
     cQuantity: { type: Number }
-  },
+  },*/
   comment: {
     isAnonymous: { type: Boolean },
     uId: { type: String },  // user's _id (can be replaced by username)

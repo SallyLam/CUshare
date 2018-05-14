@@ -54,12 +54,8 @@
 		type = $('#type').val(),
 		price = $('#price').val(),
 		description = $('#description').val(),
-		imgSrc = $('#imgSrc').val();
-		var filePath = $('input[type=file]').val();
-		if (filePath != undefined){
-		var fileName = filePath.substr(filePath.lastIndexOf("\\")+1);
-		imgSrc = fileName;
-		}
+		imgSrc = $('input[type=file]').val();
+		imgSrc = imgSrc.substr(imgSrc.lastIndexOf("\\") + 1);
 		var data = { "name": name, "type": type, "price":price, "description": description,
 								 "imgSrc": imgSrc };
 
@@ -115,7 +111,6 @@
 						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user" style="color: #c2c2c2;margin-right:3px"></span><%= firstname %> <span class="caret" style="color: #c2c2c2"></span></a>
 							<ul class="dropdown-menu dropdown-menu-right">
 								<li><a href="/profile"><span class="glyphicon glyphicon-user	"></span> Your Profile</a></li>
-								<li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a></li>
 								<li><a href="/postitem"><span class="glyphicon glyphicon-collapse-up"></span> Post Item</a></li>
 								<li><a href="/edititem"><span class="glyphicon glyphicon-collapse-down"></span> Edit Item</a></li>
 								<li><a href="/personalchat"><span class="glyphicon glyphicon-briefcase"></span> Chat</a></li>
@@ -159,7 +154,11 @@
 					</div>
 					<div class="post-left">
 						<p>TYPE</p>
-						<input id="type" type="text" value="" placeholder="book/electronics/groceries" />
+						<select id="type">
+							<option value="book">book</option>
+							<option value="electronics">electronics</option>
+							<option value="groceries">groceries</option>
+						</select>
 					</div>
 					<div class="post-left">
 						<p>PRICE</p>
@@ -171,10 +170,7 @@
 					</div-->
 					<div class="post-left">
 						<p>UPLOAD IMAGE</p>
-						<input id="imgSrc" type="text" value=""/>
-						<div class="post-left">
-    						<input type="file" name="fileString" multiple class="file">
-						</div>
+    				<input type="file" name="fileString" multiple class="file">
 						<!--form action="/upload" method="post" enctype="multipart/form-data">
 						    <h2>UPLOAD IMAGE</h2>
 						    <input type="file" name="logo">

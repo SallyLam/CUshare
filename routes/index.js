@@ -24,9 +24,7 @@ module.exports = function ( app ) {
   require('./signup')(app);
   require('./logout')(app);
   require('./profile')(app);
-  require('./cart')(app);
   require('./postitem')(app);
-  require('./itembase')(app);
   require('./personalchat')(app);
   require('./search')(app);
   require('./edititem')(app);

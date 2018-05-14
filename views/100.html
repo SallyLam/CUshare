@@ -93,8 +93,6 @@
 						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user" style="color: #c2c2c2;margin-right:3px"></span><%= firstname %> <span class="caret" style="color: #c2c2c2"></span></a>
 							<ul class="dropdown-menu dropdown-menu-right">
 								<li><a href="/profile"><span class="glyphicon glyphicon-user	"></span> Your Profile</a></li>
-								<li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a></li>
-								<li><a href="/postitem"><span class="glyphicon glyphicon-collapse-up"></span> Post Item</a></li>
 								<li><a href="/edititem"><span class="glyphicon glyphicon-collapse-down"></span> Edit Item</a></li>
 								<li><a href="/personalchat"><span class="glyphicon glyphicon-briefcase"></span> Chat</a></li>
 								<li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
@@ -207,10 +205,6 @@
 											</div>
 											<div class="ratings product-info-ratings">
 
-												<!--a class="pull-right" href="#">15 reviews</a-->
-												<button onclick="location.href='/addToCart/<%=Items[i]._id%>'" type="button" class="btn btn-default btn-sm">
-										          <span class="glyphicon glyphicon-shopping-cart"></span> Add to Shopping Cart
-										        </button>
 												<!--p>
 													<span class="glyphicon glyphicon-star"></span>
 													<span class="glyphicon glyphicon-star"></span>

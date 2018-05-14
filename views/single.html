@@ -79,7 +79,6 @@
 						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user" style="color: #c2c2c2;margin-right:3px"></span><%= firstname %> <span class="caret" style="color: #c2c2c2"></span></a>
 							<ul class="dropdown-menu dropdown-menu-right">
 								<li><a href="/profile"><span class="glyphicon glyphicon-user	"></span> Your Profile</a></li>
-								<li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a></li>
 								<li><a href="/postitem"><span class="glyphicon glyphicon-collapse-up"></span> Post Item</a></li>
 								<li><a href="/edititem"><span class="glyphicon glyphicon-collapse-down"></span> Edit Item</a></li>
 								<li><a href="/personalchat"><span class="glyphicon glyphicon-briefcase"></span> Chat</a></li>
@@ -171,29 +170,12 @@
 							<h3><%=itemname%></h3>
 							<p class="availability">Availability: <span class="color">In stock</span></p>
 							<div class="price_single">
-								<span class="reducedfrom">$<%=Math.ceil(itemprice*1.1)%></span>
 								<span class="actual">$<%=itemprice%></span><a href="/personalchat">Clict to contact the seller!</a>
 							</div>
 							<h2 class="quick">Seller: <%= sellerFName %></h2>
 							<h2 class="quick">Descriptionn:</h2>
 							<p class="quick_desc"> <%= item_description %></p>
-							<div class="quantity_box">
-								<ul class="product-qty">
-									<span>Quantity:</span>
-									<select>
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-										<option>6</option>
-									</select>
-								</ul>
-							</div>
 							<div class="clearfix"> </div>
-							<button onclick="location.href='/addToCart/<%=itemid%>'" type="button" class="btn btn-primary btn-sm">
-										          <span class="glyphicon glyphicon-shopping-cart"></span> Add to Shopping Cart
-										        </button>
 
 						</div>
 						<div class="clearfix"> </div>
