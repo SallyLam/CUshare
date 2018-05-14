@@ -83,14 +83,21 @@ module.exports = function ( app ) {
       "lastname": req.body.lastname.replace(/^\s+/, '').replace(/\s+$/, ''),
       "phone": req.body.phone.replace(/^\s+/, '').replace(/\s+$/, ''),
       "address": req.body.address.replace(/^\s+/, '').replace(/\s+$/, '') };
-      User.findOneAndUpdate({ "username": req.session.user.username }, newData, function (error, doc) {
-        if (error) {
-          req.session.error = 'Error occurred';
-          res.sendStatus(500);
-        } else {
-          res.sendStatus(200);
-        }
-      });
+      if (newData.firstname == "") {
+        req.session.error = 'Your firstname must not be empty!';
+        res.sendStatus(500);
+      }
+      else {
+        User.findOneAndUpdate({ "username": req.session.user.username }, newData, {new: true}, function (error, doc) {
+          if (error) {
+            req.session.error = 'Error occurred';
+            res.sendStatus(500);
+          } else {
+            req.session.user = doc;
+            res.sendStatus(200);
+          }
+        });
+      }
     }
   });
 

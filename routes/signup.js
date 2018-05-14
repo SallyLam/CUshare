@@ -38,9 +38,10 @@ module.exports = function ( app ) {
     var User = global.dbHelper.getModel('user'),
     username = req.body.username.replace(/^\s+/, '').replace(/\s+$/, ''),
     email = req.body.email.replace(/^\s+/, '').replace(/\s+$/, ''),
-    password = req.body.password.replace(/^\s+/, '').replace(/\s+$/, ''),
-    confirmpwd = req.body.confirmpwd.replace(/^\s+/, '').replace(/\s+$/, '')
-    if (username == "" || email == "" || password == "" || confirmpwd == "") {
+    password = req.body.password,
+    confirmpwd = req.body.confirmpwd,
+    firstname = req.body.firstname.replace(/^\s+/, '').replace(/\s+$/, '');
+    if (username == "" || email == "" || password == "" || confirmpwd == "" || firstname == "") {
       req.session.error = 'Please fill out all * blanks.';
       res.sendStatus(409);
     } else {
@@ -72,9 +73,9 @@ module.exports = function ( app ) {
             } else {
               User.create({
                 "username": username,
-                "pwd": req.body.password,
-                "email": email.replace(/^\s+/, '').replace(/\s+$/, ''),
-                "firstname": req.body.firstname.replace(/^\s+/, '').replace(/\s+$/, ''),
+                "pwd": password,
+                "email": email,
+                "firstname": firstname,
                 "lastname": req.body.lastname.replace(/^\s+/, '').replace(/\s+$/, ''),
                 "phone": req.body.phone.replace(/^\s+/, '').replace(/\s+$/, ''),
                 "address": req.body.address.replace(/^\s+/, '').replace(/\s+$/, '')

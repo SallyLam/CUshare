@@ -25,7 +25,7 @@ module.exports = {
     username: { type: String, required: true, unique: true },
     pwd: { type: String, required: true },
     email: { type: String, required: true },
-    firstname: { type: String },
+    firstname: { type: String, required: true },
     lastname: { type: String },
     phone: { type: String },
     address: { type: String }
@@ -42,7 +42,7 @@ module.exports = {
     cId: { type: String },
     cName: { type: String },
     cPrice: { type: String },
-    cImgSrc: { type:String } ,
+    cImgSrc: { type: String },
     cQuantity: { type: Number }
   },
   comment: {

@@ -54,32 +54,38 @@ module.exports = function ( app ) {
       req.session.error = "You must login first!";
       res.redirect('/login');
     } else{
-      var Items = global.dbHelper.getModel('item'),
+      var Item = global.dbHelper.getModel('item'),
       Cart = global.dbHelper.getModel('cart');
       // Get the ID of the commodity through req.params.id
-      Cart.findOne({"uId":req.session.user._id, "cId":req.params.id},function(error,doc){
+      Cart.findOne({
+        "uId": req.session.user._id,
+        "cId": req.params.id
+      }, function(error, doc){
         // If the commodity already exists in the cart, increment cQuantity by 1.
-        if(doc){
-          Cart.update({"uId":req.session.user._id, "cId":req.params.id},{$set : { cQuantity : doc.cQuantity + 1 }},function(error,doc){
+        if (doc) {
+          Cart.update({
+            "uId":req.session.user._id,
+            "cId":req.params.id
+          }, {$set : { cQuantity : doc.cQuantity + 1 }}, function(error, doc) {
             // Redirect to /cart if success.
-            if(doc > 0){
+            if (doc > 0) {
               res.redirect('/cart');
             }
           });
         }
         // Otherwise, add it to the cart.
-        else{
-          Items.findOne({"_id": req.params.id}, function (error, doc) {
+        else {
+          Item.findOne({"_id": req.params.id}, function (error, doc) {
             if (doc) {
               Cart.create({
                 uId: req.session.user._id,
                 cId: req.params.id,
                 cName: doc.name,
                 cPrice: doc.price,
-                cImgSrc: doc.imgSrc,
+                cImgSrc: doc.type + '/' + doc.imgSrc,
                 cQuantity : 1
-              },function(error,doc){
-                if(doc){
+              }, function (error, doc) {
+                if (doc) {
                   res.redirect('/cart');
                 }
               });
@@ -92,12 +98,12 @@ module.exports = function ( app ) {
 
   // Respond a GET request for the /delFromCart/:id page.
   // Remove a commodity in a cart.
-  app.get("/delFromCart/:id", function(req, res) {
+  app.get("/delFromCart/:id", function (req, res) {
     var Cart = global.dbHelper.getModel('cart');
     // Get the ID of the commodity through req.params.id
-    Cart.deleteOne({"_id":req.params.id},function(error,result){
+    Cart.deleteOne({"_id": req.params.id}, function (error,result) {
       // Redirect to /cart if success.
-      if(result.ok == 1){
+      if (result.ok == 1) {
         res.redirect('/cart');
       }
     });
@@ -105,19 +111,10 @@ module.exports = function ( app ) {
 
   // Respond a POST request for the /cart/clearing page.
   // Check out.
-  app.post("/cart/clearing",function(req,res){
-    var MongoClient = require("mongodb").MongoClient;
-    var ObjectID = require("mongodb").ObjectID;
-    MongoClient.connect('mongodb://127.0.0.1:27017/test1', function(err, dbClient) {
-      var db = dbClient.db('test1')
-      db.collection('carts', {}, function(err, carts) {
-        carts.remove({_id: ObjectID(req.body.id)}, function(err, result) {
-          if (err) {
-            console.log(err);
-          }
-          db.close();
-        });
-      });
+  app.post("/cart/clearing", function (req, res) {
+    var Cart = global.dbHelper.getModel('cart');
+    Cart.deleteMany({_id: req.body.id}, function (err) {
+      if (err) console.log(err);
     });
   });
 

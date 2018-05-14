@@ -155,10 +155,13 @@
 					<i class="fa fa-coffee"></i>
 					This is an <strong>.alert</strong>. Use this to show important messages to the user.
 				</div>
+				<%- errMessage %>
+				<%- notiMessage %>
 				<h3>Personal info</h3>
 				<form class="form-horizontal" role="form">
 					<div class="form-group">
 						<label class="col-lg-3 control-label">First name:</label>
+						<span style="color:red">*</span>
 						<div class="col-lg-8">
 							<% if (firstname) { %>
 								<input id="firstname" class="form-control" value=<%= firstname %> type="text">
