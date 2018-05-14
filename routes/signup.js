@@ -44,7 +44,25 @@ module.exports = function ( app ) {
     if (username == "" || email == "" || password == "" || confirmpwd == "" || firstname == "") {
       req.session.error = 'Please fill out all * blanks.';
       res.sendStatus(409);
-    } else {
+    }
+    else if (!/^\w+$/.test(username)){
+      req.session.error = 'Please fill out the correct username.';
+      res.sendStatus(409);
+    }
+    else if (!/^[ -~]+$/.test(password)){
+      req.session.error = 'Please fill out the correct password.';
+      res.sendStatus(409);
+    }
+    else if (password != confirmpwd){
+      req.session.error = 'Please confirm with the same password.';
+      res.sendStatus(409);
+    }
+    else if (!/^\w+([\.-]?\w+)*@\w+\.cuhk\.edu\.hk$/.test(email))
+    {
+      req.session.error = 'Please fill out the correct cuhk email address.';
+      res.sendStatus(409);
+    }
+    else {
       // Find the user in the database, given the username.
       User.findOne({"username": username}, function (error, doc) {
         if (error) {
