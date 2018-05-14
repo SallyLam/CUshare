@@ -47,8 +47,8 @@ module.exports = {
   },
   comment: {
     isAnonymous: { type: Boolean },
-    uId: { type: String },  // user's firstname
-    uFName: { type: String },
+    uId: { type: String },
+    uFName: { type: String },  // user's firstname
     cId: { type: String },
     content: { type: String }
   }

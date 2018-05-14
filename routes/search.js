@@ -23,7 +23,7 @@ var options = {
   shouldSort: true,
   includeScore: true,
   includeMatches: true,
-  threshold: 0.6,
+  threshold: 0.5,
   location: 0,
   distance: 100,
   maxPatternLength: 100,
@@ -104,41 +104,6 @@ module.exports = function ( app ) {
         }
       }) }, 200);
 
-      // search using regex
-      /*
-      var Item = global.dbHelper.getModel('item'),
-      keywords = searchableString.split(' '),
-      regexString = "";
-
-      // Produce a regex string in format 'keyword1|keyword2|keyword3'
-      for (var i = 0; i < keywords.length; i++) {
-        if (keywords[i] != "") {
-          regexString += keywords[i];
-          if (i < keywords.length - 1) regexString += '|';
-        }
-      }
-      var re = new RegExp(regexString, 'ig');
-
-      // Find items using the regex string above.
-      // That is to find items matching at least one keyword entered by the user.
-      Item.find({ "name": re }, function (error, doc) {
-        if (error) {
-          req.session.error = "Network Error!";
-          res.redirect('/');
-        } else if (doc.length == 0) {
-          req.session.notification = "No search results.";
-          res.redirect('/store');
-        } else {
-          if (req.session.user) {
-            res.render('search', { "resultList": doc,
-            "isLogin": true, "searchword": searchableString,
-            "firstname": req.session.user.firstname });
-          } else {
-            res.render('search', { "resultList": doc, "searchword": searchableString,
-            "isLogin": false });
-          }
-        }
-      });*/
     }
   });
 
