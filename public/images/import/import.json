@@ -14,20 +14,20 @@
 { "name": "eye shadow", "type": "groceries", "price": 150, "description": "Tel: 8888 8888", "imgSrc": "eye shadow.jpg" }
 { "name": "shirt", "type": "groceries", "price": 88, "description": "Tel: 8888 8888", "imgSrc": "shirt.jpg" }
 { "name": "thermos bottle", "type": "groceries", "price": 80, "description": "Tel: 8888 8888", "imgSrc": "thermos bottle.jpg" }
-{ "name": "Principles of Economics", "type": "books", "price": 100, "description": "Tel: 8823 4688", "imgSrc": "Principles of Economics.jpg" }
-{ "name": "The Law of Evidence in South Africa", "type": "books", "price": 120, "description": "Tel: 8238 1258", "imgSrc": "The Law of Evidence in South Africa.jpeg" }
-{ "name": "Easy Steps to Chinese", "type": "books", "price": 30, "description": "Tel: 8238 1258", "imgSrc": "Easy Steps to Chinese.jpg" }
-{ "name": "Brighter Biology", "type": "books", "price": 68, "description": "Tel: 5538 2358", "imgSrc": "Brighter Biology.jpg" }
-{ "name": "Principles of Accounts in Hong Kong", "type": "books", "price": 95, "description": "Tel: 8238 1258", "imgSrc": "Principles of Accounts in Hong Kong.jpg" }
-{ "name": "Organic History", "type": "books", "price": 110, "description": "Tel: 3538 1798", "imgSrc": "Organic History.jpg" }
-{ "name": "Economics", "type": "books", "price": 65, "description": "Tel: 3235 1068", "imgSrc": "Economics.jpeg" }
-{ "name": "Managerial Economics", "type": "books", "price": 120, "description": "Tel: 8238 1258", "imgSrc": "Managerial Economics.jpeg" }
-{ "name": "New Century Mathematics", "type": "books", "price": 100, "description": "Tel: 1238 1358", "imgSrc": "New Century Mathematics.jpg" }
-{ "name": "Equity Asset Valuation.jpeg", "type": "books", "price": 99, "description": "Tel: 7838 1258", "imgSrc": "Equity Asset Valuation.jpeg" }
-{ "name": "Biochemistry", "type": "books", "price": 82, "description": "Tel: 3238 5658", "imgSrc": "Biochemistry.jpeg" }
-{ "name": "Intermediate Microeconomics", "type": "books", "price": 125, "description": "Tel: 6790 5628", "imgSrc": "Intermediate Microeconomics.jpg" }
-{ "name": "In Dialogue with Humanity", "type": "books", "price": 40, "description": "Tel: 6258 2568", "imgSrc": "In Dialogue with Humanity.jpg" }
-{ "name": "In Dialogue with Nature", "type": "books", "price": 40, "description": "Tel: 8628 1678", "imgSrc": "In Dialogue with Nature.jpg" }
+{ "name": "Principles of Economics", "type": "book", "price": 100, "description": "Tel: 8823 4688", "imgSrc": "Principles of Economics.jpg" }
+{ "name": "The Law of Evidence in South Africa", "type": "book", "price": 120, "description": "Tel: 8238 1258", "imgSrc": "The Law of Evidence in South Africa.jpeg" }
+{ "name": "Easy Steps to Chinese", "type": "book", "price": 30, "description": "Tel: 8238 1258", "imgSrc": "Easy Steps to Chinese.jpg" }
+{ "name": "Brighter Biology", "type": "book", "price": 68, "description": "Tel: 5538 2358", "imgSrc": "Brighter Biology.jpg" }
+{ "name": "Principles of Accounts in Hong Kong", "type": "book", "price": 95, "description": "Tel: 8238 1258", "imgSrc": "Principles of Accounts in Hong Kong.jpg" }
+{ "name": "Organic History", "type": "book", "price": 110, "description": "Tel: 3538 1798", "imgSrc": "Organic History.jpg" }
+{ "name": "Economics", "type": "book", "price": 65, "description": "Tel: 3235 1068", "imgSrc": "Economics.jpeg" }
+{ "name": "Managerial Economics", "type": "book", "price": 120, "description": "Tel: 8238 1258", "imgSrc": "Managerial Economics.jpeg" }
+{ "name": "New Century Mathematics", "type": "book", "price": 100, "description": "Tel: 1238 1358", "imgSrc": "New Century Mathematics.jpg" }
+{ "name": "Equity Asset Valuation.jpeg", "type": "book", "price": 99, "description": "Tel: 7838 1258", "imgSrc": "Equity Asset Valuation.jpeg" }
+{ "name": "Biochemistry", "type": "book", "price": 82, "description": "Tel: 3238 5658", "imgSrc": "Biochemistry.jpeg" }
+{ "name": "Intermediate Microeconomics", "type": "book", "price": 125, "description": "Tel: 6790 5628", "imgSrc": "Intermediate Microeconomics.jpg" }
+{ "name": "In Dialogue with Humanity", "type": "book", "price": 40, "description": "Tel: 6258 2568", "imgSrc": "In Dialogue with Humanity.jpg" }
+{ "name": "In Dialogue with Nature", "type": "book", "price": 40, "description": "Tel: 8628 1678", "imgSrc": "In Dialogue with Nature.jpg" }
 { "name": "Water bottle", "type": "groceries", "price": 48, "description": "Tel: 8245 5218", "imgSrc": "Water Bottle.jpg" }
 { "name": "china bowl", "type": "groceries", "price": 120, "description": "Tel: 2463 5678", "imgSrc": "china bowl.jpg" }
 { "name": "Tayohya towel set", "type": "groceries", "price": 88, "description": "Tel: 2556 9239", "imgSrc": "Tayohya towel set.jpg" }
@@ -36,6 +36,8 @@
 { "name": "AJ sneakers", "type": "groceries", "price": 400, "description": "Tel: 2984 5819", "imgSrc": "AJ sneakers.jpg" }
 { "name": "Zojirushi water bottle", "type": "groceries", "price": 180, "description": "Tel: 5298 2847", "imgSrc": "Zojirushi water bottle.jpg" }
 { "name": "Nike black sneakers", "type": "groceries", "price": 258, "description": "Tel: 4928 4827", "imgSrc": "Nike black sneakers.jpg" }
+{ "name": "Samsonite 20inc PC luggage", "type": "groceries", "price": 500, "description": "Tel: 4928 4827", "imgSrc": "Samsonite 20inc PC luggage.jpg" }
+{ "name": "supreme schoolbag", "type": "groceries", "price": 500, "description": "Tel: 4928 4827", "imgSrc": "supreme schoolbag.jpg" }
 { "name": "Golden blue purse", "type": "groceries", "price": 148, "description": "Tel: 4928 5777", "imgSrc": "Golden blue purse.jpg" }
 { "name": "Xylophone", "type": "groceries", "price": 66, "description": "Tel: 5977 1399", "imgSrc": "Xylophone.jpg" }
 { "name": "Adidas Tubular Doom White Sneaker", "type": "groceries", "price": 378, "description": "Tel: 6992 1847", "imgSrc": "Adidas Tubular Doom White Sneaker.jpg" }
@@ -45,6 +47,7 @@
 { "name": "Olay facial set", "type": "groceries", "price": 210, "description": "Tel: 5928 4772", "imgSrc": "Olay facial set.jpg" }
 { "name": "Mochino bear umbrella", "type": "groceries", "price": 120, "description": "Tel: 3974 2877", "imgSrc": "Mochino bear umbrella.jpg" }
 { "name": "fry pan", "type": "groceries", "price": 68, "description": "Tel: 4987 3977", "imgSrc": "fry pan.jpg" }
+{ "name": "Ann Demeulemeeste wallet", "type": "groceries", "price": 2500, "description": "Tel: 4987 3217", "imgSrc": "Ann Demeulemeeste wallet.jpg" }
 { "name": "Mini heater", "type": "electronics", "price": 60, "description": "Tel: 2058 1849", "imgSrc": "Mini heater.jpg" }
 { "name": "fan", "type": "electronics", "price": 38, "description": "Tel: 2948 1875", "imgSrc": "fan.jpg" }
 { "name": "Hair dryer", "type": "electronics", "price": 40, "description": "Tel: 2355 6533", "imgSrc": "Hair dryer.jpg" }
@@ -65,4 +68,7 @@
 { "name": "electric rice cooker", "type": "electronics", "price": 248, "description": "Tel: 5928 4766", "imgSrc": "electric rice cooker.jpg" }
 { "name": "juicer", "type": "electronics", "price": 200, "description": "Tel: 2948 5728", "imgSrc": "juicer.jpg" }
 { "name": "AKG K450 earphone", "type": "electronics", "price": 300, "description": "Tel: 3948 2877", "imgSrc": "AKG K450 earphone.jpg" }
-
+{ "name": "Casio camera", "type": "electronics", "price": 400, "description": "Tel: 3928 7237", "imgSrc": "Casio camera.jpg" }
+{ "name": "iphone6s 64g", "type": "electronics", "price": 3800, "description": "Tel: 3948 2877", "imgSrc": "iphone6s 64g.jpg" }
+{ "name": "MacBook pro 13inch", "type": "electronics", "price": 300, "description": "Tel: 1208 3249", "imgSrc": "MacBook pro 13inch.jpg" }
+{ "name": "Samsung S24E390HL 24inch HDMI Displayer", "type": "electronics", "price": 888, "description": "Tel: 9514 2222", "imgSrc": "Samsung S24E390HL 24inch HDMI Displayer.jpg" }
