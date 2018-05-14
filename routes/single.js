@@ -18,46 +18,56 @@
 
 */
 
+var u = require('underscore');
 
 module.exports = function ( app ) {
 
   // Respond a GET request for the /single/:id page.
   // Display the information of a single commodity.
   app.get('/single/:id', function (req, res) {
+    var finished = u.after(7, doRender);
+
     var Items = global.dbHelper.getModel('item');
     // Get all types' sizes
     var all_size, book_size, electronics_size, groceries_size, lt100_size, gt100lt300_size, gt300_size;
     Items.count({}, function( err, count){
         all_size = count;
+        finished();
     });
     Items.count({ "type": "book" }, function( err, count){
         book_size = count;
+        finished();
     });
     Items.count({ "type": "electronics" }, function( err, count){
         electronics_size = count;
+        finished();
     });
     Items.count({ "type": "groceries" }, function( err, count){
         groceries_size = count;
+        finished();
     });
     Items.count({ "price": { "$lt": 100 }}, function( err, count){
         lt100_size = count;
+        finished();
     });
     Items.count({ "price": { "$gte": 100, "$lt": 300 }}, function( err, count){
         gt100lt300_size = count;
+        finished();
     });
     Items.count({ "price": { "$gte": 300 }}, function( err, count){
         gt300_size = count;
+        finished();
     });
 
-    // Get the ID of the commodity through req.params.id
-    Items.findOne({"_id": req.params.id}, function (error, doc) {
-      if (error) {
-        res.redirect('/');
-      } else if (!doc) {
-        req.session.error = "No information yet!";
-        res.redirect('/');
-      } else {
-        setTimeout(function () {
+    function doRender() {
+      // Get the ID of the commodity through req.params.id
+      Items.findOne({"_id": req.params.id}, function (error, doc) {
+        if (error) {
+          res.redirect('/');
+        } else if (!doc) {
+          req.session.error = "No information yet!";
+          res.redirect('/');
+        } else {
           Items.find({}, function (error, docs) {
             if (req.session.user) {
               res.render('single', {
@@ -77,9 +87,10 @@ module.exports = function ( app ) {
               });
             }
           });
-        }, 200);
-      }
-    });
+        }
+      });
+    }
+
   });
 
 };

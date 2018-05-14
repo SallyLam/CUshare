@@ -33,6 +33,7 @@ var options = {
     "type"
   ]
 };
+var u = require('underscore');
 
 module.exports = function ( app ) {
 
@@ -44,65 +45,88 @@ module.exports = function ( app ) {
     if (searchableString == "") {
       res.redirect('/store');
     } else {
+      var finished = u.after(9, doRender);
+
       // fuzzy search using fuse.js library
       var Item = global.dbHelper.getModel('item');
       // Get all types' sizes
-      var all_size, book_size, electronics_size, groceries_size, lt100_size, gt100lt300_size, gt300_size;
+      var all_size, book_size, electronics_size, groceries_size, lt100_size, gt100lt300_size, gt300_size, sell_size, buy_size;
       Item.count({}, function( err, count){
           all_size = count;
+          finished();
       });
       Item.count({ "type": "book" }, function( err, count){
           book_size = count;
+          finished();
       });
       Item.count({ "type": "electronics" }, function( err, count){
           electronics_size = count;
+          finished();
       });
       Item.count({ "type": "groceries" }, function( err, count){
           groceries_size = count;
+          finished();
       });
       Item.count({ "price": { "$lt": 100 }}, function( err, count){
           lt100_size = count;
+          finished();
       });
       Item.count({ "price": { "$gte": 100, "$lt": 300 }}, function( err, count){
           gt100lt300_size = count;
+          finished();
       });
       Item.count({ "price": { "$gte": 300 }}, function( err, count){
           gt300_size = count;
+          finished();
+      });
+      Item.count({"sellBuy": true}, function (err, count) {
+          sell_size = count;
+          finished();
+      });
+      Item.count({"sellBuy": false}, function (err, count) {
+          buy_size = count;
+          finished();
       });
 
-      setTimeout(function(){ Item.find({}, function (err, docs) {
-        var fuse = new Fuse(docs, options);
-        var fuseResult = fuse.search(searchableString);
-        if (fuseResult.length == 0) {
-          req.session.notification = "No search results.";
-          res.redirect('/store');
-        }
-        else {
-          resultList = fuseResult.map(x => x.item)
-          if (req.session.user) {
-            res.render('search', {
-              "resultList": resultList,
-              "isLogin": true,
-              "searchword": searchableString,
-              "all_size": all_size, "lt100_size": lt100_size,
-              "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
-              "book_size": book_size, "electronics_size": electronics_size,
-              "groceries_size": groceries_size,
-              "firstname": req.session.user.firstname
-            });
-          } else {
-            res.render('search', {
-              "resultList": resultList,
-              "searchword": searchableString,
-              "all_size": all_size, "lt100_size": lt100_size,
-              "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
-              "book_size": book_size, "electronics_size": electronics_size,
-              "groceries_size": groceries_size,
-              "isLogin": false
-            });
+      function doRender() {
+        Item.find({}, function (err, docs) {
+          var fuse = new Fuse(docs, options);
+          var fuseResult = fuse.search(searchableString);
+          if (fuseResult.length == 0) {
+            req.session.notification = "No search results.";
+            res.redirect('/store');
           }
-        }
-      }) }, 200);
+          else {
+            resultList = fuseResult.map(x => x.item)
+            if (req.session.user) {
+              res.render('search', {
+                "resultList": resultList,
+                "isLogin": true,
+                "searchword": searchableString,
+                "all_size": all_size, "lt100_size": lt100_size,
+                "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+                "book_size": book_size, "electronics_size": electronics_size,
+                "groceries_size": groceries_size,
+                "sell_size": sell_size,
+                "buy_size": buy_size,
+                "firstname": req.session.user.firstname
+              });
+            } else {
+              res.render('search', {
+                "resultList": resultList,
+                "searchword": searchableString,
+                "all_size": all_size, "lt100_size": lt100_size,
+                "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+                "book_size": book_size, "electronics_size": electronics_size,
+                "groceries_size": groceries_size,
+                "sell_size": sell_size,
+                "buy_size": buy_size,
+                "isLogin": false
+              });
+            }
+          }
+        });
+      }
 
     }
   });
