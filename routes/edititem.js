@@ -46,7 +46,7 @@ module.exports = function ( app ) {
       }
       // Edit if successfully find it.
       else if (doc) {
-        Item.update({"name":req.body.oriname}, {$set : { "type" : req.body.type, "price" : req.body.price , "description": req.body.description, "imgSrc" : req.body.imgSrc, "name" : req.body.name }}, function (error, doc) {
+        Item.updateOne({"name":req.body.oriname}, {$set : { "type" : req.body.type, "price" : req.body.price , "description": req.body.description, "imgSrc" : req.body.imgSrc, "name" : req.body.name }}, function (error, doc) {
           if (error) {
             req.session.error = 'Error occurred';
             res.sendStatus(500);

@@ -57,7 +57,9 @@ module.exports = function ( app ) {
           "price": req.body.price,
           "description": req.body.description,
           "imgSrc": req.body.imgSrc,
-          "type": req.body.type
+          "type": req.body.type,
+          "uUName": req.session.user.username,
+          "uFName": req.session.user.firstname
         }, function (error, doc) {
           if (error) {
             req.session.error = 'Network Error！';

@@ -35,7 +35,9 @@ module.exports = {
     type: { type: String },
     price: { type: Number },
     description: { type: String },
-    imgSrc: { type: String }
+    imgSrc: { type: String },
+    uUName: { type: String },  // user's username
+    uFName: { type: String }  // user's firstname
   },
   cart: {
     uId: { type: String },
@@ -47,7 +49,7 @@ module.exports = {
   },
   comment: {
     isAnonymous: { type: Boolean },
-    uId: { type: String },
+    uId: { type: String },  // user's _id (can be replaced by username)
     uFName: { type: String },  // user's firstname
     cId: { type: String },
     content: { type: String }

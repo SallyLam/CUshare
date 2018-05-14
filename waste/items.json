@@ -1,0 +1,74 @@
+{ "name": "About Financial Accounting", "type": "book", "price": 120, "description": "Tel: 8888 8888", "imgSrc": "About Financial Accounting.jpg", "uUName": "cynricfu", "uFName": "Cynric" }
+{ "name": "Assurance and Auditing", "type": "book", "price": 200, "description": "Tel: 8888 8888", "imgSrc": "Assurance and Auditing.jpg", "uUName": "cynricfu", "uFName": "Cynric" }
+{ "name": "Corporate Finance", "type": "book", "price": 150, "description": "Tel: 8888 8888", "imgSrc": "Corporate Finance.jpg", "uUName": "cynricfu", "uFName": "Cynric" }
+{ "name": "Macroeconocmics", "type": "book", "price": 90, "description": "Tel: 8888 8888", "imgSrc": "Macroeconocmics.jpg", "uUName": "cynricfu", "uFName": "Cynric" }
+{ "name": "The key to weaving", "type": "book", "price": 40, "description": "Tel: 8888 8888", "imgSrc": "The key to weaving.jpg", "uUName": "cynricfu", "uFName": "Cynric" }
+{ "name": "Extended Mathematics", "type": "book", "price": 50, "description": "Tel: 8888 8888", "imgSrc": "Extended Mathematics.jpg", "uUName": "cynricfu", "uFName": "Cynric" }
+{ "name": "ipad", "type": "electronics", "price": 1500, "description": "Tel: 8888 8888", "imgSrc": "ipad.jpg", "uUName": "cynricfu", "uFName": "Cynric" }
+{ "name": "ipone", "type": "electronics", "price": 3000, "description": "Tel: 8888 8888", "imgSrc": "iphone.jpg", "uUName": "cynricfu", "uFName": "Cynric" }
+{ "name": "macbook", "type": "electronics", "price": 4500, "description": "Tel: 8888 8888", "imgSrc": "macbook.jpg", "uUName": "cynricfu", "uFName": "Cynric" }
+{ "name": "AKG earphone", "type": "electronics", "price": 800, "description": "Tel: 8888 8888", "imgSrc": "AKG earphone.jpg", "uUName": "cynricfu", "uFName": "Cynric" }
+{ "name": "laser mouse", "type": "electronics", "price": 200, "description": "Tel: 8888 8888", "imgSrc": "laser mouse.jpg", "uUName": "cynricfu", "uFName": "Cynric" }
+{ "name": "Samsung Galaxy Note4 32GB", "type": "electronics", "price": 2300, "description": "Tel: 8888 8888", "imgSrc": "Samsung Galaxy Note4 32GB.jpg", "uUName": "cynricfu", "uFName": "Cynric" }
+{ "name": "Samsung Note 3", "type": "electronics", "price": 1400, "description": "Tel: 8888 8888", "imgSrc": "Samsung Note 3.jpg", "uUName": "cynricfu", "uFName": "Cynric" }
+{ "name": "eye shadow", "type": "groceries", "price": 150, "description": "Tel: 8888 8888", "imgSrc": "eye shadow.jpg", "uUName": "cynricfu", "uFName": "Cynric" }
+{ "name": "shirt", "type": "groceries", "price": 88, "description": "Tel: 8888 8888", "imgSrc": "shirt.jpg", "uUName": "cynricfu", "uFName": "Cynric" }
+{ "name": "thermos bottle", "type": "groceries", "price": 80, "description": "Tel: 8888 8888", "imgSrc": "thermos bottle.jpg", "uUName": "cynricfu", "uFName": "Cynric" }
+{ "name": "Principles of Economics", "type": "book", "price": 100, "description": "Tel: 8823 4688", "imgSrc": "Principles of Economics.jpg", "uUName": "cynricfu", "uFName": "Cynric" }
+{ "name": "The Law of Evidence in South Africa", "type": "book", "price": 120, "description": "Tel: 8238 1258", "imgSrc": "The Law of Evidence in South Africa.jpeg", "uUName": "jasperliu", "uFName": "Jasper" }
+{ "name": "Easy Steps to Chinese", "type": "book", "price": 30, "description": "Tel: 8238 1258", "imgSrc": "Easy Steps to Chinese.jpg", "uUName": "jasperliu", "uFName": "Jasper" }
+{ "name": "Brighter Biology", "type": "book", "price": 68, "description": "Tel: 5538 2358", "imgSrc": "Brighter Biology.jpg", "uUName": "jasperliu", "uFName": "Jasper" }
+{ "name": "Principles of Accounts in Hong Kong", "type": "book", "price": 95, "description": "Tel: 8238 1258", "imgSrc": "Principles of Accounts in Hong Kong.jpg", "uUName": "jasperliu", "uFName": "Jasper" }
+{ "name": "Organic History", "type": "book", "price": 110, "description": "Tel: 3538 1798", "imgSrc": "Organic History.jpg", "uUName": "jasperliu", "uFName": "Jasper" }
+{ "name": "Economics", "type": "book", "price": 65, "description": "Tel: 3235 1068", "imgSrc": "Economics.jpeg", "uUName": "jasperliu", "uFName": "Jasper" }
+{ "name": "Managerial Economics", "type": "book", "price": 120, "description": "Tel: 8238 1258", "imgSrc": "Managerial Economics.jpeg", "uUName": "jasperliu", "uFName": "Jasper" }
+{ "name": "New Century Mathematics", "type": "book", "price": 100, "description": "Tel: 1238 1358", "imgSrc": "New Century Mathematics.jpg", "uUName": "jasperliu", "uFName": "Jasper" }
+{ "name": "Equity Asset Valuation.jpeg", "type": "book", "price": 99, "description": "Tel: 7838 1258", "imgSrc": "Equity Asset Valuation.jpeg", "uUName": "jasperliu", "uFName": "Jasper" }
+{ "name": "Biochemistry", "type": "book", "price": 82, "description": "Tel: 3238 5658", "imgSrc": "Biochemistry.jpeg", "uUName": "jasperliu", "uFName": "Jasper" }
+{ "name": "Intermediate Microeconomics", "type": "book", "price": 125, "description": "Tel: 6790 5628", "imgSrc": "Intermediate Microeconomics.jpg", "uUName": "jasperliu", "uFName": "Jasper" }
+{ "name": "In Dialogue with Humanity", "type": "book", "price": 40, "description": "Tel: 6258 2568", "imgSrc": "In Dialogue with Humanity.jpg", "uUName": "jasperliu", "uFName": "Jasper" }
+{ "name": "In Dialogue with Nature", "type": "book", "price": 40, "description": "Tel: 8628 1678", "imgSrc": "In Dialogue with Nature.jpg", "uUName": "jasperliu", "uFName": "Jasper" }
+{ "name": "Water bottle", "type": "groceries", "price": 48, "description": "Tel: 8245 5218", "imgSrc": "Water Bottle.jpg", "uUName": "jasperliu", "uFName": "Jasper" }
+{ "name": "china bowl", "type": "groceries", "price": 120, "description": "Tel: 2463 5678", "imgSrc": "china bowl.jpg", "uUName": "jasperliu", "uFName": "Jasper" }
+{ "name": "Tayohya towel set", "type": "groceries", "price": 88, "description": "Tel: 2556 9239", "imgSrc": "Tayohya towel set.jpg", "uUName": "jasperliu", "uFName": "Jasper" }
+{ "name": "white blouse", "type": "groceries", "price": 135, "description": "Tel: 0709 2953", "imgSrc": "white blouse.jpg", "uUName": "jasperliu", "uFName": "Jasper" }
+{ "name": "black jeans", "type": "groceries", "price": 125, "description": "Tel: 9592 1740", "imgSrc": "black jeans.jpg", "uUName": "jasperliu", "uFName": "Jasper" }
+{ "name": "AJ sneakers", "type": "groceries", "price": 400, "description": "Tel: 2984 5819", "imgSrc": "AJ sneakers.jpg", "uUName": "jasperliu", "uFName": "Jasper" }
+{ "name": "Zojirushi water bottle", "type": "groceries", "price": 180, "description": "Tel: 5298 2847", "imgSrc": "Zojirushi water bottle.jpg", "uUName": "jasperliu", "uFName": "Jasper" }
+{ "name": "Nike black sneakers", "type": "groceries", "price": 258, "description": "Tel: 4928 4827", "imgSrc": "Nike black sneakers.jpg", "uUName": "vitochan", "uFName": "Vito" }
+{ "name": "Samsonite 20inc PC luggage", "type": "groceries", "price": 500, "description": "Tel: 4928 4827", "imgSrc": "Samsonite 20inc PC luggage.jpg", "uUName": "vitochan", "uFName": "Vito" }
+{ "name": "supreme schoolbag", "type": "groceries", "price": 500, "description": "Tel: 4928 4827", "imgSrc": "supreme schoolbag.jpg", "uUName": "vitochan", "uFName": "Vito" }
+{ "name": "Golden blue purse", "type": "groceries", "price": 148, "description": "Tel: 4928 5777", "imgSrc": "Golden blue purse.jpg", "uUName": "vitochan", "uFName": "Vito" }
+{ "name": "Xylophone", "type": "groceries", "price": 66, "description": "Tel: 5977 1399", "imgSrc": "Xylophone.jpg", "uUName": "vitochan", "uFName": "Vito" }
+{ "name": "Adidas Tubular Doom White Sneaker", "type": "groceries", "price": 378, "description": "Tel: 6992 1847", "imgSrc": "Adidas Tubular Doom White Sneaker.jpg", "uUName": "vitochan", "uFName": "Vito" }
+{ "name": "Supreme water bottle", "type": "groceries", "price": 150, "description": "Tel: 2988 1747", "imgSrc": "Supreme water bottle.jpg", "uUName": "vitochan", "uFName": "Vito" }
+{ "name": "Tom Ford Lipstick 80", "type": "groceries", "price": 120, "description": "Tel: 4888 2749", "imgSrc": "Tom Ford Lipstick 80.jpg", "uUName": "vitochan", "uFName": "Vito" }
+{ "name": "food container", "type": "groceries", "price": 58, "description": "Tel: 2991 1333", "imgSrc": "food container.jpg", "uUName": "vitochan", "uFName": "Vito" }
+{ "name": "Olay facial set", "type": "groceries", "price": 210, "description": "Tel: 5928 4772", "imgSrc": "Olay facial set.jpg", "uUName": "vitochan", "uFName": "Vito" }
+{ "name": "Mochino bear umbrella", "type": "groceries", "price": 120, "description": "Tel: 3974 2877", "imgSrc": "Mochino bear umbrella.jpg", "uUName": "vitochan", "uFName": "Vito" }
+{ "name": "fry pan", "type": "groceries", "price": 68, "description": "Tel: 4987 3977", "imgSrc": "fry pan.jpg", "uUName": "vitochan", "uFName": "Vito" }
+{ "name": "Ann Demeulemeeste wallet", "type": "groceries", "price": 2500, "description": "Tel: 4987 3217", "imgSrc": "Ann Demeulemeeste wallet.jpg", "uUName": "vitochan", "uFName": "Vito" }
+{ "name": "Mini heater", "type": "electronics", "price": 60, "description": "Tel: 2058 1849", "imgSrc": "Mini heater.jpg", "uUName": "vitochan", "uFName": "Vito" }
+{ "name": "fan", "type": "electronics", "price": 38, "description": "Tel: 2948 1875", "imgSrc": "fan.jpg", "uUName": "vitochan", "uFName": "Vito" }
+{ "name": "Hair dryer", "type": "electronics", "price": 40, "description": "Tel: 2355 6533", "imgSrc": "Hair dryer.jpg", "uUName": "vitochan", "uFName": "Vito" }
+{ "name": "water boiler", "type": "electronics", "price": 38, "description": "Tel: 2988 2745", "imgSrc": "water boiler.jpg", "uUName": "vitochan", "uFName": "Vito" }
+{ "name": "body weight scale", "type": "electronics", "price": 26, "description": "Tel: 4938 1737", "imgSrc": "body weight scale.jpg", "uUName": "vitochan", "uFName": "Vito" }
+{ "name": "Acer w500 laptop", "type": "electronics", "price": 1200, "description": "Tel: 2398 4958", "imgSrc": "Acer w500 laptop.jpg", "uUName": "vitochan", "uFName": "Vito" }
+{ "name": "k100 keyboard", "type": "electronics", "price": 88, "description": "Tel: 2948 5787", "imgSrc": "k100 keyboard.jpg", "uUName": "vitochan", "uFName": "Vito" }
+{ "name": "iPhone5s 16G", "type": "electronics", "price": 678, "description": "Tel: 9687 1398", "imgSrc": "iPhone5s 16G.jpg", "uUName": "sallylam", "uFName": "Sally" }
+{ "name": "Dell Latitude 10-ST2 pad", "type": "electronics", "price": 580, "description": "Tel: 2485 1844", "imgSrc": "Dell Latitude 10-ST2 pad.jpg", "uUName": "sallylam", "uFName": "Sally" }
+{ "name": "Toshiba WT8-A pad", "type": "electronics", "price": 468, "description": "Tel: 5982 5977", "imgSrc": "Toshiba WT8-A pad.jpg", "uUName": "sallylam", "uFName": "Sally" }
+{ "name": "Sony MDR100AAP earphone", "type": "electronics", "price": 400, "description": "Tel: 5923 5872", "imgSrc": "Sony MDR100AAP earphone.jpg", "uUName": "sallylam", "uFName": "Sally" }
+{ "name": "Samsung wireless charger", "type": "electronics", "price": 68, "description": "Tel: 2948 1844", "imgSrc": "Samsung wireless charger.jpg", "uUName": "sallylam", "uFName": "Sally" }
+{ "name": "Sony SW11 radio", "type": "electronics", "price": 308, "description": "Tel: 5982 4872", "imgSrc": "Sony SW11 radio.jpg", "uUName": "sallylam", "uFName": "Sally" }
+{ "name": "Sony A7 II Alpha7 camera", "type": "electronics", "price": 8000, "description": "Tel: 5957 8377", "imgSrc": "Sony A7 II Alpha7 camera.jpg", "uUName": "sallylam", "uFName": "Sally" }
+{ "name": "torch", "type": "electronics", "price": 75, "description": "Tel: 2948 4877", "imgSrc": "torch.jpg", "uUName": "sallylam", "uFName": "Sally" }
+{ "name": "electronic shaver", "type": "electronics", "price": 120, "description": "Tel: 8399 2374", "imgSrc": "electronic shaver.jpg", "uUName": "sallylam", "uFName": "Sally" }
+{ "name": "fmart robot vacuum cleaner", "type": "electronics", "price": 358, "description": "Tel: 2948 1746", "imgSrc": "fmart robot vacuum cleaner.jpg", "uUName": "sallylam", "uFName": "Sally" }
+{ "name": "electric rice cooker", "type": "electronics", "price": 248, "description": "Tel: 5928 4766", "imgSrc": "electric rice cooker.jpg", "uUName": "sallylam", "uFName": "Sally" }
+{ "name": "juicer", "type": "electronics", "price": 200, "description": "Tel: 2948 5728", "imgSrc": "juicer.jpg", "uUName": "sallylam", "uFName": "Sally" }
+{ "name": "AKG K450 earphone", "type": "electronics", "price": 300, "description": "Tel: 3948 2877", "imgSrc": "AKG K450 earphone.jpg", "uUName": "sallylam", "uFName": "Sally" }
+{ "name": "Casio camera", "type": "electronics", "price": 400, "description": "Tel: 3928 7237", "imgSrc": "Casio camera.jpg", "uUName": "sallylam", "uFName": "Sally" }
+{ "name": "iphone6s 64g", "type": "electronics", "price": 3800, "description": "Tel: 3948 2877", "imgSrc": "iphone6s 64g.jpg", "uUName": "sallylam", "uFName": "Sally" }
+{ "name": "MacBook pro 13inch", "type": "electronics", "price": 300, "description": "Tel: 1208 3249", "imgSrc": "MacBook pro 13inch.jpg", "uUName": "sallylam", "uFName": "Sally" }
+{ "name": "Samsung S24E390HL 24inch HDMI Displayer", "type": "electronics", "price": 888, "description": "Tel: 9514 2222", "imgSrc": "Samsung S24E390HL 24inch HDMI Displayer.jpg", "uUName": "sallylam", "uFName": "Sally" }

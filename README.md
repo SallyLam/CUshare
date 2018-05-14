@@ -19,7 +19,7 @@
 ### Import data
 
 ```
-mongoimport --db test1 --collection items [--drop] --file ./public/images/import/import.json
+./import.sh
 ```
 
 ## Details
