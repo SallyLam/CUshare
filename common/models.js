@@ -21,28 +21,35 @@
 
 
 module.exports = {
-    user: {
-        username: { type: String, required: true },
-        pwd: { type: String, required: true },
-        email: { type: String, required: true },
-        firstname: String,
-        lastname: String,
-        phone: String,
-        address: String
-    },
-    item: {
-        name: String,
-        type: String,
-        price: Number,
-	description: String,
-        imgSrc: String
-    },
-    cart:{
-        uId: { type: String },
-        cId: { type: String },
-        cName: { type: String },
-        cPrice: { type: String },
-        cImgSrc: { type:String } ,
-        cQuantity: { type: Number }
-    }
+  user: {
+    username: { type: String, required: true, unique: true },
+    pwd: { type: String, required: true },
+    email: { type: String, required: true },
+    firstname: { type: String },
+    lastname: { type: String },
+    phone: { type: String },
+    address: { type: String }
+  },
+  item: {
+    name: { type: String },
+    type: { type: String },
+    price: { type: Number },
+    description: { type: String },
+    imgSrc: { type: String }
+  },
+  cart: {
+    uId: { type: String },
+    cId: { type: String },
+    cName: { type: String },
+    cPrice: { type: String },
+    cImgSrc: { type:String } ,
+    cQuantity: { type: Number }
+  },
+  comment: {
+    isAnonymous: { type: Boolean },
+    uId: { type: String },  // user's firstname
+    uFName: { type: String },
+    cId: { type: String },
+    content: { type: String }
+  }
 };

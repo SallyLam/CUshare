@@ -258,102 +258,98 @@
 			</div>
 		</div>
 	</div>
-    <script src="http://127.0.0.1:8000/socket.io/socket.io.js"></script>
+	<script src="http://127.0.0.1:8000/socket.io/socket.io.js"></script>
 
-    <script>
-        var getNode = function(s){
-            return document.querySelector(s);
+	<script>
+	var getNode = function (s) {
+		return document.querySelector(s);
+	},
+	//Get required nodes
+	status = getNode('.chat-status span'),
+	messages = getNode('.chat-messages'),
+	textarea = getNode('.chat input'),
+	StatusDefault = status.textContent,
+	setStatus= function (s) {
+		status.textContent = s;
+		if (s!== StatusDefault) {
+			var delay = setTimeout(function () {
+				setStatus(StatusDefault);
+			}, 3000);
+		}
+	};
 
-        },
+	try {
+		var socket = io.connect('http://127.0.0.1:8000');
+	} catch (e) {
+		//set status to warn user
+	}
 
-        //Get required nodes
-        status = getNode('.chat-status span'),
-        messages = getNode('.chat-messages'),
-        textarea = getNode('.chat input'),
+	if (socket !== undefined) {
+		//Lisen for output
+		socket.on('output', function (data) {
+			if (data.length) {
+				for (var x = 0; x < data.length; x++) {
+					var sender = document.createElement('strong');
+					var message = document.createElement('li');
+					var br1 = document.createElement('br');
+					var br2 = document.createElement('br');
 
-        StatusDefault = status.textContent,
+					messages.appendChild(br2);
+					messages.insertBefore(br2, messages.firstChild);
+					message.setAttribute('class','chat-message ui-state-default');
+					message.setAttribute('style','white-space:pre');
+					message.textContent = data[x].content;
+					messages.appendChild(message);
+					messages.insertBefore(message, messages.firstChild);
 
-        setStatus= function(s){
-            status.textContent = s;
+					messages.appendChild(br1);
+					messages.insertBefore(br1, messages.firstChild);
 
-            if(s!== StatusDefault)
-            {
-                var delay = setTimeout(function(){
-                    setStatus(StatusDefault);
-                },3000);
-            }
-        };
+					sender.setAttribute('class',"chat-message pull-left primary-font");
+					sender.textContent = data[x].uFName + ':';
+					messages.appendChild(sender);
+					messages.insertBefore(sender, messages.firstChild);
+				}
+			}
+		});
 
-        try{
-            var socket = io.connect('http://127.0.0.1:8000');
-        }catch(e)
-        {
-            //set status to warn user
-        }
+		//listen for socket status
+		socket.on('status', function (data) {
+			setStatus((typeof data === 'object') ? data.message : data);
+			if (data.clear === true ) {
+				textarea.value = '';
+			}
+		});
 
-        if(socket !== undefined)
-        {
-            //Lisen for output
-            socket.on('output', function(data){
-               if(data.length)
-               {
-								for(var x=0;x<data.length; x=x+1) {
-									var sender = document.createElement('strong');
-									var message = document.createElement('li');
-									var br1 = document.createElement('br');
-									var br2 = document.createElement('br');
+		//Listen for keydown
+		textarea.addEventListener('keydown', function (event) {
+			<% if (isLogin) { %>
+			var isAnonymous = false,
+			uId = "<%- userid %>";
+			uFName = "<%- firstname %>";
+			<% } else { %>
+			var isAnonymous = true,
+			uId = "Anonymous";
+			uFName = "Anonymous";
+			<% } %>
+			var cId = "<%- itemid %>";
+			if (event.which === 13 && event.shiftKey == false) {
+				socket.emit('input', {
+					"isAnonymous": isAnonymous,
+					"uId": uId,
+					"uFName": uFName,
+					"cId": cId,
+					"content": this.value
+				});
+				event.preventDefault();
+			}
+		});
 
-									messages.appendChild(br2);
-									messages.insertBefore(br2, messages.firstChild);
-
-									message.setAttribute('class','chat-message ui-state-default');
-									message.setAttribute('style','white-space:pre');
-									message.textContent = data[x].message;
-									messages.appendChild(message);
-									messages.insertBefore(message, messages.firstChild);
-
-									messages.appendChild(br1);
-									messages.insertBefore(br1, messages.firstChild);
-
-									sender.setAttribute('class',"chat-message pull-left primary-font");
-									sender.textContent = data[x].name + ':';
-									messages.appendChild(sender);
-									messages.insertBefore(sender, messages.firstChild);
-
-								}
-               }
-            });
-
-            //listen for s status
-            socket.on('status',function(data){
-                setStatus((typeof data === 'object')? data.message: data);
-
-                if(data.clear === true )
-                {
-                    textarea.value = '';
-                }
-            });
-
-            //Listen for keydown
-            textarea.addEventListener('keydown', function(event){
-                var self = this,
-					name = "<%- firstname %>",
-					ID = "<%- itemid%>";
-                   if(event.which === 13 && event.shiftKey == false)
-                   {
-                        socket.emit('input',{
-						   "ID": ID,
-                           "name": name,
-                           "message":self.value
-                        });
-
-                        event.preventDefault();
-                   }
-            });
-        }
-
-    </script>
-    <!--chat end here-->
+		// Request for comments on first loading
+		socket.emit('getRecent', {"cId": "<%- itemid %>"});
+	}
+	</script>
+	<!--chat end here-->
 	<!--footer start here-->
 	<div class="footer wow bounce" data-wow-delay="0.1s">
 			<div class="container">

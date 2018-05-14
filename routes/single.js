@@ -57,29 +57,77 @@ module.exports = function ( app ) {
         req.session.error = "No information yet!";
         res.redirect('/');
       } else {
-        setTimeout(function(){ Items.find({}, function (error, docs) {
-          if (req.session.user) {
-            res.render('single', { "Items": docs, "itemid" : req.params.id, "itemname": doc.name, 
-              "itemtype": doc.type, "firstname" : req.session.user.firstname, "isLogin": true,
-              "itemprice": doc.price, "item_description": doc.description, "imgSrc": doc.imgSrc, 
-              "all_size": all_size, "lt100_size": lt100_size, "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
-            "book_size": book_size, "electronics_size": electronics_size, "groceries_size": groceries_size});
-          } else {
-            res.render('single', {  "Items": docs, "itemid" : req.params.id, "itemname": doc.name, 
-              "itemtype": doc.type, "firstname" : "Anonymous", "isLogin": false, "itemprice": doc.price,
-              "item_description": doc.description, "imgSrc": doc.imgSrc,
-            "all_size": all_size, "lt100_size": lt100_size, "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
-            "book_size": book_size, "electronics_size": electronics_size, "groceries_size": groceries_size });
-          }
-        }) }, 200);
+        setTimeout(function () {
+          Items.find({}, function (error, docs) {
+            if (req.session.user) {
+              res.render('single', { "Items": docs, "itemid": req.params.id, "itemname": doc.name,
+                "itemtype": doc.type, "firstname": req.session.user.firstname, "userid": req.session.user._id, "isLogin": true,
+                "itemprice": doc.price, "item_description": doc.description, "imgSrc": doc.imgSrc,
+                "all_size": all_size, "lt100_size": lt100_size, "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+                "book_size": book_size, "electronics_size": electronics_size, "groceries_size": groceries_size});
+            } else {
+              res.render('single', {  "Items": docs, "itemid": req.params.id, "itemname": doc.name,
+                "itemtype": doc.type, "firstname": "Anonymous", "userid": null, "isLogin": false,
+                "itemprice": doc.price, "item_description": doc.description, "imgSrc": doc.imgSrc,
+                "all_size": all_size, "lt100_size": lt100_size, "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+                "book_size": book_size, "electronics_size": electronics_size, "groceries_size": groceries_size });
+            }
+          });
+        }, 200);
       }
     });
   });
 
 };
 
-var mongo = require('mongodb').MongoClient,
-client = require('socket.io').listen(8000).sockets;
+var Comment = global.dbHelper.getModel('comment');
+var client = require('socket.io').listen(8000).sockets;
+client.on('connection', function (socket) {
+  sendStatus = function (status) {
+    socket.emit('status', status);
+  };
+
+  // Wait for getRecent request from the client
+  socket.on('getRecent', function (data) {
+    Comment.find({"cId": data.cId}, null, {sort: {_id: -1}, limit: 100}, function (err, docs) {
+      if (err) throw err;
+      socket.emit('output', docs);
+    });
+  });
+
+  // Wait for input
+  socket.on('input', function (data) {
+    var whitespace = /^\s*$/;
+    if (whitespace.test(data.uFName) || whitespace.test(data.content)) {
+      sendStatus('User Firstname or Comment Content Required');
+    }
+    else {
+      Comment.create({
+        isAnonymous: data.isAnonymous,
+        uId: data.uId,
+        uFName: data.uFName,
+        cId: data.cId,
+        content: data.content
+      }, function (err, doc) {
+        if (err) {
+          throw err;
+        }
+        else {
+          // Emit latest messages to all clients
+          client.emit('output', [data]);
+          sendStatus({
+            message: "Message sent",
+            clear: true
+          });
+        }
+      });
+    }
+  });
+});
+
+
+/*
+var mongo = require('mongodb').MongoClient;
 
 mongo.connect('mongodb://127.0.0.1:27017/test1', function(err,dbClient){
   var db = dbClient.db('test1')
@@ -118,3 +166,4 @@ mongo.connect('mongodb://127.0.0.1:27017/test1', function(err,dbClient){
   });
 
 });
+*/
