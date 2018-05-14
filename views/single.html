@@ -199,7 +199,7 @@
 					</div>
 					<div class="products-row contact-prod">
 						<h3>Recommendations</h3>
-						<%for(var i = 0; i < 8; i++){ if(!Items[i].name)continue;%>
+						<%var count = 0; var i = Math.floor(Math.random() * all_size); for(; count < 8; i++){ if (i == all_size) {i = -1; continue;} else if(!Items[i].name || Items[i].type != itemtype) {continue;} count += 1;%>
 					                    <a onclick="location.href='/single/<%=Items[i]._id%>'"><div class="product-grid">
 											<div class="more-product-info">
 												<span> </span>
