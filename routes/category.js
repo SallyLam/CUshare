@@ -18,14 +18,7 @@
 
 */
 
-function waitForElement(ele){
-    if(typeof ele !== "undefined"){
-        //variable exists, do what you want
-    }
-    else{
-        setTimeout(waitForElement, 1);
-    }
-}
+var u = require('underscore')
 
 module.exports = function ( app ) {
 
@@ -38,57 +31,7 @@ module.exports = function ( app ) {
   // Respond a GET request for the /book/:page page.
   // Display books at the particular page.
   app.get('/book/:page', function (req, res) {
-    var Item = global.dbHelper.getModel('item');
-    // Get all types' sizes
-    var all_size, book_size, electronics_size, groceries_size, lt100_size, gt100lt300_size, gt300_size;
-    Item.count({}, function( err, count){
-        all_size = count;
-    });
-    Item.count({ "type": "book" }, function( err, count){
-        book_size = count;
-    });
-    Item.count({ "type": "electronics" }, function( err, count){
-        electronics_size = count;
-    });
-    Item.count({ "type": "groceries" }, function( err, count){
-        groceries_size = count;
-    });
-    Item.count({ "price": { "$lt": 100 }}, function( err, count){
-        lt100_size = count;
-    });
-    Item.count({ "price": { "$gte": 100, "$lt": 300 }}, function( err, count){
-        gt100lt300_size = count;
-    });
-    Item.count({ "price": { "$gte": 300 }}, function( err, count){
-        gt300_size = count;
-    });
-
-    setTimeout(function(){ Item.find({ "type": "book" }, function (error, docs) {
-      if (error) {
-        res.redirect('/');
-      } else if (!docs) {
-        req.session.error = "No item yet!";
-        res.redirect('/');
-      } else {
-        var page = req.params.page;
-        if (req.session.user) {
-          res.render('book', { "Items": docs.slice(16*(page-1), 16*page),
-                                   "isLogin": true, "page": page,
-                                   "all_size": all_size, "lt100_size": lt100_size,
-                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
-                                   "book_size": book_size, "electronics_size": electronics_size,
-                                   "groceries_size": groceries_size,
-                                   "firstname": req.session.user.firstname });
-        } else {
-          res.render('book', { "Items": docs.slice(16*(page-1), 16*page),
-                                "all_size": all_size, "lt100_size": lt100_size,
-                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
-                                   "book_size": book_size, "electronics_size": electronics_size,
-                                   "groceries_size": groceries_size,
-                                   "isLogin": false, "page": page});
-        }
-      }
-    }) }, 200);
+    renderStore({"type": "book"}, 'Book', req, res);
   });
 
   // Respond a GET request for the /electronics page.
@@ -100,57 +43,7 @@ module.exports = function ( app ) {
   // Respond a GET request for the /electronics/:page page.
   // Display electronics artworks at the particular page.
   app.get('/electronics/:page', function (req, res) {
-    var Item = global.dbHelper.getModel('item');
-    // Get all types' sizes
-    var all_size, book_size, electronics_size, groceries_size, lt100_size, gt100lt300_size, gt300_size;
-    Item.count({}, function( err, count){
-        all_size = count;
-    });
-    Item.count({ "type": "book" }, function( err, count){
-        book_size = count;
-    });
-    Item.count({ "type": "electronics" }, function( err, count){
-        electronics_size = count;
-    });
-    Item.count({ "type": "groceries" }, function( err, count){
-        groceries_size = count;
-    });
-    Item.count({ "price": { "$lt": 100 }}, function( err, count){
-        lt100_size = count;
-    });
-    Item.count({ "price": { "$gte": 100, "$lt": 300 }}, function( err, count){
-        gt100lt300_size = count;
-    });
-    Item.count({ "price": { "$gte": 300 }}, function( err, count){
-        gt300_size = count;
-    });
-
-    setTimeout(function(){ Item.find({ "type": "electronics" }, function (error, docs) {
-      if (error) {
-        res.redirect('/');
-      } else if (!docs) {
-        req.session.error = "No item yet!";
-        res.redirect('/');
-      } else{
-        var page = req.params.page;
-        if (req.session.user) {
-          res.render('electronics', { "Items": docs.slice(16*(page-1), 16*page),
-                                   "isLogin": true, "page": page,
-                                   "all_size": all_size, "lt100_size": lt100_size,
-                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
-                                   "book_size": book_size, "electronics_size": electronics_size,
-                                   "groceries_size": groceries_size,
-                                   "firstname": req.session.user.firstname });
-        } else {
-          res.render('electronics', { "Items": docs.slice(16*(page-1), 16*page),
-                                  "all_size": all_size, "lt100_size": lt100_size,
-                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
-                                   "book_size": book_size, "electronics_size": electronics_size,
-                                   "groceries_size": groceries_size,
-                                   "isLogin": false, "page": page});
-        }
-      }
-    }) }, 200);
+    renderStore({"type": "electronics"}, 'Electronics', req, res);
   });
 
   // Respond a GET request for the /groceries page.
@@ -162,57 +55,7 @@ module.exports = function ( app ) {
   // Respond a GET request for the /groceries page.
   // Display groceries at the particular page.
   app.get('/groceries/:page', function (req, res) {
-    var Item = global.dbHelper.getModel('item');
-    // Get all types' sizes
-    var all_size, book_size, electronics_size, groceries_size, lt100_size, gt100lt300_size, gt300_size;
-    Item.count({}, function( err, count){
-        all_size = count;
-    });
-    Item.count({ "type": "book" }, function( err, count){
-        book_size = count;
-    });
-    Item.count({ "type": "electronics" }, function( err, count){
-        electronics_size = count;
-    });
-    Item.count({ "type": "groceries" }, function( err, count){
-        groceries_size = count;
-    });
-    Item.count({ "price": { "$lt": 100 }}, function( err, count){
-        lt100_size = count;
-    });
-    Item.count({ "price": { "$gte": 100, "$lt": 300 }}, function( err, count){
-        gt100lt300_size = count;
-    });
-    Item.count({ "price": { "$gte": 300 }}, function( err, count){
-        gt300_size = count;
-    });
-
-    setTimeout(function(){ Item.find({ "type": "groceries" }, function (error, docs) {
-      if (error) {
-        res.redirect('/');
-      } else if (!docs) {
-        req.session.error = "No item yet!";
-        res.redirect('/');
-      } else {
-        var page = req.params.page;
-        if (req.session.user) {
-          res.render('groceries', { "Items": docs.slice(16*(page-1), 16*page),
-                                   "isLogin": true, "page": page,
-                                   "all_size": all_size, "lt100_size": lt100_size,
-                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
-                                   "book_size": book_size, "electronics_size": electronics_size,
-                                   "groceries_size": groceries_size,
-                                   "firstname": req.session.user.firstname });
-        } else {
-          res.render('groceries', { "Items": docs.slice(16*(page-1), 16*page),
-                                   "all_size": all_size, "lt100_size": lt100_size,
-                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
-                                   "book_size": book_size, "electronics_size": electronics_size,
-                                   "groceries_size": groceries_size,
-                                   "isLogin": false, "page": page});
-        }
-      }
-    }) }, 200);
+    renderStore({"type": "groceries"}, 'Groceries', req, res);
   });
 
   // Respond a GET request for the /100 page.
@@ -224,57 +67,7 @@ module.exports = function ( app ) {
   // Respond a GET request for the /100/:page page.
   // Display artworks under 100 HKD at the particular page.
   app.get('/100/:page', function (req, res) {
-    var Item = global.dbHelper.getModel('item');
-    // Get all types' sizes
-    var all_size, book_size, electronics_size, groceries_size, lt100_size, gt100lt300_size, gt300_size;
-    Item.count({}, function( err, count){
-        all_size = count;
-    });
-    Item.count({ "type": "book" }, function( err, count){
-        book_size = count;
-    });
-    Item.count({ "type": "electronics" }, function( err, count){
-        electronics_size = count;
-    });
-    Item.count({ "type": "groceries" }, function( err, count){
-        groceries_size = count;
-    });
-    Item.count({ "price": { "$lt": 100 }}, function( err, count){
-        lt100_size = count;
-    });
-    Item.count({ "price": { "$gte": 100, "$lt": 300 }}, function( err, count){
-        gt100lt300_size = count;
-    });
-    Item.count({ "price": { "$gte": 300 }}, function( err, count){
-        gt300_size = count;
-    });
-
-    setTimeout(function(){ Item.find({ "price": { "$lt": 100 } }, function (error, docs) {
-      if (error) {
-        res.redirect('/');
-      } else if (!docs) {
-        req.session.error = "No item yet!";
-        res.redirect('/');
-      } else {
-        var page = req.params.page;
-        if (req.session.user) {
-          res.render('100', { "Items": docs.slice(16*(page-1), 16*page),
-                                   "isLogin": true, "page": page,
-                                   "all_size": all_size, "lt100_size": lt100_size,
-                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
-                                   "book_size": book_size, "electronics_size": electronics_size,
-                                   "groceries_size": groceries_size,
-                                   "firstname": req.session.user.firstname });
-        } else {
-          res.render('100', { "Items": docs.slice(16*(page-1), 16*page),
-                              "all_size": all_size, "lt100_size": lt100_size,
-                              "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
-                              "book_size": book_size, "electronics_size": electronics_size,
-                                   "groceries_size": groceries_size,
-                                   "isLogin": false, "page": page});
-        }
-      }
-    }) }, 200);
+    renderStore({"price": {"$lt": 100}}, '≤ $100', req, res);
   });
 
   // Respond a GET request for the /100-300 page.
@@ -286,57 +79,7 @@ module.exports = function ( app ) {
   // Respond a GET request for the /100-300/:page page.
   // Display artworks between 100 HKD and 300 HKD at the particular page.
   app.get('/100-300/:page', function (req, res) {
-    var Item = global.dbHelper.getModel('item');
-    // Get all types' sizes
-    var all_size, book_size, electronics_size, groceries_size, lt100_size, gt100lt300_size, gt300_size;
-    Item.count({}, function( err, count){
-        all_size = count;
-    });
-    Item.count({ "type": "book" }, function( err, count){
-        book_size = count;
-    });
-    Item.count({ "type": "electronics" }, function( err, count){
-        electronics_size = count;
-    });
-    Item.count({ "type": "groceries" }, function( err, count){
-        groceries_size = count;
-    });
-    Item.count({ "price": { "$lt": 100 }}, function( err, count){
-        lt100_size = count;
-    });
-    Item.count({ "price": { "$gte": 100, "$lt": 300 }}, function( err, count){
-        gt100lt300_size = count;
-    });
-    Item.count({ "price": { "$gte": 300 }}, function( err, count){
-        gt300_size = count;
-    });
-
-    setTimeout(function(){ Item.find({ "price": { "$gte": 100, "$lt": 300 } }, function (error, docs) {
-      if (error) {
-        res.redirect('/');
-      } else if (!docs) {
-        req.session.error = "No item yet!";
-        res.redirect('/');
-      } else {
-        var page = req.params.page;
-        if (req.session.user) {
-          res.render('100-300', { "Items": docs.slice(16*(page-1), 16*page),
-                                   "isLogin": true, "page": page,
-                                   "all_size": all_size, "lt100_size": lt100_size,
-                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
-                                   "book_size": book_size, "electronics_size": electronics_size,
-                                   "groceries_size": groceries_size,
-                                   "firstname": req.session.user.firstname });
-        } else {
-          res.render('100-300', { "Items": docs.slice(16*(page-1), 16*page),"page": page,
-                                   "all_size": all_size, "lt100_size": lt100_size,
-                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
-                                   "book_size": book_size, "electronics_size": electronics_size,
-                                   "groceries_size": groceries_size,
-                                   "isLogin": false});
-        }
-      }
-    }) }, 200);
+    renderStore({"price": {"$gte": 100, "$lt": 300}}, '$150 - $300', req, res);
   });
 
   // Respond a GET request for the /300 page.
@@ -348,57 +91,90 @@ module.exports = function ( app ) {
   // Respond a GET request for the /300/:page page.
   // Display artworks over 300 HKD at the particular page.
   app.get('/300/:page', function (req, res) {
+    renderStore({"price": { "$gte": 300}}, '≥ $300', req, res);
+  });
+
+  function renderStore(conditions, category, req, res) {
+    var finished = u.after(9, doRender);
+
     var Item = global.dbHelper.getModel('item');
     // Get all types' sizes
-    var all_size, book_size, electronics_size, groceries_size, lt100_size, gt100lt300_size, gt300_size;
+    var all_size, book_size, electronics_size, groceries_size, lt100_size, gt100lt300_size, gt300_size, sell_size, buy_size;
     Item.count({}, function( err, count){
         all_size = count;
+        finished();
     });
     Item.count({ "type": "book" }, function( err, count){
         book_size = count;
+        finished();
     });
     Item.count({ "type": "electronics" }, function( err, count){
         electronics_size = count;
+        finished();
     });
     Item.count({ "type": "groceries" }, function( err, count){
         groceries_size = count;
+        finished();
     });
     Item.count({ "price": { "$lt": 100 }}, function( err, count){
         lt100_size = count;
+        finished();
     });
     Item.count({ "price": { "$gte": 100, "$lt": 300 }}, function( err, count){
         gt100lt300_size = count;
+        finished();
     });
     Item.count({ "price": { "$gte": 300 }}, function( err, count){
         gt300_size = count;
+        finished();
+    });
+    Item.count({"sellBuy": true}, function (err, count) {
+        sell_size = count;
+        finished();
+    });
+    Item.count({"sellBuy": false}, function (err, count) {
+        buy_size = count;
+        finished();
     });
 
-    setTimeout(function(){ Item.find({ "price": { "$gte": 300 } }, function (error, docs) {
-      if (error) {
-        res.redirect('/');
-      } else if (!docs) {
-        req.session.error = "No item yet!";
-        res.redirect('/');
-      } else {
-        var page = req.params.page;
-        if (req.session.user) {
-          res.render('300', { "Items": docs.slice(16*(page-1), 16*page),
-                                   "isLogin": true, "page": page,
-                                   "all_size": all_size, "lt100_size": lt100_size,
-                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
-                                   "book_size": book_size, "electronics_size": electronics_size,
-                                   "groceries_size": groceries_size,
-                                   "firstname": req.session.user.firstname });
+    function doRender() {
+      Item.find(conditions, function (error, docs) {
+        if (error) {
+          res.redirect('/');
+        } else if (!docs) {
+          req.session.error = "No item yet!";
+          res.redirect('/');
         } else {
-          res.render('300', { "Items": docs.slice(16*(page-1), 16*page),"page": page,
-                                   "all_size": all_size, "lt100_size": lt100_size,
-                                   "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
-                                   "book_size": book_size, "electronics_size": electronics_size,
-                                   "groceries_size": groceries_size,
-                                   "isLogin": false});
+          var page = req.params.page;
+          if (req.session.user) {
+            res.render('store', {
+              "category": category,
+              "Items": docs.slice(16*(page-1), 16*page),
+              "page": page,
+              "isLogin": true,
+              "all_size": all_size, "lt100_size": lt100_size,
+              "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+              "sell_size": sell_size, "buy_size": buy_size,
+              "book_size": book_size, "electronics_size": electronics_size,
+              "groceries_size": groceries_size,
+              "firstname": req.session.user.firstname
+            });
+          } else {
+            res.render('store', {
+              "category": category,
+              "Items": docs.slice(16*(page-1), 16*page),
+              "page": page,
+              "isLogin": false,
+              "all_size": all_size, "lt100_size": lt100_size,
+              "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
+              "sell_size": sell_size, "buy_size": buy_size,
+              "book_size": book_size, "electronics_size": electronics_size,
+              "groceries_size": groceries_size,
+            });
+          }
         }
-      }
-    }) }, 200);
-  });
+      });
+    }
+  }
 
 };

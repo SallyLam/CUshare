@@ -37,7 +37,8 @@ module.exports = {
     description: { type: String },
     imgSrc: { type: String },
     uUName: { type: String },  // user's username
-    uFName: { type: String }  // user's firstname
+    uFName: { type: String },  // user's firstname
+    sellBuy: { type: Boolean, default: true }  // true if selling, otherwise buying
   },
   /*
   cart: {

@@ -168,15 +168,19 @@
 						</div>
 						<div class="details-left-info">
 							<h3><%=itemname%></h3>
-							<p class="availability">Availability: <span class="color">In stock</span></p>
+							<% if (sellBuy) { %>
+								<p class="availability">I wanna <span class="color">SELL</span> this item.</p>
+							<% } else { %>
+								<p class="availability">I wanna <span class="color">BUY</span> this item.</p>
+							<% } %>
 							<div class="price_single">
 								<span class="actual">$<%=itemprice%></span><a href="/personalchat">Clict to contact the seller!</a>
 							</div>
-							<h2 class="quick">Seller: <%= sellerFName %></h2>
+							<h2 class="quick">Contact: <span class="color1"><%= contactFName %></span></h2>
+							<br>
 							<h2 class="quick">Descriptionn:</h2>
-							<p class="quick_desc"> <%= item_description %></p>
+							<p class="quick_desc"><span class="color1"><%= item_description %></span></p>
 							<div class="clearfix"> </div>
-
 						</div>
 						<div class="clearfix"> </div>
 					</div>
