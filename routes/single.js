@@ -60,17 +60,21 @@ module.exports = function ( app ) {
         setTimeout(function () {
           Items.find({}, function (error, docs) {
             if (req.session.user) {
-              res.render('single', { "Items": docs, "itemid": req.params.id, "itemname": doc.name,
+              res.render('single', {
+                "Items": docs, "itemid": req.params.id, "itemname": doc.name, "sellBuy": doc.sellBuy,
                 "itemtype": doc.type, "firstname": req.session.user.firstname, "userid": req.session.user._id, "isLogin": true,
-                "itemprice": doc.price, "item_description": doc.description, "imgSrc": doc.imgSrc, "sellerFName": doc.uFName,
+                "itemprice": doc.price, "item_description": doc.description, "imgSrc": doc.imgSrc, "contactFName": doc.uFName,
                 "all_size": all_size, "lt100_size": lt100_size, "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
-                "book_size": book_size, "electronics_size": electronics_size, "groceries_size": groceries_size});
+                "book_size": book_size, "electronics_size": electronics_size, "groceries_size": groceries_size
+              });
             } else {
-              res.render('single', {  "Items": docs, "itemid": req.params.id, "itemname": doc.name,
+              res.render('single', {
+                "Items": docs, "itemid": req.params.id, "itemname": doc.name, "sellBuy": doc.sellBuy,
                 "itemtype": doc.type, "firstname": "Anonymous", "userid": null, "isLogin": false,
-                "itemprice": doc.price, "item_description": doc.description, "imgSrc": doc.imgSrc, "sellerFName": doc.uFName,
+                "itemprice": doc.price, "item_description": doc.description, "imgSrc": doc.imgSrc, "contactFName": doc.uFName,
                 "all_size": all_size, "lt100_size": lt100_size, "gt100lt300_size": gt100lt300_size, "gt300_size": gt300_size,
-                "book_size": book_size, "electronics_size": electronics_size, "groceries_size": groceries_size });
+                "book_size": book_size, "electronics_size": electronics_size, "groceries_size": groceries_size
+              });
             }
           });
         }, 200);

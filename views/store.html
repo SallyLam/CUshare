@@ -115,19 +115,20 @@
 						<div class="col-md-8">
 							<p class="lead">Category</p>
 							<div class="list-group">
-	<a href="/store" class="list-group-item">All (<%=all_size%>)</a>
-</div>
-<div class="list-group">
-	<a href="/book" class="list-group-item">Book (<%=book_size%>)</a>
-	<a href="/electronics" class="list-group-item">Electronics (<%=electronics_size%>)</a>
-	<a href="/groceries" class="list-group-item">Groceries (<%=groceries_size%>)</a>
-</div>
-
-<div class="list-group">
-	<a href="/100" class="list-group-item">&le; $100 (<%=lt100_size%>)</a>
-		<a href="/100-300" class="list-group-item">$100 - $300 (<%=gt100lt300_size%>)</a>
-		<a href="/300" class="list-group-item">&ge; $300 (<%=gt300_size%>)</a>
-</div>
+								<a href="/store" class="list-group-item">All (<%=all_size%>)</a>
+								<a href="/store/selling" class="list-group-item">Others wanna sell (<%=sell_size%>)</a>
+								<a href="/store/buying" class="list-group-item">Others wanna buy (<%=buy_size%>)</a>
+							</div>
+							<div class="list-group">
+								<a href="/book" class="list-group-item">Book (<%=book_size%>)</a>
+								<a href="/electronics" class="list-group-item">Electronics (<%=electronics_size%>)</a>
+								<a href="/groceries" class="list-group-item">Groceries (<%=groceries_size%>)</a>
+							</div>
+							<div class="list-group">
+								<a href="/100" class="list-group-item">&le; $100 (<%=lt100_size%>)</a>
+								<a href="/100-300" class="list-group-item">$100 - $300 (<%=gt100lt300_size%>)</a>
+								<a href="/300" class="list-group-item">&ge; $300 (<%=gt300_size%>)</a>
+							</div>
 						</div>
 						<div class="col-md-3"></div>
 					</div>
@@ -167,7 +168,12 @@
 							<div class="content-bar">
 								<ul class="product-head">
 									<li><a href="/">Home</a> <span>::</span></li>
-									<li class="active-page">Products</li>
+									<% if (category) { %>
+										<li><a href="/store">Products</a> <span>::</span></li>
+										<li class="active-page"><%=category%></li>
+									<% } else { %>
+										<li class="active-page">Products</li>
+									<% } %>
 									<div class="clear"> </div>
 								</ul>
 								<div class="products-row">
