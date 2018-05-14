@@ -109,16 +109,6 @@ app.get('/', function(req, res) {
   }
 });
 
-// // upload file
-// var upload = multer({ dest: 'upload/' });
-// // single image
-// app.post('/upload', upload.single('logo'), function(req, res, next){
-//     res.send({ret_code: '0'});
-// });
-// app.get('/form', function(req, res, next){
-//     var form = fs.readFileSync('./view/postitem.html', {encoding: 'utf8'});
-//     res.send(form);
-// });
 
 console.log('NODE_ENV:', process.env.NODE_ENV)
 app.listen(app.get('port'), function () {
