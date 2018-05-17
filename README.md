@@ -1,6 +1,6 @@
 # CUshare Resource Sharing Platform
 
-CUshare is a resource sharing platform within the Chinese University of Hong Kong
+CUshare is a resource sharing platform within the Chinese University of Hong Kong.
 
 ## Dependencies:
 
@@ -17,16 +17,20 @@ CUshare is a resource sharing platform within the Chinese University of Hong Kon
 
 ## Details
 
-/app.js: the script to turn on the whole website
+./app.js: the script to turn on the whole website
 
-/common: store some common used files
+./import.sh: the script to import sample data to the database
 
-/common/dbHelper.js: helper program for the usage of the database
+./common: store some common used files
 
-/common/models.js: set up the attributes of some modules
+./common/dbHelper.js: helper program for the usage of the database
 
-/routes: store the route files
+./common/models.js: set up the attributes of some modules
 
-/views: store the html template files, ejs files
+./routes: store the route files
 
-/public: store static resources, like css, javascript and images
+./views: store the html template files, ejs files
+
+./public: store static resources, like css, javascript and images
+
+./waste: stores obsolete files
