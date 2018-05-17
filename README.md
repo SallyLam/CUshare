@@ -1,26 +1,19 @@
 # CUshare Resource Sharing Platform
 
-## (My) Dev Platform
-
-* Ubuntu 16.04 LTS 64-bit
+CUshare is a resource sharing platform within the Chinese University of Hong Kong
 
 ## Dependencies:
 
 * Node.js v8.11.1
 * MongoDB v3.6
 
-## Usage
+## Deployment
 
-1. ```npm install``` or ```npm i```
-2. Open MongoDB server (```mongod```)
-3. ```npm test``` when in development, ```npm start``` when in deployment
-4. Check the website in your browser: localhost:3000
-
-### Import data
-
-```
-./import.sh
-```
+1. Install package dependencies: ```npm install``` or ```npm i```
+2. Open MongoDB server: ```mongod```
+3. Import sample data: ```./import.sh```
+3. Start the server: ```npm test``` when in development, ```npm start``` when in deployment
+4. Check the website in your browser: http://localhost:3000/
 
 ## Details
 
